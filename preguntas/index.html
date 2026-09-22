@@ -96,6 +96,14 @@
 
   /* Inicio */
   .sec{margin:18px 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+  .dos label{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:6px}
+  .dos select{width:100%;margin:0;min-height:48px;font-size:1rem;padding:10px 12px}
+  .dos.menor{margin-top:14px;gap:10px}
+  .dos.menor label{font-size:.7rem;letter-spacing:.6px;margin-bottom:4px}
+  .seg.menor button{font-size:.8rem;padding:7px 4px;min-height:34px;color:var(--muted)}
+  .seg.menor button.on{color:var(--paper)}
+  @media (max-width:380px){.dos{grid-template-columns:1fr}}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{font:inherit;font-size:.95rem;background:var(--chip);color:var(--text);border:1px solid var(--tile-edge);border-radius:999px;padding:9px 14px;cursor:pointer;touch-action:manipulation;min-height:42px;-webkit-tap-highlight-color:transparent}
   .chip.on{background:var(--chip-on);color:var(--paper);border-color:var(--chip-on)}
@@ -194,6 +202,9 @@ function inicio() {
   const vistas = Object.values(P.items).filter(r => r.v > 0).length;
   const primera = Object.values(P.items).reduce((a, r) => a + r.p, 0);
   const pend = Object.values(P.items).filter(r => r.pend).length;
+  const nivelSel = cfg.niveles.length === 1 ? cfg.niveles[0] : null;
+  const temaSel = cfg.temas.length === 1 ? cfg.temas[0] : null;
+  cfg.niveles = nivelSel ? [nivelSel] : []; cfg.temas = temaSel ? [temaSel] : [];
   const cuentaNivel = n => ITEMS.filter(it => it.nivel === n).length;
   const cuentaTema = t => ITEMS.filter(it => it.tags.includes(t)).length;
 
@@ -202,19 +213,23 @@ function inicio() {
     <header><h1 class="hand">Ordena la pregunta</h1><div class="score"><b>${ITEMS.length}</b> preguntas</div></header>
     ${enCurso ? `<div class="resume"><p><b>Tienes una sesión a medias:</b> ${S.pos + 1} de ${S.lista.length} (${S.cfg.modo === "falladas" ? "solo falladas" : S.cfg.modo === "aleatorio" ? "aleatorio" : S.cfg.modo === "repaso" ? "repaso de falladas" : "orden fijo"}).</p>
       <div class="actions"><button class="btn" id="cont">Continuar</button><button class="btn ghost" id="desc">Descartar</button></div></div>` : ""}
-    <p class="sec">Niveles</p>
-    <div class="chips" id="niv">${NIVELES.map(n => `<button class="chip ${cfg.niveles.includes(n.n) ? "on" : ""}" data-n="${n.n}">${n.n} · ${esc(n.nombre)}<small>${cuentaNivel(n.n)}</small></button>`).join("")}</div>
-    <p class="sec">Temas</p>
-    <div class="chips" id="tem">${Object.entries(TEMAS).map(([t, l]) => `<button class="chip ${cfg.temas.includes(t) ? "on" : ""}" data-t="${t}">${esc(l)}<small>${cuentaTema(t)}</small></button>`).join("")}</div>
-    <p class="sec">Modo</p>
-    <div class="seg" id="modo">
-      <button data-m="fijo" class="${cfg.modo === "fijo" ? "on" : ""}">Orden fijo</button>
-      <button data-m="aleatorio" class="${cfg.modo === "aleatorio" ? "on" : ""}">Aleatorio</button>
-      <button data-m="falladas" class="${cfg.modo === "falladas" ? "on" : ""}">Solo falladas${pend ? ` (${pend})` : ""}</button>
+    <div class="dos">
+      <div><label for="selNiv">Nivel</label>
+        <select id="selNiv"><option value="">Todos</option>${NIVELES.map(n => `<option value="${n.n}" ${nivelSel === n.n ? "selected" : ""}>${n.n} · ${esc(n.nombre)} (${cuentaNivel(n.n)})</option>`).join("")}</select></div>
+      <div><label for="selTem">Tema</label>
+        <select id="selTem"><option value="">Todos</option>${Object.entries(TEMAS).map(([t, l]) => `<option value="${t}" ${temaSel === t ? "selected" : ""}>${esc(l)} (${cuentaTema(t)})</option>`).join("")}</select></div>
+    </div>
+    <div class="dos menor">
+      <div><label>Modo</label>
+        <div class="seg menor" id="modo">
+          <button data-m="fijo" class="${cfg.modo === "fijo" ? "on" : ""}">Fijo</button>
+          <button data-m="aleatorio" class="${cfg.modo === "aleatorio" ? "on" : ""}">Aleatorio</button>
+          <button data-m="falladas" class="${cfg.modo === "falladas" ? "on" : ""}">Falladas${pend ? ` (${pend})` : ""}</button>
+        </div></div>
+      <div><label>Cuántas</label>
+        <div class="seg menor" id="cuantas">${[10, 20, 40, 0].map(n => `<button data-c="${n}" class="${cfg.cuantas === n ? "on" : ""}">${n || "Todas"}</button>`).join("")}</div></div>
     </div>
     <p class="hint">En aleatorio, las falladas y las que nunca has hecho salen más a menudo.</p>
-    <p class="sec">Cuántas</p>
-    <div class="seg" id="cuantas">${[10, 20, 40, 0].map(n => `<button data-c="${n}" class="${cfg.cuantas === n ? "on" : ""}">${n || "Todas"}</button>`).join("")}</div>
     <p class="disp" id="disp"></p>
     <button class="btn wide" id="ir">Empezar</button>
     <p class="stats">Practicadas: <b>${vistas}</b> de ${ITEMS.length} · Bien a la primera: <b>${primera}</b> · Pendientes de repasar: <b>${pend}</b></p>
@@ -226,15 +241,14 @@ function inicio() {
       <button class="btn danger small" id="reset">Borrar mi progreso</button>
     </div>`;
 
-  const toggle = (arr, v) => arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v].sort((a, b) => a - b || String(a).localeCompare(b));
   const refresca = () => {
     const l = filtrar(cfg); const n = cfg.cuantas ? Math.min(cfg.cuantas, l.length) : l.length;
     document.getElementById("disp").innerHTML = l.length ? `Sesión de <b>${n}</b> pregunta${n === 1 ? "" : "s"} (${l.length} disponibles con estos filtros).` : `<b>No hay preguntas</b> con estos filtros.`;
     document.getElementById("ir").disabled = !l.length;
     P.cfg = cfg; guardar();
   };
-  app.querySelectorAll("#niv .chip").forEach(b => b.onclick = () => { cfg.niveles = toggle(cfg.niveles, +b.dataset.n); b.classList.toggle("on"); refresca(); });
-  app.querySelectorAll("#tem .chip").forEach(b => b.onclick = () => { cfg.temas = toggle(cfg.temas, b.dataset.t); b.classList.toggle("on"); refresca(); });
+  document.getElementById("selNiv").onchange = e => { cfg.niveles = e.target.value ? [+e.target.value] : []; refresca(); };
+  document.getElementById("selTem").onchange = e => { cfg.temas = e.target.value ? [e.target.value] : []; refresca(); };
   app.querySelectorAll("#modo button").forEach(b => b.onclick = () => { cfg.modo = b.dataset.m; app.querySelectorAll("#modo button").forEach(x => x.classList.toggle("on", x === b)); refresca(); });
   app.querySelectorAll("#cuantas button").forEach(b => b.onclick = () => { cfg.cuantas = +b.dataset.c; app.querySelectorAll("#cuantas button").forEach(x => x.classList.toggle("on", x === b)); refresca(); });
   document.getElementById("ir").onclick = () => {
