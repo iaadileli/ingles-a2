@@ -19,6 +19,7 @@ for (const raw of datos.preguntas) {
     ids.set(raw.id, raw.s);
     if (!niveles.has(raw.nivel)) throw new Error(`nivel ${raw.nivel} no existe`);
     if (!raw.tip || !raw.tip.trim()) throw new Error("falta tip");
+    if (raw.cefr !== undefined && !["A1", "A2", "B1"].includes(raw.cefr)) throw new Error(`cefr desconocido «${raw.cefr}»`);
     for (const t of raw.tags || []) if (!TEMAS[t]) throw new Error(`tag desconocida «${t}»`);
     const it = preparar(raw);
     if (/[A-Z]/.test(it.w[0]) && !/^I\b/.test(it.w)) avisos.push(`${donde}: empieza en mayúscula; el juego la pone sola`);
@@ -49,7 +50,7 @@ for (const raw of datos.preguntas) {
 
 const porNivel = {}, porTema = {};
 for (const it of items) { porNivel[it.nivel] = (porNivel[it.nivel] || 0) + 1; for (const t of it.tags) porTema[t] = (porTema[t] || 0) + 1; }
-console.log(`Preguntas válidas: ${items.length} de ${datos.preguntas.length}`);
+console.log(`Preguntas válidas: ${items.length} de ${datos.preguntas.length} (marcadas B1: ${items.filter(i => i.cefr === "B1").length})`);
 console.log("Por nivel: " + datos.niveles.map(n => `N${n.n}=${porNivel[n.n] || 0}`).join("  "));
 console.log("Por tema:  " + Object.keys(TEMAS).map(t => `${t}=${porTema[t] || 0}`).join("  "));
 if (avisos.length) { console.log(`\nAvisos (${avisos.length}):`); avisos.forEach(a => console.log("  ⚠ " + a)); }

@@ -49,7 +49,10 @@
   .bar{height:4px;background:var(--rule);border-radius:2px;margin:12px 0 18px;overflow:hidden}
   .bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
   .level{font-size:.9rem;color:var(--muted);margin:0}
-  .num{font-size:1.6rem;color:var(--ink);margin:0 0 10px}
+  .num{font-size:1.6rem;color:var(--ink);margin:0 0 10px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .sello{display:inline-block;font-size:.95rem;line-height:1;color:var(--red);border:2px solid var(--red);border-radius:6px;
+         padding:4px 9px;letter-spacing:1px;transform:rotate(-6deg);opacity:.85;font-weight:700}
+  .sello.mini{font-size:.7rem;padding:2px 5px;transform:none;margin-left:6px;vertical-align:middle;font-family:system-ui,sans-serif;letter-spacing:.5px}
   .answer{min-height:64px;border-bottom:2px solid var(--ink);display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px;padding:8px 34px 8px 0;margin-bottom:22px;position:relative}
   .answer.empty::before{content:"Toca las palabras en orden…";color:var(--muted);font-size:.95rem;padding-bottom:6px}
   .qmark{font-size:1.35rem;color:var(--ink);font-weight:700;padding-bottom:6px}
@@ -407,7 +410,7 @@ function render(focusNext) {
     ${salto}
     <div class="bar"><i style="width:${(ses.pos / ses.lista.length) * 100}%"></i></div>
     <p class="level">${esc(etiqueta)}</p>
-    <p class="num hand">${ses.pos + 1} de ${ses.lista.length}</p>
+    <p class="num hand">${ses.pos + 1} de ${ses.lista.length}${item.cefr === "B1" ? `<span class="sello" title="Por encima de A2">B1 · difícil</span>` : ""}</p>
     <div class="answer ${s.placed.length ? "" : "empty"} ${s.checked && !s.ok ? "bad" : ""}" id="ans"></div>
     <div class="pool" id="pool"></div>
     <div class="actions" id="act"></div>
@@ -496,7 +499,7 @@ function fin() {
     <h1 class="hand">Ordena la pregunta</h1><div class="bar"><i style="width:100%"></i></div>
     <h2 class="hand">${good} de ${ses.lista.length} a la primera</h2>
     ${perLevel}
-    ${fails.length ? `<p>Estas se te resistieron. Repítelas hasta que salgan solas:</p><ul>${fails.map(i => `<li>${esc(sentence(BY_ID.get(i).w))}</li>`).join("")}</ul>`
+    ${fails.length ? `<p>Estas se te resistieron. Repítelas hasta que salgan solas:</p><ul>${fails.map(i => `<li>${esc(sentence(BY_ID.get(i).w))}${BY_ID.get(i).cefr === "B1" ? `<span class="sello mini">B1</span>` : ""}</li>`).join("")}</ul>`
       : `<p>Todas bien a la primera.</p>`}
     <div class="actions">
       <button class="btn ghost" id="back">Volver a la última</button>

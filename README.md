@@ -38,6 +38,8 @@ Edita `preguntas/datos/preguntas.json`. Cada pregunta:
   indirecta, negativa, sino) se deducen solos de los roles.
 - `tip`: la regla, en español, HTML permitido.
 - `id` único y `nivel` existente en `niveles`.
+- `cefr` (opcional): `"B1"` si la pregunta se sale de A2 (indirectas, condicionales, negativas, pasado
+  continuo, *used to*, present perfect continuo…). En el juego sale con un sello rojo «B1 · difícil».
 
 Después:
 

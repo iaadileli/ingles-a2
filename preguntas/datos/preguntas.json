@@ -1233,6 +1233,7 @@
   {
    "id": "n4-49",
    "nivel": 4,
+   "cefr": "B1",
    "s": "Q:what|M:would|S:you|V:do|R:in my situation",
    "tip": "<b>What would you do</b>…? = ¿qué harías…? <i>Would</i> delante del sujeto."
   },
@@ -1428,12 +1429,14 @@
   {
    "id": "n5-31",
    "nivel": 5,
+   "cefr": "B1",
    "s": "A:did|S:you|V:use to live|R:in a village",
    "tip": "<b>Did you use to</b> + infinitivo = ¿antes vivías…? Con <i>did</i>, <i>use</i> sin -d."
   },
   {
    "id": "n5-32",
    "nivel": 5,
+   "cefr": "B1",
    "s": "Q:where|A:did|S:you|V:use to go|R:on holiday",
    "tip": "<b>Where did you use to</b> + infinitivo. El bloque <i>use to go</i> va junto."
   },
@@ -1452,12 +1455,14 @@
   {
    "id": "n5-35",
    "nivel": 5,
+   "cefr": "B1",
    "s": "Q:what|A:has|S:she|V:been doing|R:all day",
    "tip": "Present perfect continuo: <b>has</b> + sujeto + <i>been</i> + <i>-ing</i>."
   },
   {
    "id": "n5-36",
    "nivel": 5,
+   "cefr": "B1",
    "s": "Q:how long|A:have|S:you|V:been learning|R:English",
    "tip": "<b>How long have you been</b> + <i>-ing</i>? = ¿cuánto llevas…?"
   },
@@ -1494,6 +1499,7 @@
   {
    "id": "n5-42",
    "nivel": 5,
+   "cefr": "B1",
    "s": "Q:what|A:did|S:you|V:use to do|R:as a child",
    "tip": "<b>What did you use to do</b>…? = ¿qué hacías de pequeño?"
   },
@@ -1548,24 +1554,28 @@
   {
    "id": "n6-01",
    "nivel": 6,
+   "cefr": "B1",
    "s": "M:could|S:you|V:tell|R:me|I:where the station is",
    "tip": "Pregunta indirecta: después de <i>could you tell me</i>, orden normal: <b>where the station is</b>, no <i>where is the station</i>."
   },
   {
    "id": "n6-02",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:know|I:what time the shop opens",
    "tip": "Indirecta: tras <i>do you know</i>, sin <i>does</i> y con orden normal: <b>what time the shop opens</b>."
   },
   {
    "id": "n6-03",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|B:were|S:you|V:doing|R:when I called you",
    "tip": "Pasado continuo: <b>were you doing</b>. La segunda parte (<i>when I called you</i>) va en orden normal."
   },
   {
    "id": "n6-04",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:how long|A:did|S:it|V:take|R:you to learn English",
    "tip": "<b>How long did it take you to</b> + infinitivo = ¿cuánto tardaste en…?"
   },
@@ -1578,6 +1588,7 @@
   {
    "id": "n6-06",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:why|A:didn't|S:you|V:come|R:to class yesterday",
    "tip": "Pregunta negativa: <b>didn't</b> va pegado delante del sujeto."
   },
@@ -1596,12 +1607,14 @@
   {
    "id": "n6-09",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:have|S:you|V:decided|I:where you are going to live",
    "tip": "Dos partes: <b>have you decided</b> (pregunta) + <b>where you are going to live</b> (indirecta, orden normal)."
   },
   {
    "id": "n6-10",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|M:would|S:you|V:do|R:if you won the lottery",
    "alt": [
     "if you won the lottery what would you do"
@@ -1611,102 +1624,119 @@
   {
    "id": "n6-11",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:know|I:where she lives",
    "tip": "Indirecta: tras <i>do you know</i>, orden normal: <b>where she lives</b>, no <i>where does she live</i>."
   },
   {
    "id": "n6-12",
    "nivel": 6,
+   "cefr": "B1",
    "s": "M:could|S:you|V:tell|R:me|I:what time it is",
    "tip": "Indirecta: <b>what time it is</b> (sujeto + verbo), no <i>what time is it</i>."
   },
   {
    "id": "n6-13",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:know|I:how much this costs",
    "tip": "Indirecta: <b>how much this costs</b>, con -s y sin <i>does</i>."
   },
   {
    "id": "n6-14",
    "nivel": 6,
+   "cefr": "B1",
    "s": "M:can|S:you|V:tell|R:me|I:where the toilets are",
    "tip": "Indirecta con <i>be</i>: el verbo va al final: <b>where the toilets are</b>."
   },
   {
    "id": "n6-15",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:know|I:if the bank is open",
    "tip": "Indirecta de sí/no: se usa <b>if</b> + orden normal (<i>the bank is open</i>)."
   },
   {
    "id": "n6-16",
    "nivel": 6,
+   "cefr": "B1",
    "s": "M:could|S:you|V:tell|R:me|I:when the next bus leaves",
    "tip": "Indirecta: <b>when the next bus leaves</b>, sin <i>does</i>."
   },
   {
    "id": "n6-17",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:remember|I:where we parked the car",
    "tip": "Indirecta: <b>where we parked the car</b>, orden de afirmación."
   },
   {
    "id": "n6-18",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:why|A:didn't|S:you|V:call|R:me",
    "tip": "Negativa: <b>didn't</b> pegado delante del sujeto. El verbo sigue en infinitivo."
   },
   {
    "id": "n6-19",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:don't|S:you|V:like|R:chocolate",
    "tip": "Negativa de sí/no: empieza por <b>don't</b>. = ¿no te gusta…?"
   },
   {
    "id": "n6-20",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:why|B:isn't|S:she|R:here",
    "tip": "Negativa con <i>be</i>: <b>isn't</b> delante del sujeto."
   },
   {
    "id": "n6-21",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:haven't|S:you|V:finished|R:yet",
    "tip": "Negativa en present perfect: <b>haven't</b> + sujeto + participio + <i>yet</i>."
   },
   {
    "id": "n6-22",
    "nivel": 6,
+   "cefr": "B1",
    "s": "B:aren't|S:you|R:cold",
    "tip": "<b>Aren't you</b> + adjetivo? = ¿no tienes…? Negativa con <i>be</i>."
   },
   {
    "id": "n6-23",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:why|M:can't|S:you|V:come",
    "tip": "Negativa con modal: <b>can't</b> delante del sujeto."
   },
   {
    "id": "n6-24",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|B:were|S:they|V:doing|R:at ten o'clock",
    "tip": "Pasado continuo: <b>were</b> + sujeto + <i>-ing</i>."
   },
   {
    "id": "n6-25",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:where|B:were|S:you|V:going|R:when I saw you",
    "tip": "<b>Were you going</b> + la segunda parte (<i>when I saw you</i>) en orden normal."
   },
   {
    "id": "n6-26",
    "nivel": 6,
+   "cefr": "B1",
    "s": "B:was|S:it|V:raining|R:when you left",
    "tip": "<b>Was it raining</b>…? Pasado continuo de sí/no."
   },
   {
    "id": "n6-27",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|M:would|S:you|V:do|R:if you were me",
    "alt": [
     "if you were me what would you do"
@@ -1716,6 +1746,7 @@
   {
    "id": "n6-28",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:where|M:would|S:you|V:go|R:if you could travel anywhere",
    "alt": [
     "if you could travel anywhere where would you go"
@@ -1725,6 +1756,7 @@
   {
    "id": "n6-29",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|M:will|S:you|V:do|R:if it rains",
    "alt": [
     "if it rains what will you do"
@@ -1734,6 +1766,7 @@
   {
    "id": "n6-30",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:how long|A:had|S:you|V:been waiting|R:when the bus came",
    "tip": "Pasado perfecto continuo: <b>had</b> + sujeto + <i>been</i> + <i>-ing</i>."
   },
@@ -1746,12 +1779,14 @@
   {
    "id": "n6-32",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|A:did|S:the teacher|V:tell|R:you to do",
    "tip": "<b>What did</b> + sujeto largo + <i>tell you to do</i>."
   },
   {
    "id": "n6-33",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:who|A:did|S:you|V:give|R:the keys|P:to",
    "tip": "<i>Give … to</i>. El <b>to</b> va al final, después del objeto (<i>the keys</i>)."
   },
@@ -1770,6 +1805,7 @@
   {
    "id": "n6-36",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:which of these books|A:have|S:you|R:already|V:read",
    "alt": [
     "which of these books have you read already"
@@ -1785,6 +1821,7 @@
   {
    "id": "n6-38",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what kind of music|A:did|S:you|V:use to listen|P:to",
    "tip": "<b>What kind of music</b> junto + <i>did you use to listen</i> + <b>to</b> al final."
   },
@@ -1800,24 +1837,28 @@
   {
    "id": "n6-40",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:do|S:you|V:know|I:who that woman is",
    "tip": "Indirecta con <i>be</i>: <b>who that woman is</b>, el verbo al final."
   },
   {
    "id": "n6-41",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|B:is|S:the name|R:of the street where you live",
    "tip": "<b>What is the name of</b>…? + <i>where you live</i> en orden normal."
   },
   {
    "id": "n6-42",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:why|A:didn't|S:anyone|V:tell|R:me about the meeting",
    "tip": "Negativa: <b>didn't</b> + sujeto (<i>anyone</i>) + infinitivo."
   },
   {
    "id": "n6-43",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:how many people|A:do|S:you|V:think|R:will come",
    "tip": "<b>How many people do you think</b> + <i>will come</i>: el <i>do you think</i> se mete en medio."
   },
@@ -1830,36 +1871,42 @@
   {
    "id": "n6-45",
    "nivel": 6,
+   "cefr": "B1",
    "s": "B:is|S:there|R:anything I can do to help",
    "tip": "<b>Is there anything</b>…? + <i>I can do to help</i> en orden normal."
   },
   {
    "id": "n6-46",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:when|B:was|S:the last time|R:you went to the cinema",
    "tip": "<b>When was the last time</b> + <i>you went</i> (orden normal, sin <i>did</i>)."
   },
   {
    "id": "n6-47",
    "nivel": 6,
+   "cefr": "B1",
    "s": "M:could|S:you|V:tell|R:me|I:how to get to the station",
    "tip": "Indirecta con infinitivo: <b>how to get to</b>…"
   },
   {
    "id": "n6-48",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|A:do|S:you|V:think|R:she will say",
    "tip": "<b>What do you think</b> + <i>she will say</i> (orden normal después de <i>think</i>)."
   },
   {
    "id": "n6-49",
    "nivel": 6,
+   "cefr": "B1",
    "s": "A:have|S:you|R:ever|V:wondered|I:why the sky is blue",
    "tip": "<b>Have you ever wondered</b> + indirecta en orden normal: <i>why the sky is blue</i>."
   },
   {
    "id": "n6-50",
    "nivel": 6,
+   "cefr": "B1",
    "s": "Q:what|A:did|S:you|V:want|R:to be when you were a child",
    "tip": "<b>What did you want to be</b>…? = ¿qué querías ser…? + <i>when you were a child</i>."
   }
