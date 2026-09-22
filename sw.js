@@ -1,5 +1,5 @@
 // Service worker de Inglés A2. Cambia CACHE en cada versión que toque ficheros cacheados.
-const CACHE = "ingles-a2-v1";
+const CACHE = "ingles-a2-v2";
 const PRECACHE = [
   "./", "./index.html", "./manifest.webmanifest", "./pwa.js", "./icon-192.png", "./icon-512.png",
   "./verbos/", "./verbos/index.html",

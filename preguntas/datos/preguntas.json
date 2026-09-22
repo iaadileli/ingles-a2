@@ -88,6 +88,249 @@
    "tip": "<b>Did</b> + sujeto + infinitivo (<i>come</i>). <i>To school</i> y <i>by bus</i>, detrás."
   },
   {
+   "id": "n1-11",
+   "nivel": 1,
+   "s": "B:are|S:you|R:a student",
+   "tip": "Con <b>be</b> no hace falta <i>do</i>: <i>are</i> delante del sujeto y ya está."
+  },
+  {
+   "id": "n1-12",
+   "nivel": 1,
+   "s": "B:is|S:she|R:your sister",
+   "tip": "Verbo <b>be</b>: <i>is</i> + sujeto (<i>she</i>). Nunca <i>does she is</i>."
+  },
+  {
+   "id": "n1-13",
+   "nivel": 1,
+   "s": "B:are|S:they|R:from Italy",
+   "tip": "<b>Are</b> delante del sujeto. <i>From</i> + país = ser de un sitio."
+  },
+  {
+   "id": "n1-14",
+   "nivel": 1,
+   "s": "Q:where|B:are|S:you|P:from",
+   "tip": "<b>Where are you from?</b> = ¿de dónde eres? La preposición <i>from</i> se queda al final."
+  },
+  {
+   "id": "n1-15",
+   "nivel": 1,
+   "s": "Q:what|B:is|S:your name",
+   "tip": "<b>What</b> + <i>is</i> + sujeto. Es la pregunta más básica: apréndela como un bloque."
+  },
+  {
+   "id": "n1-16",
+   "nivel": 1,
+   "s": "Q:how old|B:are|S:you",
+   "tip": "<b>How old</b> va junto. La edad en inglés es con <i>be</i>: <i>how old are you</i>, no <i>have</i>."
+  },
+  {
+   "id": "n1-17",
+   "nivel": 1,
+   "s": "Q:where|A:do|S:you|V:live",
+   "tip": "Verbo normal (<i>live</i>): <b>do</b> + sujeto + verbo. <i>Where do you live?</i>"
+  },
+  {
+   "id": "n1-18",
+   "nivel": 1,
+   "s": "A:do|S:you|V:like|R:pizza",
+   "tip": "Pregunta de sí o no con verbo normal: empieza por <b>do</b>."
+  },
+  {
+   "id": "n1-19",
+   "nivel": 1,
+   "s": "A:do|S:you|V:speak|R:English",
+   "tip": "<b>Do</b> + <i>you</i> + <i>speak</i>. Los idiomas van con mayúscula en inglés."
+  },
+  {
+   "id": "n1-20",
+   "nivel": 1,
+   "s": "Q:what|A:do|S:you|V:do",
+   "tip": "<i>What do you do?</i> = ¿a qué te dedicas? El primer <i>do</i> es el auxiliar y el segundo, el verbo \"hacer\"."
+  },
+  {
+   "id": "n1-21",
+   "nivel": 1,
+   "s": "Q:how|B:are|S:you",
+   "tip": "<b>How</b> + <i>are</i> + <i>you</i>. Con <i>be</i> nunca aparece <i>do</i>."
+  },
+  {
+   "id": "n1-22",
+   "nivel": 1,
+   "s": "Q:what time|B:is|S:it",
+   "tip": "<b>What time</b> es un bloque. La hora se pregunta con <i>is it</i>."
+  },
+  {
+   "id": "n1-23",
+   "nivel": 1,
+   "s": "B:is|S:this|R:your bag",
+   "tip": "<i>This</i> es el sujeto: <b>is this</b>…? Se invierte igual que con <i>you</i> o <i>she</i>."
+  },
+  {
+   "id": "n1-24",
+   "nivel": 1,
+   "s": "Q:where|B:is|S:the bathroom",
+   "tip": "<b>Where</b> + <i>is</i> + sujeto. Pregunta de supervivencia: memorízala entera."
+  },
+  {
+   "id": "n1-25",
+   "nivel": 1,
+   "s": "A:does|S:he|V:have|R:a dog",
+   "tip": "He/she/it → <b>does</b>, y el verbo se queda sin -s: <i>have</i>, no <i>has</i>."
+  },
+  {
+   "id": "n1-26",
+   "nivel": 1,
+   "s": "A:do|S:you|V:have|R:any brothers",
+   "tip": "<b>Do you have</b> + cosa. <i>Any</i> se usa en preguntas."
+  },
+  {
+   "id": "n1-27",
+   "nivel": 1,
+   "s": "Q:what|A:does|S:she|V:do|R:at the weekend",
+   "tip": "<b>Does</b> + <i>she</i> + <i>do</i>. Aquí el <i>do</i> del final es el verbo (hacer)."
+  },
+  {
+   "id": "n1-28",
+   "nivel": 1,
+   "s": "Q:when|B:is|S:your birthday",
+   "tip": "<b>When</b> + <i>is</i> + sujeto. Para fechas y momentos se pregunta con <i>when</i>."
+  },
+  {
+   "id": "n1-29",
+   "nivel": 1,
+   "s": "Q:where|B:is|S:your car",
+   "tip": "<b>Where</b> + <i>is</i> + sujeto. El sujeto (<i>your car</i>) va después de <i>is</i>."
+  },
+  {
+   "id": "n1-30",
+   "nivel": 1,
+   "s": "B:are|S:you|R:married",
+   "tip": "<i>Married</i> es un adjetivo, así que va con <b>be</b>: <i>are you married</i>."
+  },
+  {
+   "id": "n1-31",
+   "nivel": 1,
+   "s": "Q:what|B:is|S:your job",
+   "tip": "<b>What</b> + <i>is</i> + sujeto. Otra forma de preguntar por el trabajo."
+  },
+  {
+   "id": "n1-32",
+   "nivel": 1,
+   "s": "A:do|S:they|V:live|R:in Madrid",
+   "tip": "Sujeto plural (<i>they</i>) → <b>do</b>. Ciudades con <i>in</i>."
+  },
+  {
+   "id": "n1-33",
+   "nivel": 1,
+   "s": "Q:who|B:is|S:that man",
+   "tip": "<b>Who</b> + <i>is</i> + sujeto. <i>That</i> = ese/aquel."
+  },
+  {
+   "id": "n1-34",
+   "nivel": 1,
+   "s": "Q:how much|B:is|S:this shirt",
+   "tip": "<b>How much</b> va junto. El precio se pregunta con <i>is</i>: <i>how much is</i>…?"
+  },
+  {
+   "id": "n1-35",
+   "nivel": 1,
+   "s": "B:is|S:he|R:a teacher",
+   "tip": "Profesión con <b>be</b>: <i>is he a teacher</i>. En inglés lleva <i>a</i> delante."
+  },
+  {
+   "id": "n1-36",
+   "nivel": 1,
+   "s": "Q:what colour|B:is|S:your car",
+   "tip": "<b>What colour</b> va junto y abre la pregunta. Después, <i>is</i> + sujeto."
+  },
+  {
+   "id": "n1-37",
+   "nivel": 1,
+   "s": "Q:what|A:do|S:you|V:want",
+   "tip": "Verbo normal (<i>want</i>): necesitas <b>do</b> entre <i>what</i> y <i>you</i>."
+  },
+  {
+   "id": "n1-38",
+   "nivel": 1,
+   "s": "A:does|S:she|V:speak|R:Spanish",
+   "tip": "<b>Does</b> + <i>she</i> + verbo sin -s (<i>speak</i>)."
+  },
+  {
+   "id": "n1-39",
+   "nivel": 1,
+   "s": "Q:where|A:does|S:your mother|V:work",
+   "tip": "Sujeto largo (<i>your mother</i>) → igual: <b>does</b> + sujeto + verbo."
+  },
+  {
+   "id": "n1-40",
+   "nivel": 1,
+   "s": "Q:what|B:is|S:your favourite food",
+   "tip": "<b>What</b> + <i>is</i> + sujeto. <i>Favourite food</i> = comida favorita."
+  },
+  {
+   "id": "n1-41",
+   "nivel": 1,
+   "s": "A:do|S:you|V:like|R:your job",
+   "tip": "<b>Do</b> + <i>you</i> + <i>like</i> + resto. Sí o no, sin interrogativo."
+  },
+  {
+   "id": "n1-42",
+   "nivel": 1,
+   "s": "Q:how many people|B:are|S:there|R:in your family",
+   "tip": "<b>How many people</b> es un bloque. <i>There are</i> se invierte: <b>are there</b>."
+  },
+  {
+   "id": "n1-43",
+   "nivel": 1,
+   "s": "B:are|S:there|R:any shops near here",
+   "tip": "<i>There are</i> → pregunta: <b>are there</b>…? <i>Any</i> en preguntas."
+  },
+  {
+   "id": "n1-44",
+   "nivel": 1,
+   "s": "Q:where|B:are|S:my keys",
+   "tip": "<b>Where</b> + <i>are</i> (plural: <i>keys</i>) + sujeto."
+  },
+  {
+   "id": "n1-45",
+   "nivel": 1,
+   "s": "A:do|S:you|V:go|R:to work by car",
+   "alt": [
+    "do you go by car to work"
+   ],
+   "tip": "<b>Do</b> + <i>you</i> + <i>go</i>. Primero adónde (<i>to work</i>) y luego cómo (<i>by car</i>)."
+  },
+  {
+   "id": "n1-46",
+   "nivel": 1,
+   "s": "Q:what|A:do|S:you|V:study",
+   "tip": "<b>What</b> + <i>do</i> + <i>you</i> + verbo. Sin <i>do</i> no hay pregunta."
+  },
+  {
+   "id": "n1-47",
+   "nivel": 1,
+   "s": "B:is|S:your house|R:big",
+   "tip": "Adjetivo (<i>big</i>) → <b>be</b>: <i>is your house big</i>."
+  },
+  {
+   "id": "n1-48",
+   "nivel": 1,
+   "s": "Q:how|A:do|S:you|V:spell|R:your name",
+   "tip": "<b>How do you spell</b>…? = ¿cómo se escribe…? Fórmula fija."
+  },
+  {
+   "id": "n1-49",
+   "nivel": 1,
+   "s": "A:do|S:you|V:understand",
+   "tip": "Solo tres palabras: <b>do</b> + sujeto + verbo. <i>Do you understand?</i>"
+  },
+  {
+   "id": "n1-50",
+   "nivel": 1,
+   "s": "Q:what|B:is|S:this|R:in English",
+   "tip": "<b>What is this in English?</b> = ¿cómo se dice esto en inglés? <i>This</i> es el sujeto."
+  },
+  {
    "id": "n2-01",
    "nivel": 2,
    "s": "B:are|S:you|R:tired today",
@@ -148,6 +391,249 @@
    "tip": "<b>Do</b> + <i>they</i> + verbo. Días de la semana con <b>on</b> y mayúscula."
   },
   {
+   "id": "n2-11",
+   "nivel": 2,
+   "s": "Q:what time|A:do|S:you|V:get up",
+   "tip": "<b>What time</b> es un bloque. <i>Get up</i> = levantarse; va entero al final."
+  },
+  {
+   "id": "n2-12",
+   "nivel": 2,
+   "s": "A:do|S:you|V:work|R:on Sundays",
+   "tip": "<b>Do</b> + <i>you</i> + <i>work</i>. Días con <i>on</i> y mayúscula."
+  },
+  {
+   "id": "n2-13",
+   "nivel": 2,
+   "s": "Q:where|A:do|S:they|V:go|R:on holiday",
+   "tip": "<b>Where</b> + <i>do</i> + <i>they</i> + <i>go</i>. <i>On holiday</i> = de vacaciones."
+  },
+  {
+   "id": "n2-14",
+   "nivel": 2,
+   "s": "A:does|S:your brother|V:play|R:football",
+   "tip": "He (<i>your brother</i>) → <b>does</b>, y <i>play</i> sin -s."
+  },
+  {
+   "id": "n2-15",
+   "nivel": 2,
+   "s": "Q:what|A:does|S:your mother|V:do",
+   "tip": "<i>What does she do?</i> = ¿a qué se dedica? El <i>do</i> final es el verbo."
+  },
+  {
+   "id": "n2-16",
+   "nivel": 2,
+   "s": "Q:how often|A:do|S:you|V:go|R:to the cinema",
+   "tip": "<b>How often</b> va junto y al principio. Luego <i>do you go</i>."
+  },
+  {
+   "id": "n2-17",
+   "nivel": 2,
+   "s": "B:is|S:your teacher|R:from England",
+   "tip": "Con <b>be</b> no hay <i>does</i>: <i>is</i> + sujeto + <i>from</i> + país."
+  },
+  {
+   "id": "n2-18",
+   "nivel": 2,
+   "s": "Q:why|A:do|S:you|V:study|R:English",
+   "tip": "<b>Why</b> + <i>do</i> + sujeto + verbo. <i>Why</i> = por qué."
+  },
+  {
+   "id": "n2-19",
+   "nivel": 2,
+   "s": "A:do|S:you|R:usually|V:walk|R:to work",
+   "tip": "<i>Usually</i> va entre el sujeto y el verbo: <b>do you usually walk</b>."
+  },
+  {
+   "id": "n2-20",
+   "nivel": 2,
+   "s": "Q:what|A:do|S:you|V:think|R:about this",
+   "tip": "<b>What do you think</b>…? Verbo normal (<i>think</i>) → con <i>do</i>."
+  },
+  {
+   "id": "n2-21",
+   "nivel": 2,
+   "s": "B:are|S:your parents|R:at home",
+   "tip": "Sujeto plural → <b>are</b>. <i>At home</i> = en casa (sin <i>the</i>)."
+  },
+  {
+   "id": "n2-22",
+   "nivel": 2,
+   "s": "Q:where|B:is|S:the nearest bank",
+   "tip": "<b>Where</b> + <i>is</i> + sujeto largo (<i>the nearest bank</i>)."
+  },
+  {
+   "id": "n2-23",
+   "nivel": 2,
+   "s": "A:does|S:this bus|V:go|R:to the centre",
+   "tip": "<i>This bus</i> es \"it\" → <b>does</b> + sujeto + <i>go</i>."
+  },
+  {
+   "id": "n2-24",
+   "nivel": 2,
+   "s": "Q:what|A:do|S:you|V:need",
+   "tip": "<b>What</b> + <i>do</i> + <i>you</i> + verbo. <i>Need</i> = necesitar."
+  },
+  {
+   "id": "n2-25",
+   "nivel": 2,
+   "s": "Q:how|A:do|S:you|V:go|R:to work",
+   "tip": "<b>How</b> + <i>do</i> + <i>you</i> + <i>go</i>. <i>How</i> = cómo (de qué manera)."
+  },
+  {
+   "id": "n2-26",
+   "nivel": 2,
+   "s": "A:do|S:you|V:drink|R:coffee in the morning",
+   "tip": "<b>Do</b> + <i>you</i> + <i>drink</i>. Primero qué, luego cuándo."
+  },
+  {
+   "id": "n2-27",
+   "nivel": 2,
+   "s": "Q:what|B:is|S:the weather|P:like",
+   "tip": "<b>What is the weather like?</b> = ¿qué tiempo hace? <i>Like</i> se queda al final."
+  },
+  {
+   "id": "n2-28",
+   "nivel": 2,
+   "s": "Q:who|B:is|S:your best friend",
+   "tip": "<b>Who</b> + <i>is</i> + sujeto. Con <i>be</i>, sin <i>do</i>."
+  },
+  {
+   "id": "n2-29",
+   "nivel": 2,
+   "s": "A:does|S:it|V:rain|R:a lot here",
+   "alt": [
+    "does it rain here a lot"
+   ],
+   "tip": "El tiempo lleva sujeto <i>it</i>: <b>does it rain</b>…?"
+  },
+  {
+   "id": "n2-30",
+   "nivel": 2,
+   "s": "Q:what|A:do|S:you|V:do|R:in your free time",
+   "tip": "<b>What do you do</b> + cuándo. <i>Free time</i> = tiempo libre."
+  },
+  {
+   "id": "n2-31",
+   "nivel": 2,
+   "s": "B:is|S:there|R:a supermarket near here",
+   "tip": "<i>There is</i> → <b>is there</b>. <i>Near here</i> = cerca de aquí."
+  },
+  {
+   "id": "n2-32",
+   "nivel": 2,
+   "s": "Q:how many hours|A:do|S:you|V:sleep",
+   "tip": "<b>How many hours</b> es un bloque. Después, <i>do you sleep</i>."
+  },
+  {
+   "id": "n2-33",
+   "nivel": 2,
+   "s": "A:do|S:you|V:know|R:my brother",
+   "tip": "<b>Do</b> + <i>you</i> + <i>know</i>. <i>Know</i> = conocer o saber."
+  },
+  {
+   "id": "n2-34",
+   "nivel": 2,
+   "s": "Q:where|A:does|S:she|V:buy|R:her clothes",
+   "tip": "She → <b>does</b>; <i>buy</i> sin -s. Sujeto entre <i>does</i> y el verbo."
+  },
+  {
+   "id": "n2-35",
+   "nivel": 2,
+   "s": "B:are|S:you|R:hungry",
+   "tip": "<i>Hungry</i> es adjetivo → <b>be</b>: <i>are you hungry</i>. No <i>have you hungry</i>."
+  },
+  {
+   "id": "n2-36",
+   "nivel": 2,
+   "s": "Q:why|B:are|S:you|R:late",
+   "tip": "<b>Why</b> + <i>are</i> + <i>you</i>. <i>Late</i> = tarde (adjetivo → con <i>be</i>)."
+  },
+  {
+   "id": "n2-37",
+   "nivel": 2,
+   "s": "Q:what|A:does|S:this word|V:mean",
+   "tip": "<b>What does</b> + palabra + <b>mean</b>? Pregunta imprescindible en clase."
+  },
+  {
+   "id": "n2-38",
+   "nivel": 2,
+   "s": "A:do|S:you|V:remember|R:me",
+   "tip": "<b>Do</b> + <i>you</i> + <i>remember</i>. <i>Remember</i> = recordar."
+  },
+  {
+   "id": "n2-39",
+   "nivel": 2,
+   "s": "Q:which bus|A:do|S:you|V:take",
+   "tip": "<b>Which bus</b> va junto: <i>which</i> siempre pegado a su nombre."
+  },
+  {
+   "id": "n2-40",
+   "nivel": 2,
+   "s": "Q:what kind of films|A:do|S:you|V:like",
+   "tip": "<b>What kind of films</b> es un bloque de cuatro palabras. Luego <i>do you like</i>."
+  },
+  {
+   "id": "n2-41",
+   "nivel": 2,
+   "s": "B:is|S:it|R:cold outside",
+   "tip": "El tiempo: sujeto <i>it</i> + adjetivo → <b>be</b>: <i>is it cold</i>."
+  },
+  {
+   "id": "n2-42",
+   "nivel": 2,
+   "s": "Q:how|A:does|S:she|V:go|R:to school",
+   "tip": "<b>How</b> + <i>does</i> + <i>she</i> + <i>go</i>."
+  },
+  {
+   "id": "n2-43",
+   "nivel": 2,
+   "s": "A:do|S:you|V:want|R:some tea",
+   "tip": "<b>Do you want</b>…? Ofrecimiento sencillo con <i>some</i>."
+  },
+  {
+   "id": "n2-44",
+   "nivel": 2,
+   "s": "Q:where|A:do|S:you|R:usually|V:have|R:lunch",
+   "tip": "<i>Usually</i> entre sujeto y verbo: <b>do you usually have</b>. <i>Have lunch</i> = comer."
+  },
+  {
+   "id": "n2-45",
+   "nivel": 2,
+   "s": "Q:what|B:is|S:your address",
+   "tip": "<b>What</b> + <i>is</i> + sujeto. <i>Address</i> = dirección."
+  },
+  {
+   "id": "n2-46",
+   "nivel": 2,
+   "s": "A:does|S:your father|V:like|R:his job",
+   "tip": "He → <b>does</b>; <i>like</i> sin -s. <i>His job</i> = su trabajo (de él)."
+  },
+  {
+   "id": "n2-47",
+   "nivel": 2,
+   "s": "B:are|S:these|R:your keys",
+   "tip": "<i>These</i> = estos/estas. Plural → <b>are these</b>…?"
+  },
+  {
+   "id": "n2-48",
+   "nivel": 2,
+   "s": "Q:who|A:do|S:you|V:live|P:with",
+   "tip": "<b>Who do you live with?</b> = ¿con quién vives? El <i>with</i> se queda al final."
+  },
+  {
+   "id": "n2-49",
+   "nivel": 2,
+   "s": "Q:what|A:do|S:you|V:have|R:for lunch",
+   "tip": "<b>What do you have</b> + <i>for lunch</i>. <i>Have</i> aquí es comer."
+  },
+  {
+   "id": "n2-50",
+   "nivel": 2,
+   "s": "Q:how many languages|A:does|S:your sister|V:speak",
+   "tip": "<b>How many languages</b> es un bloque; después <i>does your sister speak</i>."
+  },
+  {
    "id": "n3-01",
    "nivel": 3,
    "s": "Q:what time|A:did|S:you|V:get up|R:this morning",
@@ -199,6 +685,9 @@
    "id": "n3-08",
    "nivel": 3,
    "s": "Q:what|A:did|S:you|V:have|R:for dinner yesterday",
+   "alt": [
+    "what did you have yesterday for dinner"
+   ],
    "tip": "<b>Did</b> + sujeto + <i>have</i>. <i>Have dinner</i> = cenar."
   },
   {
@@ -212,6 +701,246 @@
    "nivel": 3,
    "s": "Q:why|A:did|S:you|V:leave|R:early",
    "tip": "<b>Why</b> + <i>did</i> + sujeto + infinitivo (<i>leave</i>, no <i>left</i>)."
+  },
+  {
+   "id": "n3-11",
+   "nivel": 3,
+   "s": "Q:where|B:were|S:you|R:yesterday",
+   "tip": "<b>Be</b> en pasado: <i>were</i> delante del sujeto, sin <i>did</i>."
+  },
+  {
+   "id": "n3-12",
+   "nivel": 3,
+   "s": "A:did|S:you|V:watch|R:the match last night",
+   "tip": "Pasado: <b>did</b> + sujeto + infinitivo (<i>watch</i>, no <i>watched</i>)."
+  },
+  {
+   "id": "n3-13",
+   "nivel": 3,
+   "s": "Q:what|A:did|S:you|V:do|R:at the weekend",
+   "tip": "<b>What did you do</b>…? El <i>do</i> del final es el verbo, en infinitivo."
+  },
+  {
+   "id": "n3-14",
+   "nivel": 3,
+   "s": "B:was|S:the film|R:good",
+   "tip": "Adjetivo → <b>be</b>: <i>was the film good</i>. Sin <i>did</i>."
+  },
+  {
+   "id": "n3-15",
+   "nivel": 3,
+   "s": "Q:when|A:did|S:you|V:arrive",
+   "tip": "<b>When</b> + <i>did</i> + sujeto + infinitivo (<i>arrive</i>)."
+  },
+  {
+   "id": "n3-16",
+   "nivel": 3,
+   "s": "M:can|S:you|V:swim",
+   "tip": "<b>Can</b> delante del sujeto y verbo en infinitivo. Sin <i>do</i>."
+  },
+  {
+   "id": "n3-17",
+   "nivel": 3,
+   "s": "Q:what time|A:did|S:the train|V:leave",
+   "tip": "<b>What time</b> junto + <i>did</i> + sujeto + <i>leave</i> (infinitivo, no <i>left</i>)."
+  },
+  {
+   "id": "n3-18",
+   "nivel": 3,
+   "s": "Q:how long|A:did|S:you|V:stay|R:in London",
+   "tip": "<b>How long</b> = cuánto tiempo. Luego <i>did you stay</i>."
+  },
+  {
+   "id": "n3-19",
+   "nivel": 3,
+   "s": "A:did|S:she|V:call|R:you",
+   "tip": "<b>Did</b> + <i>she</i> + <i>call</i>. Con <i>did</i> el verbo nunca lleva -ed."
+  },
+  {
+   "id": "n3-20",
+   "nivel": 3,
+   "s": "Q:where|A:did|S:you|V:buy|R:that jacket",
+   "tip": "<b>Where</b> + <i>did</i> + <i>you</i> + <i>buy</i> (no <i>bought</i>)."
+  },
+  {
+   "id": "n3-21",
+   "nivel": 3,
+   "s": "B:were|S:they|R:at the party",
+   "tip": "Plural en pasado → <b>were</b> delante del sujeto."
+  },
+  {
+   "id": "n3-22",
+   "nivel": 3,
+   "s": "Q:how much|A:does|S:this|V:cost",
+   "tip": "<b>How much does</b> + cosa + <b>cost</b>? Con verbo <i>cost</i> sí hace falta <i>does</i>."
+  },
+  {
+   "id": "n3-23",
+   "nivel": 3,
+   "s": "M:can|S:I|V:help|R:you",
+   "tip": "<b>Can I help you?</b> Fórmula de tienda. <i>Can</i> delante de <i>I</i>."
+  },
+  {
+   "id": "n3-24",
+   "nivel": 3,
+   "s": "Q:how far|B:is|S:the station|R:from here",
+   "tip": "<b>How far</b> = a qué distancia. Va junto y con <i>is</i>."
+  },
+  {
+   "id": "n3-25",
+   "nivel": 3,
+   "s": "Q:who|A:did|S:you|V:meet|R:yesterday",
+   "tip": "Aquí <i>who</i> es el objeto (a quién), así que lleva <b>did</b>."
+  },
+  {
+   "id": "n3-26",
+   "nivel": 3,
+   "s": "Q:why|B:were|S:you|R:angry",
+   "tip": "<b>Why</b> + <i>were</i> + <i>you</i>. Adjetivo → <i>be</i>."
+  },
+  {
+   "id": "n3-27",
+   "nivel": 3,
+   "s": "A:did|S:they|V:enjoy|R:the trip",
+   "tip": "<b>Did</b> + <i>they</i> + <i>enjoy</i>. <i>Enjoy</i> = disfrutar."
+  },
+  {
+   "id": "n3-28",
+   "nivel": 3,
+   "s": "Q:how many people|A:did|S:you|V:invite",
+   "tip": "<b>How many people</b> es un bloque. Luego <i>did you invite</i>."
+  },
+  {
+   "id": "n3-29",
+   "nivel": 3,
+   "s": "M:can|S:you|V:play|R:the guitar",
+   "tip": "<b>Can</b> + sujeto + verbo. Instrumentos con <i>the</i>."
+  },
+  {
+   "id": "n3-30",
+   "nivel": 3,
+   "s": "Q:what|B:was|S:the weather|P:like",
+   "tip": "<b>What was the weather like?</b> = ¿qué tiempo hizo? <i>Like</i> al final."
+  },
+  {
+   "id": "n3-31",
+   "nivel": 3,
+   "s": "Q:where|A:did|S:you|V:learn|R:English",
+   "tip": "<b>Where</b> + <i>did</i> + <i>you</i> + <i>learn</i>."
+  },
+  {
+   "id": "n3-32",
+   "nivel": 3,
+   "s": "B:was|S:it|R:expensive",
+   "tip": "<i>It</i> + adjetivo → <b>was it expensive</b>. Sin <i>did</i>."
+  },
+  {
+   "id": "n3-33",
+   "nivel": 3,
+   "s": "Q:how|B:was|S:your weekend",
+   "tip": "<b>How was</b>…? = ¿qué tal…? Muy útil los lunes."
+  },
+  {
+   "id": "n3-34",
+   "nivel": 3,
+   "s": "M:can|S:we|V:sit|R:here",
+   "tip": "<b>Can we</b> + verbo = ¿podemos…? Petición de permiso."
+  },
+  {
+   "id": "n3-35",
+   "nivel": 3,
+   "s": "Q:what|A:did|S:she|V:say",
+   "tip": "<b>What</b> + <i>did</i> + <i>she</i> + <i>say</i> (no <i>said</i>)."
+  },
+  {
+   "id": "n3-36",
+   "nivel": 3,
+   "s": "Q:how long|A:does|S:the flight|V:take",
+   "tip": "<b>How long does</b> + cosa + <b>take</b>? = ¿cuánto dura…?"
+  },
+  {
+   "id": "n3-37",
+   "nivel": 3,
+   "s": "A:did|S:you|V:sleep|R:well",
+   "tip": "<b>Did</b> + <i>you</i> + <i>sleep</i>. <i>Well</i> = bien (adverbio)."
+  },
+  {
+   "id": "n3-38",
+   "nivel": 3,
+   "s": "Q:what time|A:do|S:the shops|V:close",
+   "tip": "<b>What time</b> junto. Plural (<i>the shops</i>) → <i>do</i>."
+  },
+  {
+   "id": "n3-39",
+   "nivel": 3,
+   "s": "Q:how much money|A:did|S:you|V:spend",
+   "tip": "<b>How much money</b> es un bloque. Luego <i>did you spend</i>."
+  },
+  {
+   "id": "n3-40",
+   "nivel": 3,
+   "s": "B:were|S:you|R:tired after the trip",
+   "tip": "<b>Were</b> + <i>you</i> + adjetivo. Sin <i>did</i>."
+  },
+  {
+   "id": "n3-41",
+   "nivel": 3,
+   "s": "Q:where|A:did|S:they|V:go|R:on holiday",
+   "tip": "<b>Where</b> + <i>did</i> + <i>they</i> + <i>go</i> (no <i>went</i>)."
+  },
+  {
+   "id": "n3-42",
+   "nivel": 3,
+   "s": "M:can|S:your brother|V:drive",
+   "tip": "<b>Can</b> delante del sujeto aunque sea largo (<i>your brother</i>)."
+  },
+  {
+   "id": "n3-43",
+   "nivel": 3,
+   "s": "Q:what|A:did|S:you|V:think|R:of the film",
+   "tip": "<b>What did you think of</b>…? = ¿qué te pareció…?"
+  },
+  {
+   "id": "n3-44",
+   "nivel": 3,
+   "s": "A:did|S:it|V:rain|R:yesterday",
+   "tip": "El tiempo: <b>did it rain</b>. <i>Rain</i> en infinitivo."
+  },
+  {
+   "id": "n3-45",
+   "nivel": 3,
+   "s": "Q:how many books|A:did|S:you|V:read|R:last year",
+   "tip": "<b>How many books</b> junto + <i>did you read</i>."
+  },
+  {
+   "id": "n3-46",
+   "nivel": 3,
+   "s": "Q:which one|A:do|S:you|V:prefer",
+   "tip": "<b>Which one</b> = cuál. Va junto. Luego <i>do you prefer</i>."
+  },
+  {
+   "id": "n3-47",
+   "nivel": 3,
+   "s": "M:can|S:you|V:speak|R:more slowly",
+   "tip": "<b>Can you speak more slowly?</b> Petición útil en clase."
+  },
+  {
+   "id": "n3-48",
+   "nivel": 3,
+   "s": "Q:who|B:was|S:your first teacher",
+   "tip": "<b>Who</b> + <i>was</i> + sujeto. Con <i>be</i>, sin <i>did</i>."
+  },
+  {
+   "id": "n3-49",
+   "nivel": 3,
+   "s": "Q:how old|B:were|S:you|R:in this photo",
+   "tip": "<b>How old</b> junto + <i>were you</i>. La edad, siempre con <i>be</i>."
+  },
+  {
+   "id": "n3-50",
+   "nivel": 3,
+   "s": "A:did|S:you|V:have|R:a good time",
+   "tip": "<b>Did you have a good time?</b> = ¿lo pasaste bien? Con <i>did</i>, <i>have</i> en infinitivo."
   },
   {
    "id": "n4-01",
@@ -274,6 +1003,246 @@
    "tip": "Palabra interrogativa + <b>are you going to</b> + verbo + resto."
   },
   {
+   "id": "n4-11",
+   "nivel": 4,
+   "s": "B:are|S:you|V:listening|R:to me",
+   "tip": "Presente continuo: <b>are</b> + sujeto + verbo en <i>-ing</i>."
+  },
+  {
+   "id": "n4-12",
+   "nivel": 4,
+   "s": "Q:what|B:is|S:she|V:doing",
+   "tip": "<b>What</b> + <i>is</i> + <i>she</i> + <i>doing</i>. El <i>-ing</i> va detrás del sujeto."
+  },
+  {
+   "id": "n4-13",
+   "nivel": 4,
+   "s": "Q:why|B:are|S:you|V:laughing",
+   "tip": "<b>Why</b> + <i>are you</i> + <i>-ing</i>. <i>Laugh</i> = reír."
+  },
+  {
+   "id": "n4-14",
+   "nivel": 4,
+   "s": "B:is|S:he|V:coming|R:to the party",
+   "tip": "<b>Is</b> + <i>he</i> + <i>coming</i>. El continuo también sirve para planes cercanos."
+  },
+  {
+   "id": "n4-15",
+   "nivel": 4,
+   "s": "Q:where|B:are|S:they|V:going",
+   "tip": "<b>Where</b> + <i>are they</i> + <i>going</i>."
+  },
+  {
+   "id": "n4-16",
+   "nivel": 4,
+   "s": "Q:what|B:are|S:you|V:going to do|R:this summer",
+   "tip": "<b>Going to</b> para planes: <i>are you going to</i> + infinitivo."
+  },
+  {
+   "id": "n4-17",
+   "nivel": 4,
+   "s": "B:are|S:you|V:going to study|R:tonight",
+   "tip": "Sí/no con <i>going to</i>: empieza por <b>are</b>."
+  },
+  {
+   "id": "n4-18",
+   "nivel": 4,
+   "s": "M:will|S:you|V:be|R:at home tomorrow",
+   "tip": "<b>Will</b> delante del sujeto, sin <i>do</i>. <i>Be</i> en infinitivo."
+  },
+  {
+   "id": "n4-19",
+   "nivel": 4,
+   "s": "M:would|S:you|V:like|R:some coffee",
+   "tip": "<b>Would you like</b>…? = ¿quieres…? (educado). <i>Would</i> delante del sujeto."
+  },
+  {
+   "id": "n4-20",
+   "nivel": 4,
+   "s": "Q:what|M:would|S:you|V:like to eat",
+   "tip": "<b>What would you like to</b> + infinitivo. <i>Would</i> se invierte como <i>can</i>."
+  },
+  {
+   "id": "n4-21",
+   "nivel": 4,
+   "s": "M:shall|S:we|V:go|R:for a walk",
+   "tip": "<b>Shall we</b>…? = ¿vamos…? Propuesta. <i>Shall</i> es un modal: va delante del sujeto."
+  },
+  {
+   "id": "n4-22",
+   "nivel": 4,
+   "s": "M:can|S:I|V:open|R:the window",
+   "tip": "<b>Can I</b>…? = ¿puedo…? Permiso. <i>Can</i> delante de <i>I</i>."
+  },
+  {
+   "id": "n4-23",
+   "nivel": 4,
+   "s": "Q:who|B:are|S:you|V:waiting|P:for",
+   "tip": "<i>Wait for</i> = esperar a. El <b>for</b> se queda al final."
+  },
+  {
+   "id": "n4-24",
+   "nivel": 4,
+   "s": "B:is|S:it|V:snowing",
+   "tip": "El tiempo: <b>is it</b> + <i>-ing</i>. Tres palabras."
+  },
+  {
+   "id": "n4-25",
+   "nivel": 4,
+   "s": "Q:what|B:are|S:the children|V:doing",
+   "tip": "Sujeto plural (<i>the children</i>) → <b>are</b>. Después el <i>-ing</i>."
+  },
+  {
+   "id": "n4-26",
+   "nivel": 4,
+   "s": "Q:when|B:are|S:you|V:going to visit|R:your grandmother",
+   "tip": "<b>When are you going to</b> + infinitivo. Todo el bloque <i>going to visit</i> va junto."
+  },
+  {
+   "id": "n4-27",
+   "nivel": 4,
+   "s": "M:will|S:it|V:rain|R:tomorrow",
+   "tip": "<b>Will it rain?</b> Predicción. <i>Will</i> + sujeto + infinitivo."
+  },
+  {
+   "id": "n4-28",
+   "nivel": 4,
+   "s": "Q:what|M:will|S:you|V:do|R:after the course",
+   "tip": "<b>What will you do</b>…? <i>Will</i> delante del sujeto, sin <i>do</i> auxiliar."
+  },
+  {
+   "id": "n4-29",
+   "nivel": 4,
+   "s": "Q:where|M:would|S:you|V:like to live",
+   "tip": "<b>Where would you like to</b> + infinitivo. <i>Like to live</i> va junto."
+  },
+  {
+   "id": "n4-30",
+   "nivel": 4,
+   "s": "M:would|S:you|V:like to go|R:to the cinema tonight",
+   "tip": "<b>Would you like to go</b>…? Invitación. Sitio antes que momento."
+  },
+  {
+   "id": "n4-31",
+   "nivel": 4,
+   "s": "B:are|S:you|V:working|R:at the moment",
+   "tip": "<b>Are you working</b>…? <i>At the moment</i> = ahora mismo."
+  },
+  {
+   "id": "n4-32",
+   "nivel": 4,
+   "s": "Q:why|B:is|S:the baby|V:crying",
+   "tip": "<b>Why</b> + <i>is</i> + sujeto + <i>-ing</i>. <i>Cry</i> = llorar."
+  },
+  {
+   "id": "n4-33",
+   "nivel": 4,
+   "s": "Q:what|B:are|S:you|V:cooking",
+   "tip": "<b>What are you</b> + <i>-ing</i>. Cuatro palabras."
+  },
+  {
+   "id": "n4-34",
+   "nivel": 4,
+   "s": "M:can|S:you|V:help|R:me with this",
+   "tip": "<b>Can you help me</b>…? Petición. <i>With this</i> = con esto."
+  },
+  {
+   "id": "n4-35",
+   "nivel": 4,
+   "s": "Q:how|B:are|S:you|V:getting|R:to the airport",
+   "tip": "<b>How are you getting to</b>…? = ¿cómo vas a ir a…? Continuo para planes."
+  },
+  {
+   "id": "n4-36",
+   "nivel": 4,
+   "s": "B:is|S:she|V:going to come|R:with us",
+   "tip": "<b>Is she going to</b> + infinitivo. Sí/no con <i>going to</i>."
+  },
+  {
+   "id": "n4-37",
+   "nivel": 4,
+   "s": "Q:what|B:are|S:they|V:talking|P:about",
+   "tip": "<i>Talk about</i> = hablar de. El <b>about</b> se queda al final."
+  },
+  {
+   "id": "n4-38",
+   "nivel": 4,
+   "s": "M:will|S:you|V:marry|R:me",
+   "tip": "<b>Will you marry me?</b> <i>Will</i> + sujeto + infinitivo."
+  },
+  {
+   "id": "n4-39",
+   "nivel": 4,
+   "s": "Q:who|B:is|S:she|V:talking|P:to",
+   "tip": "<i>Talk to</i> = hablar con. <b>Who … to?</b>: la preposición cierra la pregunta."
+  },
+  {
+   "id": "n4-40",
+   "nivel": 4,
+   "s": "M:would|S:you|V:like to see|R:the menu",
+   "tip": "<b>Would you like to see</b>…? Fórmula de restaurante."
+  },
+  {
+   "id": "n4-41",
+   "nivel": 4,
+   "s": "Q:what|B:are|S:you|V:going to wear|R:to the wedding",
+   "tip": "<b>What are you going to wear</b>…? <i>Wear</i> = llevar puesto."
+  },
+  {
+   "id": "n4-42",
+   "nivel": 4,
+   "s": "B:are|S:you|V:going to buy|R:that phone",
+   "tip": "<b>Are you going to</b> + infinitivo. Plan o intención."
+  },
+  {
+   "id": "n4-43",
+   "nivel": 4,
+   "s": "Q:where|M:shall|S:we|V:meet",
+   "tip": "<b>Where shall we meet?</b> = ¿dónde quedamos? <i>Shall</i> se invierte como <i>can</i>."
+  },
+  {
+   "id": "n4-44",
+   "nivel": 4,
+   "s": "Q:what time|M:will|S:you|V:arrive",
+   "tip": "<b>What time</b> junto + <i>will you arrive</i>."
+  },
+  {
+   "id": "n4-45",
+   "nivel": 4,
+   "s": "M:could|S:you|V:pass|R:me the salt",
+   "tip": "<b>Could you</b>…? Petición educada. <i>Pass me the salt</i> = pásame la sal."
+  },
+  {
+   "id": "n4-46",
+   "nivel": 4,
+   "s": "Q:why|B:are|S:you|V:going to sell|R:your car",
+   "tip": "<b>Why are you going to</b> + infinitivo. El bloque <i>going to sell</i> no se parte."
+  },
+  {
+   "id": "n4-47",
+   "nivel": 4,
+   "s": "B:are|S:you|V:enjoying|R:the party",
+   "tip": "<b>Are you enjoying</b>…? = ¿te lo estás pasando bien?"
+  },
+  {
+   "id": "n4-48",
+   "nivel": 4,
+   "s": "QS:who|V:is coming|R:to dinner",
+   "tip": "Aquí <i>who</i> es el sujeto (quién viene), así que <b>no se invierte nada</b>: <i>who is coming</i>."
+  },
+  {
+   "id": "n4-49",
+   "nivel": 4,
+   "s": "Q:what|M:would|S:you|V:do|R:in my situation",
+   "tip": "<b>What would you do</b>…? = ¿qué harías…? <i>Would</i> delante del sujeto."
+  },
+  {
+   "id": "n4-50",
+   "nivel": 4,
+   "s": "B:are|S:we|V:going to be|R:late",
+   "tip": "<b>Are we going to be</b> + adjetivo. <i>Be</i> también va en infinitivo tras <i>going to</i>."
+  },
+  {
    "id": "n5-01",
    "nivel": 5,
    "s": "A:have|S:you|R:ever|V:been|R:to Mexico",
@@ -313,6 +1282,9 @@
    "id": "n5-07",
    "nivel": 5,
    "s": "QS:what|V:happened|R:at the meeting yesterday",
+   "alt": [
+    "what happened yesterday at the meeting"
+   ],
    "tip": "<i>What</i> es el sujeto (qué pasó): <b>sin <i>did</i></b>, verbo en pasado directamente."
   },
   {
@@ -332,6 +1304,246 @@
    "nivel": 5,
    "s": "A:has|S:she|V:finished|R:her homework yet",
    "tip": "<b>Has</b> + <i>she</i> + participio. <b>Yet</b> va al final en preguntas."
+  },
+  {
+   "id": "n5-11",
+   "nivel": 5,
+   "s": "A:have|S:you|V:finished|R:yet",
+   "tip": "Present perfect: <b>have</b> + sujeto + participio. <i>Yet</i> al final."
+  },
+  {
+   "id": "n5-12",
+   "nivel": 5,
+   "s": "Q:where|A:have|S:you|V:been",
+   "tip": "<b>Where have you been?</b> = ¿dónde has estado? <i>Been</i> es el participio de <i>be</i>."
+  },
+  {
+   "id": "n5-13",
+   "nivel": 5,
+   "s": "A:has|S:he|R:ever|V:visited|R:Japan",
+   "tip": "<b>Has</b> + <i>he</i> + <i>ever</i> + participio. <i>Ever</i> va entre el sujeto y el participio."
+  },
+  {
+   "id": "n5-14",
+   "nivel": 5,
+   "s": "Q:how long|A:have|S:they|V:been married",
+   "tip": "<b>How long have they been</b>…? = ¿cuánto llevan…? Present perfect, no presente simple."
+  },
+  {
+   "id": "n5-15",
+   "nivel": 5,
+   "s": "Q:what|A:have|S:you|V:done|R:today",
+   "tip": "<b>What have you done</b>…? <i>Done</i> = participio de <i>do</i>."
+  },
+  {
+   "id": "n5-16",
+   "nivel": 5,
+   "s": "A:have|S:you|R:ever|V:eaten|R:sushi",
+   "tip": "<b>Have you ever</b> + participio? = ¿has … alguna vez? <i>Eaten</i> = participio de <i>eat</i>."
+  },
+  {
+   "id": "n5-17",
+   "nivel": 5,
+   "s": "Q:who|A:have|S:you|V:invited|R:to the party",
+   "tip": "<i>Who</i> es objeto (a quién): lleva <b>have</b> + sujeto + participio."
+  },
+  {
+   "id": "n5-18",
+   "nivel": 5,
+   "s": "Q:how many countries|A:has|S:she|V:visited",
+   "tip": "<b>How many countries</b> es un bloque. Luego <i>has she visited</i>."
+  },
+  {
+   "id": "n5-19",
+   "nivel": 5,
+   "s": "A:has|S:the film|V:started|R:yet",
+   "tip": "<b>Has</b> + sujeto + participio + <i>yet</i>. <i>Yet</i> siempre al final en preguntas."
+  },
+  {
+   "id": "n5-20",
+   "nivel": 5,
+   "s": "Q:what|B:are|S:you|R:afraid|P:of",
+   "tip": "<i>Afraid of</i> = tener miedo de. El <b>of</b> se queda al final."
+  },
+  {
+   "id": "n5-21",
+   "nivel": 5,
+   "s": "Q:who|A:does|S:this bag|V:belong|P:to",
+   "tip": "<i>Belong to</i> = pertenecer a. <b>Who … to?</b>: preposición al final."
+  },
+  {
+   "id": "n5-22",
+   "nivel": 5,
+   "s": "Q:what|B:is|S:this|R:made|P:of",
+   "tip": "<i>Made of</i> = hecho de. <b>What is this made of?</b>"
+  },
+  {
+   "id": "n5-23",
+   "nivel": 5,
+   "s": "Q:who|A:did|S:you|V:go|R:to the concert|P:with",
+   "tip": "<i>Go with</i> = ir con. El <b>with</b> cierra la pregunta, nunca <i>with who</i>."
+  },
+  {
+   "id": "n5-24",
+   "nivel": 5,
+   "s": "QS:who|V:wants|R:some coffee",
+   "tip": "<i>Who</i> es el sujeto (quién quiere): <b>sin <i>does</i></b>, y el verbo con -s."
+  },
+  {
+   "id": "n5-25",
+   "nivel": 5,
+   "s": "QS:what|V:happened|R:to your car",
+   "tip": "<i>What</i> es el sujeto (qué pasó): <b>sin <i>did</i></b>, verbo directamente en pasado."
+  },
+  {
+   "id": "n5-26",
+   "nivel": 5,
+   "s": "QS:who|V:broke|R:the window",
+   "tip": "<i>Who</i> es el sujeto (quién rompió): <b>sin <i>did</i></b>, <i>broke</i> en pasado."
+  },
+  {
+   "id": "n5-27",
+   "nivel": 5,
+   "s": "QS:which team|V:won|R:the match",
+   "tip": "<i>Which team</i> es el sujeto (qué equipo ganó): sin auxiliar, <i>won</i> en pasado."
+  },
+  {
+   "id": "n5-28",
+   "nivel": 5,
+   "s": "QS:who|V:called|R:you last night",
+   "tip": "<i>Who</i> es el sujeto (quién te llamó): <b>sin <i>did</i></b>. Compara con <i>who did you call</i>."
+  },
+  {
+   "id": "n5-29",
+   "nivel": 5,
+   "s": "QS:how many students|V:passed|R:the exam",
+   "tip": "<i>How many students</i> es el sujeto: sin auxiliar, verbo en pasado."
+  },
+  {
+   "id": "n5-30",
+   "nivel": 5,
+   "s": "Q:who|A:did|S:you|V:call|R:last night",
+   "tip": "Aquí <i>who</i> es el objeto (a quién llamaste tú): lleva <b>did</b>. Compara con <i>who called you</i>."
+  },
+  {
+   "id": "n5-31",
+   "nivel": 5,
+   "s": "A:did|S:you|V:use to live|R:in a village",
+   "tip": "<b>Did you use to</b> + infinitivo = ¿antes vivías…? Con <i>did</i>, <i>use</i> sin -d."
+  },
+  {
+   "id": "n5-32",
+   "nivel": 5,
+   "s": "Q:where|A:did|S:you|V:use to go|R:on holiday",
+   "tip": "<b>Where did you use to</b> + infinitivo. El bloque <i>use to go</i> va junto."
+  },
+  {
+   "id": "n5-33",
+   "nivel": 5,
+   "s": "QS:which city|V:is bigger",
+   "tip": "<i>Which city</i> es el sujeto: <b>which city is bigger</b>, sin darle la vuelta a nada."
+  },
+  {
+   "id": "n5-34",
+   "nivel": 5,
+   "s": "Q:how much|A:have|S:you|V:paid|R:for this",
+   "tip": "<b>How much have you paid</b>…? Present perfect con <i>how much</i>."
+  },
+  {
+   "id": "n5-35",
+   "nivel": 5,
+   "s": "Q:what|A:has|S:she|V:been doing|R:all day",
+   "tip": "Present perfect continuo: <b>has</b> + sujeto + <i>been</i> + <i>-ing</i>."
+  },
+  {
+   "id": "n5-36",
+   "nivel": 5,
+   "s": "Q:how long|A:have|S:you|V:been learning|R:English",
+   "tip": "<b>How long have you been</b> + <i>-ing</i>? = ¿cuánto llevas…?"
+  },
+  {
+   "id": "n5-37",
+   "nivel": 5,
+   "s": "A:have|S:they|V:arrived|R:yet",
+   "tip": "<b>Have</b> + <i>they</i> + participio + <i>yet</i>."
+  },
+  {
+   "id": "n5-38",
+   "nivel": 5,
+   "s": "Q:what|A:do|S:you|R:usually|V:talk|P:about",
+   "tip": "<i>Usually</i> entre sujeto y verbo, y <b>about</b> al final."
+  },
+  {
+   "id": "n5-39",
+   "nivel": 5,
+   "s": "Q:who|B:is|S:this present|P:for",
+   "tip": "<b>Who is this present for?</b> = ¿para quién es…? <i>For</i> al final."
+  },
+  {
+   "id": "n5-40",
+   "nivel": 5,
+   "s": "Q:what|B:are|S:you|V:thinking|P:about",
+   "tip": "<i>Think about</i> = pensar en. <b>About</b> se queda al final."
+  },
+  {
+   "id": "n5-41",
+   "nivel": 5,
+   "s": "Q:where|A:did|S:you|V:grow up",
+   "tip": "<i>Grow up</i> = criarse. Es un verbo de dos palabras: va junto."
+  },
+  {
+   "id": "n5-42",
+   "nivel": 5,
+   "s": "Q:what|A:did|S:you|V:use to do|R:as a child",
+   "tip": "<b>What did you use to do</b>…? = ¿qué hacías de pequeño?"
+  },
+  {
+   "id": "n5-43",
+   "nivel": 5,
+   "s": "Q:how many times|A:have|S:you|V:seen|R:this film",
+   "tip": "<b>How many times</b> es un bloque. Luego <i>have you seen</i>."
+  },
+  {
+   "id": "n5-44",
+   "nivel": 5,
+   "s": "A:has|S:anyone|V:seen|R:my glasses",
+   "tip": "<i>Anyone</i> es he/she → <b>has</b>. <i>Seen</i> = participio de <i>see</i>."
+  },
+  {
+   "id": "n5-45",
+   "nivel": 5,
+   "s": "Q:how long|A:has|S:he|V:had|R:that car",
+   "tip": "<b>How long has he had</b>…? = ¿desde cuándo tiene…? <i>Had</i> = participio de <i>have</i>."
+  },
+  {
+   "id": "n5-46",
+   "nivel": 5,
+   "s": "QS:who|V:lives|R:next door",
+   "tip": "<i>Who</i> es el sujeto: <b>sin <i>does</i></b> y verbo con -s. <i>Next door</i> = al lado."
+  },
+  {
+   "id": "n5-47",
+   "nivel": 5,
+   "s": "QS:what|V:makes|R:you happy",
+   "tip": "<i>What</i> es el sujeto (qué te hace feliz): sin <i>does</i>, verbo con -s."
+  },
+  {
+   "id": "n5-48",
+   "nivel": 5,
+   "s": "Q:what|A:did|S:you|V:study|R:at university",
+   "tip": "<b>What did you study</b>…? <i>At university</i>, sin <i>the</i>."
+  },
+  {
+   "id": "n5-49",
+   "nivel": 5,
+   "s": "A:have|S:you|R:ever|V:been|R:to a concert",
+   "tip": "<b>Have you ever been to</b>…? = ¿has estado alguna vez en…? Con <i>to</i>."
+  },
+  {
+   "id": "n5-50",
+   "nivel": 5,
+   "s": "QS:which one|V:is cheaper",
+   "tip": "<i>Which one</i> es el sujeto (cuál es más barato): no hay nada que invertir."
   },
   {
    "id": "n6-01",
@@ -395,6 +1607,261 @@
     "if you won the lottery what would you do"
    ],
    "tip": "Segundo condicional: <b>would you do</b> + <i>if</i> + pasado (<i>won</i>)."
+  },
+  {
+   "id": "n6-11",
+   "nivel": 6,
+   "s": "A:do|S:you|V:know|I:where she lives",
+   "tip": "Indirecta: tras <i>do you know</i>, orden normal: <b>where she lives</b>, no <i>where does she live</i>."
+  },
+  {
+   "id": "n6-12",
+   "nivel": 6,
+   "s": "M:could|S:you|V:tell|R:me|I:what time it is",
+   "tip": "Indirecta: <b>what time it is</b> (sujeto + verbo), no <i>what time is it</i>."
+  },
+  {
+   "id": "n6-13",
+   "nivel": 6,
+   "s": "A:do|S:you|V:know|I:how much this costs",
+   "tip": "Indirecta: <b>how much this costs</b>, con -s y sin <i>does</i>."
+  },
+  {
+   "id": "n6-14",
+   "nivel": 6,
+   "s": "M:can|S:you|V:tell|R:me|I:where the toilets are",
+   "tip": "Indirecta con <i>be</i>: el verbo va al final: <b>where the toilets are</b>."
+  },
+  {
+   "id": "n6-15",
+   "nivel": 6,
+   "s": "A:do|S:you|V:know|I:if the bank is open",
+   "tip": "Indirecta de sí/no: se usa <b>if</b> + orden normal (<i>the bank is open</i>)."
+  },
+  {
+   "id": "n6-16",
+   "nivel": 6,
+   "s": "M:could|S:you|V:tell|R:me|I:when the next bus leaves",
+   "tip": "Indirecta: <b>when the next bus leaves</b>, sin <i>does</i>."
+  },
+  {
+   "id": "n6-17",
+   "nivel": 6,
+   "s": "A:do|S:you|V:remember|I:where we parked the car",
+   "tip": "Indirecta: <b>where we parked the car</b>, orden de afirmación."
+  },
+  {
+   "id": "n6-18",
+   "nivel": 6,
+   "s": "Q:why|A:didn't|S:you|V:call|R:me",
+   "tip": "Negativa: <b>didn't</b> pegado delante del sujeto. El verbo sigue en infinitivo."
+  },
+  {
+   "id": "n6-19",
+   "nivel": 6,
+   "s": "A:don't|S:you|V:like|R:chocolate",
+   "tip": "Negativa de sí/no: empieza por <b>don't</b>. = ¿no te gusta…?"
+  },
+  {
+   "id": "n6-20",
+   "nivel": 6,
+   "s": "Q:why|B:isn't|S:she|R:here",
+   "tip": "Negativa con <i>be</i>: <b>isn't</b> delante del sujeto."
+  },
+  {
+   "id": "n6-21",
+   "nivel": 6,
+   "s": "A:haven't|S:you|V:finished|R:yet",
+   "tip": "Negativa en present perfect: <b>haven't</b> + sujeto + participio + <i>yet</i>."
+  },
+  {
+   "id": "n6-22",
+   "nivel": 6,
+   "s": "B:aren't|S:you|R:cold",
+   "tip": "<b>Aren't you</b> + adjetivo? = ¿no tienes…? Negativa con <i>be</i>."
+  },
+  {
+   "id": "n6-23",
+   "nivel": 6,
+   "s": "Q:why|M:can't|S:you|V:come",
+   "tip": "Negativa con modal: <b>can't</b> delante del sujeto."
+  },
+  {
+   "id": "n6-24",
+   "nivel": 6,
+   "s": "Q:what|B:were|S:they|V:doing|R:at ten o'clock",
+   "tip": "Pasado continuo: <b>were</b> + sujeto + <i>-ing</i>."
+  },
+  {
+   "id": "n6-25",
+   "nivel": 6,
+   "s": "Q:where|B:were|S:you|V:going|R:when I saw you",
+   "tip": "<b>Were you going</b> + la segunda parte (<i>when I saw you</i>) en orden normal."
+  },
+  {
+   "id": "n6-26",
+   "nivel": 6,
+   "s": "B:was|S:it|V:raining|R:when you left",
+   "tip": "<b>Was it raining</b>…? Pasado continuo de sí/no."
+  },
+  {
+   "id": "n6-27",
+   "nivel": 6,
+   "s": "Q:what|M:would|S:you|V:do|R:if you were me",
+   "alt": [
+    "if you were me what would you do"
+   ],
+   "tip": "Segundo condicional: <b>would you do</b> + <i>if</i> + pasado."
+  },
+  {
+   "id": "n6-28",
+   "nivel": 6,
+   "s": "Q:where|M:would|S:you|V:go|R:if you could travel anywhere",
+   "alt": [
+    "if you could travel anywhere where would you go"
+   ],
+   "tip": "<b>Would you go</b> + condición con <i>could</i>."
+  },
+  {
+   "id": "n6-29",
+   "nivel": 6,
+   "s": "Q:what|M:will|S:you|V:do|R:if it rains",
+   "alt": [
+    "if it rains what will you do"
+   ],
+   "tip": "Primer condicional: <b>will you do</b> + <i>if</i> + presente (<i>rains</i>)."
+  },
+  {
+   "id": "n6-30",
+   "nivel": 6,
+   "s": "Q:how long|A:had|S:you|V:been waiting|R:when the bus came",
+   "tip": "Pasado perfecto continuo: <b>had</b> + sujeto + <i>been</i> + <i>-ing</i>."
+  },
+  {
+   "id": "n6-31",
+   "nivel": 6,
+   "s": "Q:how many times|A:have|S:you|V:been|R:to Paris",
+   "tip": "<b>How many times</b> junto + <i>have you been to</i>."
+  },
+  {
+   "id": "n6-32",
+   "nivel": 6,
+   "s": "Q:what|A:did|S:the teacher|V:tell|R:you to do",
+   "tip": "<b>What did</b> + sujeto largo + <i>tell you to do</i>."
+  },
+  {
+   "id": "n6-33",
+   "nivel": 6,
+   "s": "Q:who|A:did|S:you|V:give|R:the keys|P:to",
+   "tip": "<i>Give … to</i>. El <b>to</b> va al final, después del objeto (<i>the keys</i>)."
+  },
+  {
+   "id": "n6-34",
+   "nivel": 6,
+   "s": "Q:how often|A:does|S:the number twelve bus|V:run",
+   "tip": "<b>How often</b> junto + <i>does</i> + sujeto muy largo + verbo."
+  },
+  {
+   "id": "n6-35",
+   "nivel": 6,
+   "s": "Q:what|B:is|S:the best way|R:to learn English",
+   "tip": "<b>What is the best way to</b> + infinitivo? = ¿cuál es la mejor manera de…?"
+  },
+  {
+   "id": "n6-36",
+   "nivel": 6,
+   "s": "Q:which of these books|A:have|S:you|R:already|V:read",
+   "alt": [
+    "which of these books have you read already"
+   ],
+   "tip": "<b>Which of these books</b> es un bloque. <i>Already</i> va entre <i>have you</i> y el participio."
+  },
+  {
+   "id": "n6-37",
+   "nivel": 6,
+   "s": "Q:how much|A:does|S:it|V:cost|R:to send a letter to Spain",
+   "tip": "<b>How much does it cost to</b> + infinitivo? Fórmula fija."
+  },
+  {
+   "id": "n6-38",
+   "nivel": 6,
+   "s": "Q:what kind of music|A:did|S:you|V:use to listen|P:to",
+   "tip": "<b>What kind of music</b> junto + <i>did you use to listen</i> + <b>to</b> al final."
+  },
+  {
+   "id": "n6-39",
+   "nivel": 6,
+   "s": "Q:how long|A:does|S:it|V:take|R:to get to the airport by taxi",
+   "alt": [
+    "how long does it take to get by taxi to the airport"
+   ],
+   "tip": "<b>How long does it take to</b> + infinitivo. Primero adónde, luego cómo."
+  },
+  {
+   "id": "n6-40",
+   "nivel": 6,
+   "s": "A:do|S:you|V:know|I:who that woman is",
+   "tip": "Indirecta con <i>be</i>: <b>who that woman is</b>, el verbo al final."
+  },
+  {
+   "id": "n6-41",
+   "nivel": 6,
+   "s": "Q:what|B:is|S:the name|R:of the street where you live",
+   "tip": "<b>What is the name of</b>…? + <i>where you live</i> en orden normal."
+  },
+  {
+   "id": "n6-42",
+   "nivel": 6,
+   "s": "Q:why|A:didn't|S:anyone|V:tell|R:me about the meeting",
+   "tip": "Negativa: <b>didn't</b> + sujeto (<i>anyone</i>) + infinitivo."
+  },
+  {
+   "id": "n6-43",
+   "nivel": 6,
+   "s": "Q:how many people|A:do|S:you|V:think|R:will come",
+   "tip": "<b>How many people do you think</b> + <i>will come</i>: el <i>do you think</i> se mete en medio."
+  },
+  {
+   "id": "n6-44",
+   "nivel": 6,
+   "s": "QS:who|V:is going to pay|R:for the dinner",
+   "tip": "<i>Who</i> es el sujeto: <b>who is going to pay</b>, sin invertir nada."
+  },
+  {
+   "id": "n6-45",
+   "nivel": 6,
+   "s": "B:is|S:there|R:anything I can do to help",
+   "tip": "<b>Is there anything</b>…? + <i>I can do to help</i> en orden normal."
+  },
+  {
+   "id": "n6-46",
+   "nivel": 6,
+   "s": "Q:when|B:was|S:the last time|R:you went to the cinema",
+   "tip": "<b>When was the last time</b> + <i>you went</i> (orden normal, sin <i>did</i>)."
+  },
+  {
+   "id": "n6-47",
+   "nivel": 6,
+   "s": "M:could|S:you|V:tell|R:me|I:how to get to the station",
+   "tip": "Indirecta con infinitivo: <b>how to get to</b>…"
+  },
+  {
+   "id": "n6-48",
+   "nivel": 6,
+   "s": "Q:what|A:do|S:you|V:think|R:she will say",
+   "tip": "<b>What do you think</b> + <i>she will say</i> (orden normal después de <i>think</i>)."
+  },
+  {
+   "id": "n6-49",
+   "nivel": 6,
+   "s": "A:have|S:you|R:ever|V:wondered|I:why the sky is blue",
+   "tip": "<b>Have you ever wondered</b> + indirecta en orden normal: <i>why the sky is blue</i>."
+  },
+  {
+   "id": "n6-50",
+   "nivel": 6,
+   "s": "Q:what|A:did|S:you|V:want|R:to be when you were a child",
+   "tip": "<b>What did you want to be</b>…? = ¿qué querías ser…? + <i>when you were a child</i>."
   }
  ]
 }

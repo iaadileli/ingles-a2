@@ -44,9 +44,10 @@ Prototipo hecho por Adil con la app del móvil; brief completo en su zip (BRIEF.
   cuántas), progreso y sesión en localStorage (`preguntas.progreso.v1`), «continuar
   sesión», resumen final, botón Escuchar, modo oscuro, validador y 11 tests
   (`node --test preguntas/test/*.test.mjs`, incluidos los 6 fallos reales del brief).
-- **Contenido (pendiente):** ampliar a ≥300 preguntas por nivel y tema pasando la validación.
+- **Contenido (hecho 22-sep):** 300 preguntas (50 por nivel), todas pasan el validador; alternativas
+  revisadas a mano en las que llevan expresión de tiempo.
 - **Fase 2 (pendiente):** arrastrar fichas, repaso espaciado, estadísticas por tema,
   exportar/importar progreso; más adelante otros tipos de ejercicio.
 
 ## Pendiente
-- Contenido a 300 preguntas → fase 2 (ver arriba).
+- Fase 2 (ver arriba).
