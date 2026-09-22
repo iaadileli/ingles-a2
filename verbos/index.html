@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4ece0">
+<title>Verbos · Inglés A2</title>
+<style>
+  :root{
+    --crema:#f6efe3;
+    --crema2:#efe5d4;
+    --tinta:#2c2a26;
+    --tinta-suave:#6b655b;
+    --acento:#c25b3a;
+    --acento-soft:#e7d9c6;
+    --verde:#3f8f5f;
+    --verde-bg:#e4f0e6;
+    --rojo:#b8463a;
+    --rojo-bg:#f6e3e0;
+    --borde:#ddd0bc;
+    --sombra:0 10px 30px rgba(70,55,35,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:linear-gradient(160deg,var(--crema),var(--crema2));
+    color:var(--tinta);
+    min-height:100%;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+  }
+  header{width:100%;max-width:560px;text-align:center;margin:8px 0 18px;position:relative}
+  .volver{display:block;text-align:left;font-family:system-ui,sans-serif;font-size:.85rem;
+          color:var(--tinta-suave);text-decoration:none;margin-bottom:6px}
+  .volver:hover{color:var(--acento)}
+  h1{font-size:1.5rem;margin:0;letter-spacing:.3px}
+  .sub{color:var(--tinta-suave);font-size:.9rem;margin-top:4px}
+
+  .stats{display:flex;gap:10px;max-width:560px;width:100%;margin-bottom:14px}
+  .stat{flex:1;background:rgba(255,255,255,.55);border:1px solid var(--borde);
+        border-radius:14px;padding:8px 6px;text-align:center}
+  .stat b{display:block;font-size:1.25rem;line-height:1}
+  .stat span{font-size:.7rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.6px}
+
+  .card{
+    width:100%;max-width:560px;background:#fffdf8;border:1px solid var(--borde);
+    border-radius:22px;box-shadow:var(--sombra);padding:24px 22px 22px;
+  }
+  .tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;
+       color:var(--acento);background:var(--acento-soft);padding:4px 10px;border-radius:999px;
+       font-family:system-ui,sans-serif;font-weight:600}
+  .tag.reg{color:#4a6b8a;background:#dde7ef}
+
+  .prompt{margin:14px 0 6px}
+  .prompt .es{font-size:.95rem;color:var(--tinta-suave)}
+  .shown{font-size:2.3rem;font-weight:600;margin-top:2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .shown .lbl{font-size:.8rem;color:var(--tinta-suave);font-family:system-ui,sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+
+  .spk{cursor:pointer;border:none;background:var(--acento-soft);color:var(--acento);
+       width:34px;height:34px;border-radius:50%;font-size:1rem;line-height:1;
+       display:inline-flex;align-items:center;justify-content:center;padding:0;flex:0 0 auto}
+  .spk:active{transform:scale(.92)}
+  .spk.sm{width:26px;height:26px;font-size:.8rem}
+
+  .fields{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+  .field label{display:block;font-size:.78rem;color:var(--tinta-suave);
+               font-family:system-ui,sans-serif;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+  .field input{
+    width:100%;font-size:1.25rem;font-family:inherit;padding:11px 14px;border-radius:12px;
+    border:1.5px solid var(--borde);background:#fcf8f0;color:var(--tinta);outline:none;
+  }
+  .field input:focus{border-color:var(--acento)}
+  .field.ok input{border-color:var(--verde);background:var(--verde-bg)}
+  .field.bad input{border-color:var(--rojo);background:var(--rojo-bg)}
+  .sol{font-size:.9rem;margin-top:6px;font-family:system-ui,sans-serif;display:flex;align-items:center;gap:8px}
+  .sol.ok{color:var(--verde)}
+  .sol.bad{color:var(--rojo)}
+
+  .actions{margin-top:18px;display:flex;gap:10px}
+  button.act{font-family:system-ui,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;
+         border:none;border-radius:12px;padding:13px 18px;flex:1;transition:transform .05s}
+  button.act:active{transform:scale(.98)}
+  .btn-main{background:var(--acento);color:#fff}
+  .btn-soft{background:var(--acento-soft);color:var(--tinta)}
+  .hidden{display:none}
+
+  .options{max-width:560px;width:100%;margin-top:16px;display:flex;gap:14px;justify-content:center;
+           font-family:system-ui,sans-serif;font-size:.85rem;color:var(--tinta-suave);flex-wrap:wrap}
+  .options label{display:flex;align-items:center;gap:6px;cursor:pointer;
+                 background:rgba(255,255,255,.5);border:1px solid var(--borde);padding:6px 12px;border-radius:999px}
+
+  /* barra de modo con interruptor */
+  .modebar{max-width:560px;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+           margin-bottom:14px;font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .modebar b{color:var(--tinta)}
+  .switch{position:relative;display:inline-block;width:52px;height:30px;flex:0 0 auto}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#cdbfa8;border-radius:999px;transition:.2s;cursor:pointer}
+  .slider:before{content:"";position:absolute;height:24px;width:24px;left:3px;top:3px;
+                 background:#fffdf8;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .switch input:checked + .slider{background:var(--acento)}
+  .switch input:checked + .slider:before{transform:translateX(22px)}
+
+  /* botones de opción (modo test) */
+  .opts-group{margin-top:10px}
+  .opts-group > .label{display:block;font-size:.78rem;color:var(--tinta-suave);
+       font-family:system-ui,sans-serif;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+  .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:1.2rem;
+       padding:13px 16px;margin-bottom:9px;border-radius:12px;border:1.5px solid var(--borde);
+       background:#fcf8f0;color:var(--tinta);cursor:pointer;transition:transform .05s}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{border-color:var(--verde);background:var(--verde-bg);color:var(--verde);font-weight:600}
+  .opt.bad{border-color:var(--rojo);background:var(--rojo-bg);color:var(--rojo)}
+  .opt:disabled{cursor:default}
+  footer{margin-top:auto;padding-top:20px;font-size:.75rem;color:var(--tinta-suave);
+         font-family:system-ui,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a class="volver" href="../">← Inglés A2</a>
+  <h1>Verbos en inglés</h1>
+  <div class="sub">Te muestro una forma · completa las que faltan · 🔊 para oírla</div>
+</header>
+
+<div class="modebar">
+  <span id="lblEscribir"><b>Escribir</b></span>
+  <label class="switch"><input type="checkbox" id="optTest"><span class="slider"></span></label>
+  <span id="lblPinchar">Pinchar opciones</span>
+</div>
+
+<div class="stats">
+  <div class="stat"><b id="sAciertos">0</b><span>aciertos</span></div>
+  <div class="stat"><b id="sRacha">0</b><span>racha</span></div>
+  <div class="stat"><b id="sRecord">0</b><span>récord</span></div>
+  <div class="stat"><b id="sTotal">0</b><span>intentos</span></div>
+</div>
+
+<div class="card">
+  <span id="tipo" class="tag">irregular</span>
+  <div class="prompt">
+    <div class="es" id="es">significado</div>
+    <div class="shown">
+      <span id="shown">go</span>
+      <button class="spk" id="shownSpk" title="Escuchar">🔊</button>
+      <span class="lbl" id="shownLbl">infinitivo</span>
+    </div>
+  </div>
+  <div class="fields" id="fields"></div>
+  <div class="actions">
+    <button class="act btn-main" id="btnCheck">Comprobar</button>
+    <button class="act btn-soft hidden" id="btnNext">Siguiente →</button>
+  </div>
+</div>
+
+<div class="options">
+  <label><input type="checkbox" id="optReg" checked> incluir verbos regulares</label>
+  <label><input type="checkbox" id="optIrr" checked> incluir irregulares</label>
+</div>
+
+<footer>Hecho para Adil · escribe la respuesta y pulsa Enter · 150 verbos</footer>
+
+<script>
+/* ===== Lista de verbos =====
+   inf / past / part: usa "a|b" para aceptar variantes (se muestra la 1ª).
+   es: traducción.  irr: true=irregular, false=regular
+   100 irregulares + 50 regulares = 150 */
+const VERBS = [
+  // ---------- 100 IRREGULARES ----------
+  {inf:"be", past:"was|were", part:"been", es:"ser / estar", irr:true},
+  {inf:"beat", past:"beat", part:"beaten", es:"golpear / vencer", irr:true},
+  {inf:"become", past:"became", part:"become", es:"convertirse en", irr:true},
+  {inf:"begin", past:"began", part:"begun", es:"empezar", irr:true},
+  {inf:"bend", past:"bent", part:"bent", es:"doblar / torcer", irr:true},
+  {inf:"bet", past:"bet", part:"bet", es:"apostar", irr:true},
+  {inf:"bite", past:"bit", part:"bitten", es:"morder", irr:true},
+  {inf:"blow", past:"blew", part:"blown", es:"soplar", irr:true},
+  {inf:"break", past:"broke", part:"broken", es:"romper", irr:true},
+  {inf:"bring", past:"brought", part:"brought", es:"traer", irr:true},
+  {inf:"build", past:"built", part:"built", es:"construir", irr:true},
+  {inf:"burn", past:"burnt|burned", part:"burnt|burned", es:"quemar", irr:true},
+  {inf:"buy", past:"bought", part:"bought", es:"comprar", irr:true},
+  {inf:"catch", past:"caught", part:"caught", es:"coger / atrapar", irr:true},
+  {inf:"choose", past:"chose", part:"chosen", es:"elegir", irr:true},
+  {inf:"come", past:"came", part:"come", es:"venir", irr:true},
+  {inf:"cost", past:"cost", part:"cost", es:"costar", irr:true},
+  {inf:"cut", past:"cut", part:"cut", es:"cortar", irr:true},
+  {inf:"deal", past:"dealt", part:"dealt", es:"tratar / repartir", irr:true},
+  {inf:"do", past:"did", part:"done", es:"hacer", irr:true},
+  {inf:"draw", past:"drew", part:"drawn", es:"dibujar", irr:true},
+  {inf:"dream", past:"dreamt|dreamed", part:"dreamt|dreamed", es:"soñar", irr:true},
+  {inf:"drink", past:"drank", part:"drunk", es:"beber", irr:true},
+  {inf:"drive", past:"drove", part:"driven", es:"conducir", irr:true},
+  {inf:"eat", past:"ate", part:"eaten", es:"comer", irr:true},
+  {inf:"fall", past:"fell", part:"fallen", es:"caer", irr:true},
+  {inf:"feed", past:"fed", part:"fed", es:"alimentar / dar de comer", irr:true},
+  {inf:"feel", past:"felt", part:"felt", es:"sentir", irr:true},
+  {inf:"fight", past:"fought", part:"fought", es:"luchar / pelear", irr:true},
+  {inf:"find", past:"found", part:"found", es:"encontrar", irr:true},
+  {inf:"fly", past:"flew", part:"flown", es:"volar", irr:true},
+  {inf:"forget", past:"forgot", part:"forgotten", es:"olvidar", irr:true},
+  {inf:"forgive", past:"forgave", part:"forgiven", es:"perdonar", irr:true},
+  {inf:"freeze", past:"froze", part:"frozen", es:"congelar", irr:true},
+  {inf:"get", past:"got", part:"got|gotten", es:"obtener / conseguir", irr:true},
+  {inf:"give", past:"gave", part:"given", es:"dar", irr:true},
+  {inf:"go", past:"went", part:"gone", es:"ir", irr:true},
+  {inf:"grow", past:"grew", part:"grown", es:"crecer", irr:true},
+  {inf:"hang", past:"hung", part:"hung", es:"colgar", irr:true},
+  {inf:"have", past:"had", part:"had", es:"tener / haber", irr:true},
+  {inf:"hear", past:"heard", part:"heard", es:"oír", irr:true},
+  {inf:"hide", past:"hid", part:"hidden", es:"esconder", irr:true},
+  {inf:"hit", past:"hit", part:"hit", es:"golpear", irr:true},
+  {inf:"hold", past:"held", part:"held", es:"sujetar / sostener", irr:true},
+  {inf:"hurt", past:"hurt", part:"hurt", es:"doler / herir", irr:true},
+  {inf:"keep", past:"kept", part:"kept", es:"mantener / guardar", irr:true},
+  {inf:"know", past:"knew", part:"known", es:"saber / conocer", irr:true},
+  {inf:"lay", past:"laid", part:"laid", es:"poner / colocar", irr:true},
+  {inf:"lead", past:"led", part:"led", es:"liderar / guiar", irr:true},
+  {inf:"learn", past:"learnt|learned", part:"learnt|learned", es:"aprender", irr:true},
+  {inf:"leave", past:"left", part:"left", es:"dejar / marcharse", irr:true},
+  {inf:"lend", past:"lent", part:"lent", es:"prestar", irr:true},
+  {inf:"let", past:"let", part:"let", es:"permitir / dejar", irr:true},
+  {inf:"lie", past:"lay", part:"lain", es:"tumbarse / yacer", irr:true},
+  {inf:"light", past:"lit|lighted", part:"lit|lighted", es:"encender", irr:true},
+  {inf:"lose", past:"lost", part:"lost", es:"perder", irr:true},
+  {inf:"make", past:"made", part:"made", es:"hacer / fabricar", irr:true},
+  {inf:"mean", past:"meant", part:"meant", es:"significar", irr:true},
+  {inf:"meet", past:"met", part:"met", es:"conocer / quedar", irr:true},
+  {inf:"pay", past:"paid", part:"paid", es:"pagar", irr:true},
+  {inf:"put", past:"put", part:"put", es:"poner", irr:true},
+  {inf:"quit", past:"quit", part:"quit", es:"dejar / abandonar", irr:true},
+  {inf:"read", past:"read", part:"read", es:"leer", irr:true},
+  {inf:"ride", past:"rode", part:"ridden", es:"montar (bici/caballo)", irr:true},
+  {inf:"ring", past:"rang", part:"rung", es:"sonar / llamar", irr:true},
+  {inf:"rise", past:"rose", part:"risen", es:"elevarse / subir", irr:true},
+  {inf:"run", past:"ran", part:"run", es:"correr", irr:true},
+  {inf:"say", past:"said", part:"said", es:"decir", irr:true},
+  {inf:"see", past:"saw", part:"seen", es:"ver", irr:true},
+  {inf:"sell", past:"sold", part:"sold", es:"vender", irr:true},
+  {inf:"send", past:"sent", part:"sent", es:"enviar", irr:true},
+  {inf:"shake", past:"shook", part:"shaken", es:"sacudir / agitar", irr:true},
+  {inf:"shine", past:"shone", part:"shone", es:"brillar", irr:true},
+  {inf:"shoot", past:"shot", part:"shot", es:"disparar", irr:true},
+  {inf:"show", past:"showed", part:"shown|showed", es:"mostrar", irr:true},
+  {inf:"shut", past:"shut", part:"shut", es:"cerrar", irr:true},
+  {inf:"sing", past:"sang", part:"sung", es:"cantar", irr:true},
+  {inf:"sink", past:"sank", part:"sunk", es:"hundir", irr:true},
+  {inf:"sit", past:"sat", part:"sat", es:"sentarse", irr:true},
+  {inf:"sleep", past:"slept", part:"slept", es:"dormir", irr:true},
+  {inf:"speak", past:"spoke", part:"spoken", es:"hablar", irr:true},
+  {inf:"spell", past:"spelt|spelled", part:"spelt|spelled", es:"deletrear", irr:true},
+  {inf:"spend", past:"spent", part:"spent", es:"gastar / pasar (tiempo)", irr:true},
+  {inf:"spread", past:"spread", part:"spread", es:"extender / untar", irr:true},
+  {inf:"stand", past:"stood", part:"stood", es:"estar de pie", irr:true},
+  {inf:"steal", past:"stole", part:"stolen", es:"robar", irr:true},
+  {inf:"stick", past:"stuck", part:"stuck", es:"pegar / atascar", irr:true},
+  {inf:"swear", past:"swore", part:"sworn", es:"jurar", irr:true},
+  {inf:"sweep", past:"swept", part:"swept", es:"barrer", irr:true},
+  {inf:"swim", past:"swam", part:"swum", es:"nadar", irr:true},
+  {inf:"take", past:"took", part:"taken", es:"coger / tomar / llevar", irr:true},
+  {inf:"teach", past:"taught", part:"taught", es:"enseñar", irr:true},
+  {inf:"tell", past:"told", part:"told", es:"contar / decir", irr:true},
+  {inf:"think", past:"thought", part:"thought", es:"pensar", irr:true},
+  {inf:"throw", past:"threw", part:"thrown", es:"lanzar / tirar", irr:true},
+  {inf:"understand", past:"understood", part:"understood", es:"entender", irr:true},
+  {inf:"wake", past:"woke", part:"woken", es:"despertar(se)", irr:true},
+  {inf:"wear", past:"wore", part:"worn", es:"llevar puesto", irr:true},
+  {inf:"win", past:"won", part:"won", es:"ganar", irr:true},
+  {inf:"write", past:"wrote", part:"written", es:"escribir", irr:true},
+  // ---------- 50 REGULARES ----------
+  {inf:"work", past:"worked", part:"worked", es:"trabajar", irr:false},
+  {inf:"play", past:"played", part:"played", es:"jugar / tocar", irr:false},
+  {inf:"want", past:"wanted", part:"wanted", es:"querer", irr:false},
+  {inf:"need", past:"needed", part:"needed", es:"necesitar", irr:false},
+  {inf:"like", past:"liked", part:"liked", es:"gustar", irr:false},
+  {inf:"love", past:"loved", part:"loved", es:"amar / encantar", irr:false},
+  {inf:"hate", past:"hated", part:"hated", es:"odiar", irr:false},
+  {inf:"live", past:"lived", part:"lived", es:"vivir", irr:false},
+  {inf:"study", past:"studied", part:"studied", es:"estudiar", irr:false},
+  {inf:"watch", past:"watched", part:"watched", es:"ver / mirar", irr:false},
+  {inf:"talk", past:"talked", part:"talked", es:"hablar / charlar", irr:false},
+  {inf:"walk", past:"walked", part:"walked", es:"caminar / andar", irr:false},
+  {inf:"call", past:"called", part:"called", es:"llamar", irr:false},
+  {inf:"ask", past:"asked", part:"asked", es:"preguntar / pedir", irr:false},
+  {inf:"help", past:"helped", part:"helped", es:"ayudar", irr:false},
+  {inf:"use", past:"used", part:"used", es:"usar", irr:false},
+  {inf:"look", past:"looked", part:"looked", es:"mirar", irr:false},
+  {inf:"start", past:"started", part:"started", es:"empezar", irr:false},
+  {inf:"open", past:"opened", part:"opened", es:"abrir", irr:false},
+  {inf:"close", past:"closed", part:"closed", es:"cerrar", irr:false},
+  {inf:"clean", past:"cleaned", part:"cleaned", es:"limpiar", irr:false},
+  {inf:"cook", past:"cooked", part:"cooked", es:"cocinar", irr:false},
+  {inf:"listen", past:"listened", part:"listened", es:"escuchar", irr:false},
+  {inf:"travel", past:"travelled|traveled", part:"travelled|traveled", es:"viajar", irr:false},
+  {inf:"answer", past:"answered", part:"answered", es:"responder", irr:false},
+  {inf:"stop", past:"stopped", part:"stopped", es:"parar", irr:false},
+  {inf:"try", past:"tried", part:"tried", es:"intentar / probar", irr:false},
+  {inf:"carry", past:"carried", part:"carried", es:"llevar / cargar", irr:false},
+  {inf:"enjoy", past:"enjoyed", part:"enjoyed", es:"disfrutar", irr:false},
+  {inf:"finish", past:"finished", part:"finished", es:"terminar", irr:false},
+  {inf:"wait", past:"waited", part:"waited", es:"esperar", irr:false},
+  {inf:"arrive", past:"arrived", part:"arrived", es:"llegar", irr:false},
+  {inf:"stay", past:"stayed", part:"stayed", es:"quedarse", irr:false},
+  {inf:"visit", past:"visited", part:"visited", es:"visitar", irr:false},
+  {inf:"remember", past:"remembered", part:"remembered", es:"recordar", irr:false},
+  {inf:"decide", past:"decided", part:"decided", es:"decidir", irr:false},
+  {inf:"explain", past:"explained", part:"explained", es:"explicar", irr:false},
+  {inf:"change", past:"changed", part:"changed", es:"cambiar", irr:false},
+  {inf:"happen", past:"happened", part:"happened", es:"suceder / ocurrir", irr:false},
+  {inf:"move", past:"moved", part:"moved", es:"mover(se)", irr:false},
+  {inf:"turn", past:"turned", part:"turned", es:"girar", irr:false},
+  {inf:"follow", past:"followed", part:"followed", es:"seguir", irr:false},
+  {inf:"wash", past:"washed", part:"washed", es:"lavar", irr:false},
+  {inf:"rain", past:"rained", part:"rained", es:"llover", irr:false},
+  {inf:"share", past:"shared", part:"shared", es:"compartir", irr:false},
+  {inf:"plan", past:"planned", part:"planned", es:"planear", irr:false},
+  {inf:"prefer", past:"preferred", part:"preferred", es:"preferir", irr:false},
+  {inf:"worry", past:"worried", part:"worried", es:"preocuparse", irr:false},
+  {inf:"marry", past:"married", part:"married", es:"casarse", irr:false},
+  {inf:"invite", past:"invited", part:"invited", es:"invitar", irr:false},
+];
+
+const FORMS = ["inf","past","part"];
+const LBL = {inf:"infinitivo", past:"pasado", part:"participio"};
+
+const $ = id => document.getElementById(id);
+const norm = s => s.toLowerCase().trim().replace(/\s+/g," ").replace(/[.,;]+$/,"");
+
+let current=null, shownForm=null, targetForm=null, answered=false;
+let testMode = localStorage.getItem("verbos_test")==="1";
+let score = JSON.parse(localStorage.getItem("verbos_score")||"null") || {aciertos:0,racha:0,record:0,total:0};
+
+/* ---- pronunciación ---- */
+function speak(str){
+  if(!("speechSynthesis" in window)) return;
+  const word = str.split("|")[0];
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = "en-GB";
+  u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function pool(){
+  const reg=$("optReg").checked, irr=$("optIrr").checked;
+  let p=VERBS.filter(v=> (v.irr&&irr) || (!v.irr&&reg));
+  return p.length?p:VERBS;
+}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function variants(str){return str.split("|").map(norm)}
+function display(str){return str.split("|").join(" / ")}
+
+/* ---- morfología inglesa básica (para generar trampas plausibles) ---- */
+const VOW="aeiou";
+function isCVC(w){
+  if(w.length<3) return false;
+  const a=w[w.length-1], b=w[w.length-2], c=w[w.length-3];
+  if(VOW.includes(a)||a==='w'||a==='x'||a==='y') return false; // termina en consonante "doblable"
+  if(!VOW.includes(b)) return false;                            // vocal antes
+  if(VOW.includes(c)) return false;                             // consonante antes de la vocal
+  return true;
+}
+function addED(w){
+  if(w.endsWith("e")) return w+"d";
+  if(w.length>2 && w.endsWith("y") && !VOW.includes(w[w.length-2])) return w.slice(0,-1)+"ied";
+  if(isCVC(w)) return w+w[w.length-1]+"ed";
+  return w+"ed";
+}
+function addING(w){
+  if(w.length>2 && w.endsWith("e") && !w.endsWith("ee")) return w.slice(0,-1)+"ing";
+  if(isCVC(w)) return w+w[w.length-1]+"ing";
+  return w+"ing";
+}
+
+/* relleno: formas de otros verbos (solo si faltan trampas del mismo verbo) */
+function distractorsOther(form, n){
+  const out=[], seen=new Set(variants(current[form]));
+  const others = pool().slice().sort(()=>Math.random()-0.5);
+  for(const v of others){
+    const key = norm(v[form].split("|")[0]);
+    if(seen.has(key)) continue;
+    seen.add(key);
+    out.push(v[form].split("|")[0]);
+    if(out.length===n) break;
+  }
+  return out;
+}
+
+/* trampas plausibles a partir del MISMO verbo */
+function getDistractors(form){
+  const exclude = new Set([...variants(current[form]), ...variants(current[shownForm])]);
+  const inf = current.inf.split("|")[0];
+  const cands=[];
+  const add=x=>{ const k=norm(x); if(!k||exclude.has(k)||cands.some(c=>norm(c)===k)) return; cands.push(x); };
+  // otras formas reales del verbo (confusión pasado ↔ participio ↔ infinitivo)
+  add(current.past.split("|")[0]);
+  add(current.part.split("|")[0]);
+  add(inf);
+  // trampa regular/irregular + errores típicos de ortografía
+  add(addED(inf));        // regularización (writed, goed) o el -ed correcto
+  add(inf+"ed");          // -ed "crudo" mal escrito (studyed, stoped, likeed)
+  add(addING(inf));       // gerundio como ruido
+  add(inf+"s");           // 3ª persona como ruido
+  let out = cands.sort(()=>Math.random()-0.5).slice(0,3);
+  if(out.length<3) out = out.concat(distractorsOther(form, 3-out.length));
+  return out;
+}
+
+function newRound(auto){
+  answered=false;
+  current=pick(pool());
+  shownForm=pick(FORMS);
+  $("tipo").textContent = current.irr ? "irregular" : "regular";
+  $("tipo").className = "tag" + (current.irr?"":" reg");
+  $("es").textContent = "= " + current.es;
+  $("shown").textContent = display(current[shownForm]);
+  $("shownLbl").textContent = LBL[shownForm];
+
+  const fields=$("fields"); fields.innerHTML="";
+  const rest = FORMS.filter(f=>f!==shownForm);
+
+  if(testMode){
+    // modo paseo: una sola forma a completar, con 4 opciones
+    targetForm = pick(rest);
+    const group=document.createElement("div");
+    group.className="opts-group";
+    group.innerHTML=`<span class="label">${LBL[targetForm]}</span>`;
+    const correct=current[targetForm].split("|")[0];
+    const opciones=[correct,...getDistractors(targetForm)].sort(()=>Math.random()-0.5);
+    opciones.forEach(op=>{
+      const b=document.createElement("button");
+      b.className="opt"; b.textContent=op;
+      if(op===correct) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      group.appendChild(b);
+    });
+    fields.appendChild(group);
+    $("btnCheck").classList.add("hidden");
+  }else{
+    targetForm=null;
+    rest.forEach(f=>{
+      const wrap=document.createElement("div");
+      wrap.className="field"; wrap.dataset.form=f;
+      wrap.innerHTML=`<label>${LBL[f]}</label>
+        <input type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">`;
+      fields.appendChild(wrap);
+    });
+    fields.querySelector("input").focus();
+    $("btnCheck").classList.remove("hidden");
+  }
+  $("btnNext").classList.add("hidden");
+  if(auto) speak(current[shownForm]);
+}
+
+function record(ok){
+  score.total++;
+  if(ok){score.aciertos++; score.racha++; if(score.racha>score.record)score.record=score.racha;}
+  else{score.racha=0;}
+  localStorage.setItem("verbos_score",JSON.stringify(score));
+  paint();
+  $("btnNext").classList.remove("hidden");
+  $("btnNext").focus();
+}
+
+function evaluate(btn){
+  if(answered) return;
+  answered=true;
+  const ok = btn.dataset.correct==="1";
+  document.querySelectorAll(".opt").forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.correct==="1") b.classList.add("ok");
+  });
+  if(!ok) btn.classList.add("bad");
+  const group=$("fields").querySelector(".opts-group");
+  const s=document.createElement("div");
+  s.className="sol "+(ok?"ok":"bad");
+  s.innerHTML=(ok?"✓ correcto":"✗ era “"+display(current[targetForm])+"”")+
+    ` <button class="spk sm" title="Escuchar">🔊</button>`;
+  s.querySelector("button").addEventListener("click",()=>speak(current[targetForm]));
+  group.appendChild(s);
+  record(ok);
+}
+
+function check(){
+  if(answered) return;
+  answered=true;
+  let allOk=true;
+  document.querySelectorAll(".field").forEach(wrap=>{
+    const f=wrap.dataset.form;
+    const input=wrap.querySelector("input");
+    const val=norm(input.value);
+    const ok=variants(current[f]).includes(val) && val!=="";
+    wrap.classList.add(ok?"ok":"bad");
+    input.disabled=true;
+    const s=document.createElement("div");
+    s.className="sol "+(ok?"ok":"bad");
+    s.innerHTML = (ok?"✓ ":"✗ ") + display(current[f]) +
+      ` <button class="spk sm" title="Escuchar">🔊</button>`;
+    s.querySelector("button").addEventListener("click",()=>speak(current[f]));
+    wrap.appendChild(s);
+    if(!ok) allOk=false;
+  });
+  $("btnCheck").classList.add("hidden");
+  record(allOk);
+}
+
+function paint(){
+  $("sAciertos").textContent=score.aciertos;
+  $("sRacha").textContent=score.racha;
+  $("sRecord").textContent=score.record;
+  $("sTotal").textContent=score.total;
+}
+
+function syncModeUI(){
+  $("optTest").checked=testMode;
+  $("lblEscribir").innerHTML = testMode ? "Escribir" : "<b>Escribir</b>";
+  $("lblPinchar").innerHTML  = testMode ? "<b>Pinchar opciones</b>" : "Pinchar opciones";
+}
+
+$("shownSpk").addEventListener("click",()=>speak(current[shownForm]));
+$("btnCheck").addEventListener("click",check);
+$("btnNext").addEventListener("click",()=>newRound(true));
+$("optReg").addEventListener("change",()=>newRound(false));
+$("optIrr").addEventListener("change",()=>newRound(false));
+$("optTest").addEventListener("change",e=>{
+  testMode=e.target.checked;
+  localStorage.setItem("verbos_test", testMode?"1":"0");
+  syncModeUI();
+  newRound(false);
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    e.preventDefault();
+    if(answered) newRound(true);
+    else if(!testMode) check();
+  }
+});
+
+syncModeUI();
+paint();
+newRound(false);
+</script>
+</body>
+</html>
