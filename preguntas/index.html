@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F8FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141922" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<title>Ordena la pregunta · Inglés A2</title>
+<style>
+  :root{
+    --paper:#F6F8FB; --rule:#CFDBEC; --margin:#E7A9A9; --ink:#1D3C8F; --text:#1E2430;
+    --muted:#5E6878; --red:#C62828; --green:#2C7A4B; --tile:#FFFFFF; --tile-edge:#B9C2D0; --card:#FFFFFF;
+    --chip:#FFFFFF; --chip-on:#1D3C8F;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+    --paper:#141922; --rule:#232C3B; --margin:#4A2A2E; --ink:#8FB0FF; --text:#E6EAF2;
+    --muted:#9AA4B5; --red:#FF6B6B; --green:#5FD08E; --tile:#1E2533; --tile-edge:#3A4557; --card:#1B2130;
+    --chip:#1E2533; --chip-on:#8FB0FF;}}
+  :root[data-theme="dark"]{
+    --paper:#141922; --rule:#232C3B; --margin:#4A2A2E; --ink:#8FB0FF; --text:#E6EAF2;
+    --muted:#9AA4B5; --red:#FF6B6B; --green:#5FD08E; --tile:#1E2533; --tile-edge:#3A4557; --card:#1B2130;
+    --chip:#1E2533; --chip-on:#8FB0FF;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--text);
+    background:
+      linear-gradient(90deg,transparent 30px,var(--margin) 30px,var(--margin) 32px,transparent 32px),
+      repeating-linear-gradient(180deg,var(--paper) 0 31px,var(--rule) 31px 32px);
+    background-color:var(--paper);
+    -webkit-text-size-adjust:100%;
+  }
+  main{max-width:640px;margin:0 auto;padding:14px 16px 40px 46px}
+  .hand{font-family:"Bradley Hand","Noteworthy","Segoe Print","Comic Sans MS",cursive;font-weight:700}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+  .top a,.top button.link{font:inherit;font-size:.9rem;color:var(--muted);text-decoration:none;background:none;border:0;padding:6px 0;cursor:pointer}
+  .top a:hover,.top button.link:hover{color:var(--ink)}
+  header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  h1{font-size:2rem;color:var(--ink);margin:0;line-height:1}
+  .score{font-size:.9rem;color:var(--muted)} .score b{color:var(--text)}
+  select{font:inherit;font-size:.95rem;color:var(--text);background:var(--card);border:1px solid var(--tile-edge);border-radius:6px;padding:8px 10px;margin-top:12px;max-width:100%}
+  .bar{height:4px;background:var(--rule);border-radius:2px;margin:12px 0 18px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--ink);transition:width .3s}
+  .level{font-size:.9rem;color:var(--muted);margin:0}
+  .num{font-size:1.6rem;color:var(--ink);margin:0 0 10px}
+  .answer{min-height:64px;border-bottom:2px solid var(--ink);display:flex;flex-wrap:wrap;align-items:flex-end;gap:6px;padding:8px 34px 8px 0;margin-bottom:22px;position:relative}
+  .answer.empty::before{content:"Toca las palabras en orden…";color:var(--muted);font-size:.95rem;padding-bottom:6px}
+  .qmark{font-size:1.35rem;color:var(--ink);font-weight:700;padding-bottom:6px}
+  .answer .tile{background:transparent;border-color:transparent;color:var(--ink);box-shadow:none;font-size:1.25rem;padding:6px 3px}
+  .mark{position:absolute;right:0;top:-26px;font-size:2.8rem;line-height:1;transform:rotate(-8deg) scale(.4);opacity:0;transition:transform .25s ease-out,opacity .25s}
+  .mark.show{transform:rotate(-8deg) scale(1);opacity:1}
+  .mark.ok{color:var(--green)} .mark.bad{color:var(--red)}
+  .answer.bad .tile{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+  .pool{display:flex;flex-wrap:wrap;gap:10px;min-height:52px;margin-bottom:24px}
+  .tile{font:inherit;font-size:1.15rem;background:var(--tile);color:var(--text);border:1px solid var(--tile-edge);border-radius:6px;padding:12px 14px;cursor:pointer;box-shadow:0 2px 0 var(--tile-edge);-webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:48px}
+  .tile:active{transform:translateY(2px);box-shadow:none}
+  .tile:disabled{cursor:default}
+  .tile:focus-visible,.btn:focus-visible,select:focus-visible,.chip:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{font:inherit;font-size:1rem;font-weight:700;border-radius:6px;padding:12px 16px;cursor:pointer;border:2px solid var(--ink);background:var(--ink);color:var(--paper);touch-action:manipulation;min-height:48px}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.danger{border-color:var(--red);color:var(--red);background:transparent}
+  .btn:disabled{opacity:.35;cursor:not-allowed}
+  .btn.wide{width:100%;font-size:1.1rem}
+  .feedback{margin-top:22px;padding:14px 16px;background:var(--card);border-left:4px solid var(--ink);border-radius:0 6px 6px 0}
+  .feedback.ok{border-color:var(--green)} .feedback.bad{border-color:var(--red)}
+  .feedback p{margin:0 0 8px;line-height:1.45} .feedback p:last-child{margin-bottom:0}
+  .end h2{font-size:2.3rem;color:var(--ink);margin:6px 0}
+  .end p,.end li{line-height:1.55}
+  .end ul{padding-left:18px}
+  .end table{border-collapse:collapse;margin:8px 0 18px;width:100%}
+  .end td{padding:6px 4px;border-bottom:1px solid var(--rule)} .end td:last-child{text-align:right;font-weight:700}
+
+  .fb-h{font-size:.85rem;color:var(--muted);margin:14px 0 6px!important}
+  .fb-h:first-child{margin-top:0!important}
+  .mine{font-size:1.1rem;line-height:1.8}
+  .mine span{padding:1px 3px;border-radius:3px}
+  .w-ok{color:var(--green)} .w-bad{color:var(--red);text-decoration:underline wavy;text-underline-offset:4px}
+  .why{margin:0;padding-left:18px} .why li{margin-bottom:8px;line-height:1.45}
+  .parts{display:flex;flex-wrap:wrap;gap:6px 6px;align-items:flex-start}
+  .part{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .part b{font-weight:700;font-size:1.05rem;padding:5px 8px;border-radius:5px;background:var(--c);color:var(--text)}
+  .part small{font-size:.72rem;color:var(--muted);text-align:center}
+  .formula{font-size:.9rem;color:var(--muted)}
+  .r-Q,.r-QS{--c:#E4DDF7} .r-A,.r-B,.r-M{--c:#FBE3C8} .r-S{--c:#D3EEE6} .r-V{--c:#D6E4FA} .r-R{--c:#E8EAEE} .r-P{--c:#F8D7E3} .r-I{--c:#EFE4D2}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .part b{background:color-mix(in srgb,var(--c) 22%,#1B2130)}}
+  :root[data-theme="dark"] .part b{background:color-mix(in srgb,var(--c) 22%,#1B2130)}
+  .spk{font:inherit;cursor:pointer;border:1px solid var(--tile-edge);background:var(--tile);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:.9rem;margin-left:6px;vertical-align:middle}
+
+  /* Inicio */
+  .sec{margin:18px 0 6px;font-size:.8rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font:inherit;font-size:.95rem;background:var(--chip);color:var(--text);border:1px solid var(--tile-edge);border-radius:999px;padding:9px 14px;cursor:pointer;touch-action:manipulation;min-height:42px;-webkit-tap-highlight-color:transparent}
+  .chip.on{background:var(--chip-on);color:var(--paper);border-color:var(--chip-on)}
+  .chip small{opacity:.75;margin-left:4px}
+  .seg{display:flex;border:1px solid var(--tile-edge);border-radius:8px;overflow:hidden;background:var(--chip)}
+  .seg button{flex:1;font:inherit;font-size:.95rem;border:0;background:transparent;color:var(--text);padding:11px 6px;cursor:pointer;min-height:44px;touch-action:manipulation}
+  .seg button.on{background:var(--chip-on);color:var(--paper)}
+  .resume{background:var(--card);border-left:4px solid var(--ink);border-radius:0 6px 6px 0;padding:12px 14px;margin:12px 0 4px}
+  .resume p{margin:0 0 10px}
+  .disp{margin:16px 0 8px;color:var(--muted);font-size:.95rem}
+  .disp b{color:var(--text)}
+  .stats{margin-top:26px;font-size:.9rem;color:var(--muted);line-height:1.6}
+  .stats b{color:var(--text)}
+  .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:10px;font-size:.95rem;box-shadow:0 6px 24px rgba(0,0,0,.25);display:flex;gap:12px;align-items:center;z-index:9;max-width:calc(100% - 32px)}
+  .toast button{font:inherit;font-weight:700;border:0;background:var(--paper);color:var(--ink);border-radius:6px;padding:8px 12px;cursor:pointer}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main id="app"><p style="color:var(--muted)">Cargando…</p></main>
+<script type="module">
+import { LABEL, TEMAS, preparar, diagnose, esCorrecta, cap, sentence } from "./diagnostico.js";
+
+const KEY = "preguntas.progreso.v1";
+const app = document.getElementById("app");
+
+// ---------- datos ----------
+let DATOS;
+try {
+  DATOS = await (await fetch("./datos/preguntas.json", { cache: "no-cache" })).json();
+} catch (e) {
+  DATOS = await (await fetch("./datos/preguntas.json")).json();
+}
+const NIVELES = DATOS.niveles;
+const ITEMS = DATOS.preguntas.map(preparar);
+const BY_ID = new Map(ITEMS.map(it => [it.id, it]));
+const nombreNivel = n => `Nivel ${n} · ${NIVELES.find(x => x.n === n).nombre}`;
+
+// ---------- progreso ----------
+function cargar() {
+  try { const p = JSON.parse(localStorage.getItem(KEY)); if (p && p.items) return p; } catch (e) {}
+  return { items: {}, cfg: null, sesion: null };
+}
+let P = cargar();
+function guardar() { try { localStorage.setItem(KEY, JSON.stringify(P)); } catch (e) {} }
+const reg = id => P.items[id] || (P.items[id] = { v: 0, p: 0, f: 0, pend: false, t: 0 });
+
+// ---------- utilidades ----------
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function fresh(item) {
+  const words = item.words.map((t, id) => ({ t, id }));
+  let pool; do { pool = shuffle(words); } while (words.length > 1 && pool.map(x => x.t).join(" ") === item.w);
+  return { pool, placed: [], checked: false, ok: null, first: null };
+}
+
+function hablar(texto) {
+  if (!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(texto);
+  u.lang = "en-GB"; u.rate = 0.9;
+  const voces = speechSynthesis.getVoices().filter(v => /^en[-_]/.test(v.lang));
+  const pref = voces.find(v => /en[-_]GB/.test(v.lang)) || voces[0];
+  if (pref) u.voice = pref;
+  speechSynthesis.speak(u);
+}
+
+function parts(item) {
+  const labels = []; item.chunks.forEach(c => { const l = LABEL[c.role]; if (labels[labels.length - 1] !== l) labels.push(l); });
+  return `<div class="parts">${item.chunks.map((c, k) => `<div class="part r-${c.role}"><b>${k === 0 ? cap(c.text) : c.text}</b><small>${LABEL[c.role]}</small></div>`).join("")}<div class="part"><b style="background:none">?</b></div></div>
+    <p class="formula">${labels.join(" + ")}</p>`;
+}
+
+// ---------- inicio ----------
+const CFG_DEF = { niveles: [], temas: [], modo: "fijo", cuantas: 20 };
+function filtrar(cfg) {
+  let l = ITEMS.filter(it => (!cfg.niveles.length || cfg.niveles.includes(it.nivel)) &&
+                             (!cfg.temas.length || cfg.temas.some(t => it.tags.includes(t))));
+  if (cfg.modo === "falladas") l = l.filter(it => P.items[it.id] && P.items[it.id].pend);
+  return l;
+}
+function inicio() {
+  const cfg = Object.assign({}, CFG_DEF, P.cfg || {});
+  const S = P.sesion;
+  const enCurso = S && !S.fin;
+  const vistas = Object.values(P.items).filter(r => r.v > 0).length;
+  const primera = Object.values(P.items).reduce((a, r) => a + r.p, 0);
+  const pend = Object.values(P.items).filter(r => r.pend).length;
+  const cuentaNivel = n => ITEMS.filter(it => it.nivel === n).length;
+  const cuentaTema = t => ITEMS.filter(it => it.tags.includes(t)).length;
+
+  app.innerHTML = `
+    <div class="top"><a href="../">← Inglés A2</a></div>
+    <header><h1 class="hand">Ordena la pregunta</h1><div class="score"><b>${ITEMS.length}</b> preguntas</div></header>
+    ${enCurso ? `<div class="resume"><p><b>Tienes una sesión a medias:</b> ${S.pos + 1} de ${S.lista.length} (${S.cfg.modo === "falladas" ? "solo falladas" : S.cfg.modo === "aleatorio" ? "aleatorio" : S.cfg.modo === "repaso" ? "repaso de falladas" : "orden fijo"}).</p>
+      <div class="actions"><button class="btn" id="cont">Continuar</button><button class="btn ghost" id="desc">Descartar</button></div></div>` : ""}
+    <p class="sec">Niveles</p>
+    <div class="chips" id="niv">${NIVELES.map(n => `<button class="chip ${cfg.niveles.includes(n.n) ? "on" : ""}" data-n="${n.n}">${n.n} · ${esc(n.nombre)}<small>${cuentaNivel(n.n)}</small></button>`).join("")}</div>
+    <p class="sec">Temas</p>
+    <div class="chips" id="tem">${Object.entries(TEMAS).map(([t, l]) => `<button class="chip ${cfg.temas.includes(t) ? "on" : ""}" data-t="${t}">${esc(l)}<small>${cuentaTema(t)}</small></button>`).join("")}</div>
+    <p class="sec">Modo</p>
+    <div class="seg" id="modo">
+      <button data-m="fijo" class="${cfg.modo === "fijo" ? "on" : ""}">Orden fijo</button>
+      <button data-m="aleatorio" class="${cfg.modo === "aleatorio" ? "on" : ""}">Aleatorio</button>
+      <button data-m="falladas" class="${cfg.modo === "falladas" ? "on" : ""}">Solo falladas${pend ? ` (${pend})` : ""}</button>
+    </div>
+    <p class="sec">Cuántas</p>
+    <div class="seg" id="cuantas">${[10, 20, 40, 0].map(n => `<button data-c="${n}" class="${cfg.cuantas === n ? "on" : ""}">${n || "Todas"}</button>`).join("")}</div>
+    <p class="disp" id="disp"></p>
+    <button class="btn wide" id="ir">Empezar</button>
+    <p class="stats">Practicadas: <b>${vistas}</b> de ${ITEMS.length} · Bien a la primera: <b>${primera}</b> · Pendientes de repasar: <b>${pend}</b></p>
+    <div class="actions" style="margin-top:18px"><button class="btn danger" id="reset">Borrar mi progreso</button></div>`;
+
+  const toggle = (arr, v) => arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v].sort((a, b) => a - b || String(a).localeCompare(b));
+  const refresca = () => {
+    const l = filtrar(cfg); const n = cfg.cuantas ? Math.min(cfg.cuantas, l.length) : l.length;
+    document.getElementById("disp").innerHTML = l.length ? `Sesión de <b>${n}</b> pregunta${n === 1 ? "" : "s"} (${l.length} disponibles con estos filtros).` : `<b>No hay preguntas</b> con estos filtros.`;
+    document.getElementById("ir").disabled = !l.length;
+    P.cfg = cfg; guardar();
+  };
+  app.querySelectorAll("#niv .chip").forEach(b => b.onclick = () => { cfg.niveles = toggle(cfg.niveles, +b.dataset.n); b.classList.toggle("on"); refresca(); });
+  app.querySelectorAll("#tem .chip").forEach(b => b.onclick = () => { cfg.temas = toggle(cfg.temas, b.dataset.t); b.classList.toggle("on"); refresca(); });
+  app.querySelectorAll("#modo button").forEach(b => b.onclick = () => { cfg.modo = b.dataset.m; app.querySelectorAll("#modo button").forEach(x => x.classList.toggle("on", x === b)); refresca(); });
+  app.querySelectorAll("#cuantas button").forEach(b => b.onclick = () => { cfg.cuantas = +b.dataset.c; app.querySelectorAll("#cuantas button").forEach(x => x.classList.toggle("on", x === b)); refresca(); });
+  document.getElementById("ir").onclick = () => {
+    let l = filtrar(cfg);
+    if (cfg.modo !== "fijo") l = shuffle(l);
+    if (cfg.cuantas) l = l.slice(0, cfg.cuantas);
+    empezar(l.map(it => it.id), { ...cfg });
+  };
+  if (enCurso) {
+    document.getElementById("cont").onclick = () => render();
+    document.getElementById("desc").onclick = () => { P.sesion = null; guardar(); inicio(); };
+  }
+  const rb = document.getElementById("reset");
+  rb.onclick = () => {
+    if (rb.dataset.arm) { P = { items: {}, cfg: P.cfg, sesion: null }; guardar(); inicio(); return; }
+    rb.dataset.arm = "1"; rb.textContent = "¿Seguro? Toca otra vez para borrar todo";
+    setTimeout(() => { if (document.body.contains(rb)) { delete rb.dataset.arm; rb.textContent = "Borrar mi progreso"; } }, 4000);
+  };
+  refresca();
+}
+
+// ---------- sesión ----------
+function empezar(ids, cfg) {
+  P.sesion = { cfg, lista: ids, pos: 0, estados: {}, fin: false };
+  ids.forEach(id => P.sesion.estados[id] = fresh(BY_ID.get(id)));
+  guardar();
+  window.scrollTo(0, 0);
+  render();
+}
+const S = () => P.sesion;
+const st = () => { const s = S(); const id = s.lista[s.pos]; if (!s.estados[id]) s.estados[id] = fresh(BY_ID.get(id)); return s.estados[id]; };
+
+function render(focusNext) {
+  const ses = S(); if (!ses) return inicio();
+  const id = ses.lista[ses.pos], item = BY_ID.get(id), s = st();
+  const primera = Object.values(ses.estados).filter(x => x && x.first === true).length;
+  const fijo = ses.cfg.modo === "fijo";
+  const nivelesEnLista = [...new Set(ses.lista.map(i => BY_ID.get(i).nivel))];
+  const salto = fijo && nivelesEnLista.length > 1 ? `<select id="jump" aria-label="Ir a un nivel">${nivelesEnLista.map(n => `<option value="${n}" ${n === item.nivel ? "selected" : ""}>${esc(nombreNivel(n))}</option>`).join("")}</select>` : "";
+  const etiqueta = ses.cfg.modo === "repaso" ? "Repaso de las falladas" : ses.cfg.modo === "falladas" ? "Solo falladas · " + nombreNivel(item.nivel) : nombreNivel(item.nivel);
+
+  app.innerHTML = `
+    <div class="top"><button class="link" id="home">← Inicio</button><span class="score">Bien a la primera: <b>${primera}</b></span></div>
+    <header><h1 class="hand">Ordena la pregunta</h1></header>
+    ${salto}
+    <div class="bar"><i style="width:${(ses.pos / ses.lista.length) * 100}%"></i></div>
+    <p class="level">${esc(etiqueta)}</p>
+    <p class="num hand">${ses.pos + 1} de ${ses.lista.length}</p>
+    <div class="answer ${s.placed.length ? "" : "empty"} ${s.checked && !s.ok ? "bad" : ""}" id="ans"></div>
+    <div class="pool" id="pool"></div>
+    <div class="actions" id="act"></div>
+    <div id="fb"></div>`;
+
+  document.getElementById("home").onclick = () => { guardar(); inicio(); window.scrollTo(0, 0); };
+  const jump = document.getElementById("jump");
+  if (jump) jump.onchange = e => { const n = +e.target.value; ses.pos = ses.lista.findIndex(k => BY_ID.get(k).nivel === n); guardar(); render(); };
+
+  const ans = document.getElementById("ans");
+  s.placed.forEach((p, k) => {
+    const b = document.createElement("button"); b.className = "tile"; b.textContent = k === 0 ? cap(p.t) : p.t; b.disabled = s.checked;
+    b.onclick = () => { s.placed.splice(k, 1); s.pool.push(p); guardar(); render(); };
+    ans.appendChild(b);
+  });
+  if (s.placed.length) { const q = document.createElement("span"); q.className = "qmark"; q.textContent = "?"; ans.appendChild(q); }
+  if (s.checked) { const m = document.createElement("span"); m.className = "mark hand show " + (s.ok ? "ok" : "bad"); m.textContent = s.ok ? "✓" : "✗"; ans.appendChild(m); }
+
+  const pl = document.getElementById("pool");
+  s.pool.forEach((p, k) => {
+    const b = document.createElement("button"); b.className = "tile"; b.textContent = p.t;
+    b.onclick = () => { s.pool.splice(k, 1); s.placed.push(p); guardar(); render(); };
+    pl.appendChild(b);
+  });
+
+  const act = document.getElementById("act");
+  const prev = `<button class="btn ghost" id="prev" ${ses.pos === 0 ? "disabled" : ""}>Anterior</button>`;
+  const last = ses.pos === ses.lista.length - 1;
+  if (!s.checked) {
+    act.innerHTML = prev + `<button class="btn" id="chk" ${s.pool.length ? "disabled" : ""}>Comprobar</button>
+      <button class="btn ghost" id="clr" ${s.placed.length ? "" : "disabled"}>Borrar</button>`;
+    document.getElementById("chk").onclick = check;
+    document.getElementById("clr").onclick = () => { s.pool = s.pool.concat(s.placed); s.placed = []; guardar(); render(); };
+  } else {
+    act.innerHTML = prev + (s.ok ? "" : `<button class="btn ghost" id="retry">Reintentar</button>`) +
+      `<button class="btn" id="next">${last ? "Ver resultado" : "Siguiente"}</button>`;
+    if (!s.ok) document.getElementById("retry").onclick = () => { s.pool = shuffle(s.pool.concat(s.placed)); s.placed = []; s.checked = false; guardar(); render(); };
+    document.getElementById("next").onclick = () => { if (last) fin(); else { ses.pos++; guardar(); window.scrollTo(0, 0); render(); } };
+    const fb = document.getElementById("fb");
+    fb.className = "feedback " + (s.ok ? "ok" : "bad");
+    const oir = `<button class="spk" id="spk" aria-label="Escuchar la pregunta">🔊 Escuchar</button>`;
+    if (s.ok) {
+      fb.innerHTML = `<p><b>¡Bien!</b> ${oir}</p><p class="fb-h">Así está construida:</p>${parts(item)}<p>${item.tip}</p>`;
+    } else {
+      const mine = s.placed.map(p => p.t);
+      const marked = mine.map((t, k) => `<span class="${t === item.words[k] ? "w-ok" : "w-bad"}">${esc(k === 0 ? cap(t) : t)}</span>`).join(" ");
+      fb.innerHTML = `<p class="fb-h">Tu respuesta</p><p class="mine">${marked}?</p>
+        <p class="fb-h">Qué ha fallado</p><ul class="why">${diagnose(item, mine).map(x => `<li>${x}</li>`).join("")}</ul>
+        <p class="fb-h">La correcta, por partes ${oir}</p>${parts(item)}
+        <p class="fb-h">La regla</p><p>${item.tip}</p>`;
+    }
+    document.getElementById("spk").onclick = () => hablar(sentence(item.w));
+    if (focusNext) document.getElementById("next").focus({ preventScroll: true });
+  }
+  const pb = document.getElementById("prev"); if (pb) pb.onclick = () => { ses.pos--; guardar(); window.scrollTo(0, 0); render(); };
+}
+
+function check() {
+  const ses = S(), s = st(), item = BY_ID.get(ses.lista[ses.pos]);
+  s.ok = esCorrecta(item, s.placed.map(p => p.t));
+  const r = reg(item.id);
+  if (s.first === null) {
+    s.first = s.ok; r.v++;
+    if (s.ok) { r.p++; r.pend = false; } else { r.f++; r.pend = true; }
+  }
+  r.t = Date.now();
+  s.checked = true;
+  guardar();
+  render(true);
+}
+
+function fin() {
+  const ses = S(); ses.fin = true; guardar();
+  const done = ses.lista.map(id => ({ id, s: ses.estados[id] }));
+  const fails = done.filter(d => d.s && d.s.first === false).map(d => d.id);
+  const good = done.filter(d => d.s && d.s.first === true).length;
+  const niveles = [...new Set(ses.lista.map(i => BY_ID.get(i).nivel))].sort((a, b) => a - b);
+  const perLevel = niveles.length > 1 ? `<table>${niveles.map(n => {
+    const its = done.filter(d => BY_ID.get(d.id).nivel === n);
+    return `<tr><td>${esc(nombreNivel(n))}</td><td>${its.filter(d => d.s && d.s.first === true).length} / ${its.length}</td></tr>`; }).join("")}</table>` : "";
+  app.innerHTML = `<div class="end">
+    <div class="top"><button class="link" id="home">← Inicio</button></div>
+    <h1 class="hand">Ordena la pregunta</h1><div class="bar"><i style="width:100%"></i></div>
+    <h2 class="hand">${good} de ${ses.lista.length} a la primera</h2>
+    ${perLevel}
+    ${fails.length ? `<p>Estas se te resistieron. Repítelas hasta que salgan solas:</p><ul>${fails.map(i => `<li>${esc(sentence(BY_ID.get(i).w))}</li>`).join("")}</ul>`
+      : `<p>Todas bien a la primera.</p>`}
+    <div class="actions">
+      <button class="btn ghost" id="back">Volver a la última</button>
+      ${fails.length ? `<button class="btn" id="rep">Repetir las falladas</button>` : ""}
+      <button class="btn ${fails.length ? "ghost" : ""}" id="again">Otra sesión</button>
+    </div></div>`;
+  document.getElementById("home").onclick = () => inicio();
+  document.getElementById("again").onclick = () => inicio();
+  document.getElementById("back").onclick = () => { ses.fin = false; guardar(); render(); };
+  if (fails.length) document.getElementById("rep").onclick = () => empezar(fails, { ...ses.cfg, modo: "repaso" });
+  window.scrollTo(0, 0);
+}
+
+// ---------- arranque ----------
+if (P.sesion && !P.sesion.fin && P.sesion.lista.every(id => BY_ID.has(id))) inicio(); else { if (P.sesion && !P.sesion.lista.every(id => BY_ID.has(id))) P.sesion = null; inicio(); }
+</script>
+<script type="module" src="../pwa.js"></script>
+</body>
+</html>

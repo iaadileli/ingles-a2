@@ -1,0 +1,10 @@
+{
+  "name": "ingles-a2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test preguntas/test/*.test.mjs",
+    "validar": "node preguntas/validar.mjs",
+    "servir": "python3 -m http.server 8765"
+  }
+}

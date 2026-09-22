@@ -29,9 +29,24 @@ PLAN.md           este fichero
 | # | Carpeta   | Tema                              | Estado | Fecha       |
 |---|-----------|-----------------------------------|--------|-------------|
 | 1 | `verbos/` | Verbos irregulares y regulares    | ✅     | jun-2026    |
-| 2 | —         | (ejercicio hecho en el móvil, pendiente de recibir) | ⏳ | 22-sep-2026 |
+| 2 | `preguntas/` | Ordena la pregunta (orden de palabras) | ✅ fase 1 | 22-sep-2026 |
+
+## PWA (22-sep-2026)
+Todo el portal es instalable y funciona sin conexión: `manifest.webmanifest` + `sw.js`
+(red primero, caché si no hay red) + `pwa.js` (registro y aviso «Hay una versión nueva»).
+**Subir `CACHE` en `sw.js` en cada despliegue que toque html/js/json.**
+
+## Ordena la pregunta (`preguntas/`) — brief de Adil del 21-sep-2026
+Prototipo hecho por Adil con la app del móvil; brief completo en su zip (BRIEF.md).
+- **Fase 1 (hecha 22-sep):** app sin build (HTML + módulos JS), motor `diagnostico.js`
+  separado, datos en `datos/preguntas.json` (60 preguntas, 6 niveles, temas deducidos
+  de los roles), inicio con filtros (niveles, temas, modo fijo/aleatorio/falladas,
+  cuántas), progreso y sesión en localStorage (`preguntas.progreso.v1`), «continuar
+  sesión», resumen final, botón Escuchar, modo oscuro, validador y 11 tests
+  (`node --test preguntas/test/*.test.mjs`, incluidos los 6 fallos reales del brief).
+- **Contenido (pendiente):** ampliar a ≥300 preguntas por nivel y tema pasando la validación.
+- **Fase 2 (pendiente):** arrastrar fichas, repaso espaciado, estadísticas por tema,
+  exportar/importar progreso; más adelante otros tipos de ejercicio.
 
 ## Pendiente
-- Recibir el ejercicio que Adil hizo ayer (21-sep) con la app del móvil e integrarlo.
-- Valorar si merece la pena un `manifest.webmanifest` + service worker para
-  instalarla como PWA en el móvil (como `ingles-eoi`).
+- Contenido a 300 preguntas → fase 2 (ver arriba).
