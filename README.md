@@ -46,6 +46,11 @@ node preguntas/validar.mjs      # formato, roles, duplicados, alternativas, avis
 node --test preguntas/test/*.test.mjs
 ```
 
+## Progreso
+
+Se guarda en el móvil (`localStorage`, clave `preguntas.progreso.v1`). Para no perderlo al cambiar de
+móvil: en el inicio, «Exportar progreso» descarga un JSON; «Importar progreso» lo carga en el otro.
+
 ## Desplegar
 
 1. Si has tocado ficheros que se cachean (cualquier html/js/json), sube el número de `CACHE` en `sw.js`

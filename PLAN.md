@@ -29,7 +29,7 @@ PLAN.md           este fichero
 | # | Carpeta   | Tema                              | Estado | Fecha       |
 |---|-----------|-----------------------------------|--------|-------------|
 | 1 | `verbos/` | Verbos irregulares y regulares    | ✅     | jun-2026    |
-| 2 | `preguntas/` | Ordena la pregunta (orden de palabras) | ✅ fase 1 | 22-sep-2026 |
+| 2 | `preguntas/` | Ordena la pregunta (orden de palabras) | ✅ fases 1 y 2, 300 preguntas | 22-sep-2026 |
 
 ## PWA (22-sep-2026)
 Todo el portal es instalable y funciona sin conexión: `manifest.webmanifest` + `sw.js`
@@ -46,8 +46,14 @@ Prototipo hecho por Adil con la app del móvil; brief completo en su zip (BRIEF.
   (`node --test preguntas/test/*.test.mjs`, incluidos los 6 fallos reales del brief).
 - **Contenido (hecho 22-sep):** 300 preguntas (50 por nivel), todas pasan el validador; alternativas
   revisadas a mano en las que llevan expresión de tiempo.
-- **Fase 2 (pendiente):** arrastrar fichas, repaso espaciado, estadísticas por tema,
-  exportar/importar progreso; más adelante otros tipos de ejercicio.
+- **Fase 2 (hecha 22-sep):** arrastrar fichas (ratón: arrastre directo; táctil: mantener
+  pulsado ~0,2 s y arrastrar; tocar sigue siendo lo principal), repaso espaciado en modo
+  aleatorio (peso por pregunta: fallada y no recuperada 4, nunca hecha 2, acertada hoy 0,3),
+  tabla «Por tema (peor primero)» en el inicio, exportar/importar progreso en JSON.
+  El arrastre táctil está verificado solo por lógica, no en un iPhone real.
+- **Más adelante:** otros tipos de ejercicio con la misma arquitectura (completar el
+  auxiliar, detectar el error, afirmación → pregunta). Pendiente de que Adil lo pida.
 
 ## Pendiente
-- Fase 2 (ver arriba).
+- Que Adil pruebe «Ordena la pregunta» en el iPhone (instalación, arrastre táctil, sin conexión).
+- Nuevos ejercicios según vayan llegando de clase.

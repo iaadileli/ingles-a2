@@ -111,6 +111,15 @@
   .stats b{color:var(--text)}
   .toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:10px;font-size:.95rem;box-shadow:0 6px 24px rgba(0,0,0,.25);display:flex;gap:12px;align-items:center;z-index:9;max-width:calc(100% - 32px)}
   .toast button{font:inherit;font-weight:700;border:0;background:var(--paper);color:var(--ink);border-radius:6px;padding:8px 12px;cursor:pointer}
+  .tile.ghost{position:fixed;pointer-events:none;z-index:50;transform:translate(-50%,-50%) scale(1.06);opacity:.95;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+  .tile.dragging{opacity:.35}
+  .answer.over{background:color-mix(in srgb,var(--ink) 8%,transparent);border-radius:6px 6px 0 0}
+  .pool.over{outline:2px dashed var(--tile-edge);outline-offset:4px;border-radius:8px}
+  .hint{margin:8px 0 0;font-size:.85rem;color:var(--muted)}
+  .temas{border-collapse:collapse;width:100%;margin:8px 0 4px;font-size:.92rem}
+  .temas td{padding:6px 4px;border-bottom:1px solid var(--rule)} .temas td:not(:first-child){text-align:right;white-space:nowrap}
+  .temas .mal{color:var(--red);font-weight:700} .temas .bien{color:var(--green);font-weight:700}
+  .btn.small{padding:8px 12px;font-size:.9rem;min-height:40px}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -203,12 +212,19 @@ function inicio() {
       <button data-m="aleatorio" class="${cfg.modo === "aleatorio" ? "on" : ""}">Aleatorio</button>
       <button data-m="falladas" class="${cfg.modo === "falladas" ? "on" : ""}">Solo falladas${pend ? ` (${pend})` : ""}</button>
     </div>
+    <p class="hint">En aleatorio, las falladas y las que nunca has hecho salen más a menudo.</p>
     <p class="sec">Cuántas</p>
     <div class="seg" id="cuantas">${[10, 20, 40, 0].map(n => `<button data-c="${n}" class="${cfg.cuantas === n ? "on" : ""}">${n || "Todas"}</button>`).join("")}</div>
     <p class="disp" id="disp"></p>
     <button class="btn wide" id="ir">Empezar</button>
     <p class="stats">Practicadas: <b>${vistas}</b> de ${ITEMS.length} · Bien a la primera: <b>${primera}</b> · Pendientes de repasar: <b>${pend}</b></p>
-    <div class="actions" style="margin-top:18px"><button class="btn danger" id="reset">Borrar mi progreso</button></div>`;
+    ${tablaTemas()}
+    <div class="actions" style="margin-top:18px">
+      <button class="btn ghost small" id="exp">Exportar progreso</button>
+      <button class="btn ghost small" id="imp">Importar progreso</button>
+      <input type="file" id="impFile" accept="application/json,.json" hidden>
+      <button class="btn danger small" id="reset">Borrar mi progreso</button>
+    </div>`;
 
   const toggle = (arr, v) => arr.includes(v) ? arr.filter(x => x !== v) : [...arr, v].sort((a, b) => a - b || String(a).localeCompare(b));
   const refresca = () => {
@@ -223,7 +239,8 @@ function inicio() {
   app.querySelectorAll("#cuantas button").forEach(b => b.onclick = () => { cfg.cuantas = +b.dataset.c; app.querySelectorAll("#cuantas button").forEach(x => x.classList.toggle("on", x === b)); refresca(); });
   document.getElementById("ir").onclick = () => {
     let l = filtrar(cfg);
-    if (cfg.modo !== "fijo") l = shuffle(l);
+    if (cfg.modo === "aleatorio") l = barajaPonderada(l);
+    else if (cfg.modo === "falladas") l = shuffle(l).sort((a, b) => (P.items[a.id].t || 0) - (P.items[b.id].t || 0));
     if (cfg.cuantas) l = l.slice(0, cfg.cuantas);
     empezar(l.map(it => it.id), { ...cfg });
   };
@@ -231,6 +248,9 @@ function inicio() {
     document.getElementById("cont").onclick = () => render();
     document.getElementById("desc").onclick = () => { P.sesion = null; guardar(); inicio(); };
   }
+  document.getElementById("exp").onclick = exportar;
+  document.getElementById("imp").onclick = () => document.getElementById("impFile").click();
+  document.getElementById("impFile").onchange = e => { const f = e.target.files[0]; if (f) importar(f); e.target.value = ""; };
   const rb = document.getElementById("reset");
   rb.onclick = () => {
     if (rb.dataset.arm) { P = { items: {}, cfg: P.cfg, sesion: null }; guardar(); inicio(); return; }
@@ -238,6 +258,113 @@ function inicio() {
     setTimeout(() => { if (document.body.contains(rb)) { delete rb.dataset.arm; rb.textContent = "Borrar mi progreso"; } }, 4000);
   };
   refresca();
+}
+
+// Repaso espaciado sencillo: cada pregunta tiene un peso y se barajan por peso.
+function pesoDe(it) {
+  const r = P.items[it.id];
+  if (!r || !r.v) return 2;                       // nunca hecha
+  if (r.pend) return 4;                           // fallada y no recuperada
+  const dias = (Date.now() - (r.t || 0)) / 864e5;
+  if (r.f > 0) return dias < 3 ? 1.5 : 2.5;       // la falló alguna vez
+  return dias < 1 ? 0.3 : dias < 7 ? 0.7 : 1;     // siempre bien: cuanto más reciente, menos
+}
+function barajaPonderada(l) {
+  const out = [], pool = l.map(it => ({ it, w: pesoDe(it) }));
+  while (pool.length) {
+    let r = Math.random() * pool.reduce((a, x) => a + x.w, 0), k = 0;
+    for (; k < pool.length - 1; k++) { r -= pool[k].w; if (r <= 0) break; }
+    out.push(pool.splice(k, 1)[0].it);
+  }
+  return out;
+}
+function tablaTemas() {
+  const filas = Object.entries(TEMAS).map(([t, nombre]) => {
+    const its = ITEMS.filter(it => it.tags.includes(t) && P.items[it.id] && P.items[it.id].v > 0);
+    if (!its.length) return null;
+    const bien = its.filter(it => !P.items[it.id].pend).length, pend = its.length - bien;
+    return { nombre, n: its.length, bien, pend, pct: bien / its.length };
+  }).filter(Boolean).sort((a, b) => a.pct - b.pct || b.n - a.n);
+  if (!filas.length) return "";
+  return `<p class="sec">Por tema (peor primero)</p><table class="temas">${filas.map(f =>
+    `<tr><td>${esc(f.nombre)}</td><td>${f.n} hechas</td><td class="${f.pend ? "mal" : "bien"}">${f.pend ? `${f.pend} por repasar` : "todo bien"}</td></tr>`).join("")}</table>`;
+}
+function aviso(texto) {
+  document.querySelectorAll(".toast.app").forEach(t => t.remove());
+  const t = document.createElement("div"); t.className = "toast app"; t.textContent = texto;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 3500);
+}
+function exportar() {
+  const datos = { app: "ingles-a2/preguntas", version: 1, fecha: new Date().toISOString(), items: P.items };
+  const json = JSON.stringify(datos, null, 1);
+  const nombre = `ingles-a2-progreso-${new Date().toISOString().slice(0, 10)}.json`;
+  try {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = nombre;
+    document.body.appendChild(a); a.click(); a.remove();
+    aviso("Progreso exportado: " + nombre);
+  } catch (e) {
+    navigator.clipboard && navigator.clipboard.writeText(json).then(() => aviso("Progreso copiado al portapapeles"));
+  }
+}
+function importar(f) {
+  const lector = new FileReader();
+  lector.onload = () => {
+    try {
+      const d = JSON.parse(lector.result);
+      if (!d || d.app !== "ingles-a2/preguntas" || !d.items) throw new Error("no es un fichero de progreso");
+      let n = 0;
+      for (const [id, r] of Object.entries(d.items)) if (BY_ID.has(id)) { P.items[id] = r; n++; }
+      P.sesion = null; guardar(); inicio();
+      aviso(`Importado: ${n} preguntas con progreso`);
+    } catch (e) { aviso("No he podido importar: " + e.message); }
+  };
+  lector.readAsText(f);
+}
+
+// ---------- arrastrar fichas (además de tocar) ----------
+let dragActivo = false;
+document.addEventListener("touchmove", e => { if (dragActivo) e.preventDefault(); }, { passive: false });
+function arrastrable(b, origen, k, s) {
+  let x0 = null, y0 = 0, drag = false, clon = null, timer = null, saltarClick = false;
+  const limpiar = () => { clearTimeout(timer); timer = null; if (clon) { clon.remove(); clon = null; } b.classList.remove("dragging"); dragActivo = false;
+    document.querySelectorAll(".over").forEach(x => x.classList.remove("over")); x0 = null; drag = false; };
+  const empezar = () => { drag = true; dragActivo = true; b.classList.add("dragging"); clon = b.cloneNode(true); clon.className = "tile ghost"; document.body.appendChild(clon); };
+  const mover = (x, y) => { clon.style.left = x + "px"; clon.style.top = y + "px";
+    const el = document.elementFromPoint(x, y); const ans = document.getElementById("ans"), pool = document.getElementById("pool");
+    ans.classList.toggle("over", !!(el && ans.contains(el))); pool.classList.toggle("over", !!(el && pool.contains(el))); };
+  b.addEventListener("pointerdown", e => {
+    if (s.checked || e.button > 0) return;
+    x0 = e.clientX; y0 = e.clientY; drag = false;
+    try { b.setPointerCapture(e.pointerId); } catch (_) {}
+    if (e.pointerType !== "mouse") timer = setTimeout(() => { if (x0 !== null && !drag) { empezar(); mover(x0, y0); } }, 220);
+  });
+  b.addEventListener("pointermove", e => {
+    if (x0 === null) return;
+    const d = Math.hypot(e.clientX - x0, e.clientY - y0);
+    if (!drag) { if (d > 8) { if (e.pointerType === "mouse") empezar(); else { clearTimeout(timer); timer = null; return; } } else return; }
+    mover(e.clientX, e.clientY);
+  });
+  const soltar = e => {
+    if (x0 === null) return;
+    if (!drag) { limpiar(); return; }           // fue un toque: lo gestiona onclick
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    const ans = document.getElementById("ans"), pool = document.getElementById("pool");
+    saltarClick = true; setTimeout(() => saltarClick = false, 400);
+    limpiar();
+    if (el && ans.contains(el)) {
+      const tiles = [...ans.querySelectorAll(".tile")]; const sobre = el.closest(".tile");
+      let idx = tiles.length; if (sobre) { const r = sobre.getBoundingClientRect(); idx = tiles.indexOf(sobre) + (e.clientX > r.left + r.width / 2 ? 1 : 0); }
+      const ficha = origen === "pool" ? s.pool.splice(k, 1)[0] : s.placed.splice(k, 1)[0];
+      if (origen === "placed" && k < idx) idx--;
+      s.placed.splice(idx, 0, ficha); guardar(); render();
+    } else if (el && pool.contains(el) && origen === "placed") {
+      s.pool.push(s.placed.splice(k, 1)[0]); guardar(); render();
+    }
+  };
+  b.addEventListener("pointerup", soltar);
+  b.addEventListener("pointercancel", limpiar);
+  b.addEventListener("click", e => { if (saltarClick) { e.stopImmediatePropagation(); e.preventDefault(); } }, true);
 }
 
 // ---------- sesión ----------
@@ -280,6 +407,7 @@ function render(focusNext) {
   s.placed.forEach((p, k) => {
     const b = document.createElement("button"); b.className = "tile"; b.textContent = k === 0 ? cap(p.t) : p.t; b.disabled = s.checked;
     b.onclick = () => { s.placed.splice(k, 1); s.pool.push(p); guardar(); render(); };
+    arrastrable(b, "placed", k, s);
     ans.appendChild(b);
   });
   if (s.placed.length) { const q = document.createElement("span"); q.className = "qmark"; q.textContent = "?"; ans.appendChild(q); }
@@ -289,6 +417,7 @@ function render(focusNext) {
   s.pool.forEach((p, k) => {
     const b = document.createElement("button"); b.className = "tile"; b.textContent = p.t;
     b.onclick = () => { s.pool.splice(k, 1); s.placed.push(p); guardar(); render(); };
+    arrastrable(b, "pool", k, s);
     pl.appendChild(b);
   });
 
