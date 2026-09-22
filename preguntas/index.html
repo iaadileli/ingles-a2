@@ -429,7 +429,8 @@ function render(focusNext) {
 
   const pl = document.getElementById("pool");
   s.pool.forEach((p, k) => {
-    const b = document.createElement("button"); b.className = "tile"; b.textContent = p.t;
+    // En el montón, todo en minúsculas (también nombres propios e «I»): que la mayúscula no sea una pista.
+    const b = document.createElement("button"); b.className = "tile"; b.textContent = p.t.toLowerCase();
     b.onclick = () => { s.pool.splice(k, 1); s.placed.push(p); guardar(); render(); };
     arrastrable(b, "pool", k, s);
     pl.appendChild(b);
