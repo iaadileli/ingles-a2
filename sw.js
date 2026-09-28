@@ -1,9 +1,10 @@
 // Service worker de Inglés A2. Cambia CACHE en cada versión que toque ficheros cacheados.
-const CACHE = "ingles-a2-v6";
+const CACHE = "ingles-a2-v7";
 const PRECACHE = [
   "./", "./index.html", "./manifest.webmanifest", "./pwa.js", "./icon-192.png", "./icon-512.png",
   "./verbos/", "./verbos/index.html",
   "./preguntas/", "./preguntas/index.html", "./preguntas/diagnostico.js", "./preguntas/datos/preguntas.json",
+  "./modales/", "./modales/index.html",
 ];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

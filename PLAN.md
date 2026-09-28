@@ -30,6 +30,7 @@ PLAN.md           este fichero
 |---|-----------|-----------------------------------|--------|-------------|
 | 1 | `verbos/` | Verbos irregulares y regulares    | ✅     | jun-2026    |
 | 2 | `preguntas/` | Ordena la pregunta (orden de palabras) | ✅ fases 1 y 2, 300 preguntas | 22-sep-2026 |
+| 3 | `modales/` | Verbos modales: chuleta + «elige el modal» (61) + «encuentra el error» (30) | ✅ | 28-sep-2026 |
 
 ## PWA (22-sep-2026)
 Todo el portal es instalable y funciona sin conexión: `manifest.webmanifest` + `sw.js`
@@ -53,6 +54,16 @@ Prototipo hecho por Adil con la app del móvil; brief completo en su zip (BRIEF.
   El arrastre táctil está verificado solo por lógica, no en un iPhone real.
 - **Más adelante:** otros tipos de ejercicio con la misma arquitectura (completar el
   auxiliar, detectar el error, afirmación → pregunta). Pendiente de que Adil lo pida.
+
+## Verbos modales (`modales/`) — 28-sep-2026
+Nace de una duda de Adil en clase (ficha 1A «Student profile», *Where were you born?*).
+Página única sin dependencias: pestaña **Chuleta** (3 reglas de oro, los 10 modales con
+ejemplos y voz, los «casi modales» *have to / needn't / ought to / used to*, 6 trampas típicas)
+y pestaña **Practicar** con dos juegos por interruptor: *elige el modal* (frase con hueco,
+4 opciones, varias respuestas válidas admitidas, traducción y regla al responder) y
+*encuentra el error* (frase mal escrita → elegir la correcta entre 3). Mazo barajado sin
+repetir hasta agotar; marcador en localStorage (`modales_score`). Datos dentro del HTML
+(`HUECOS`, `ERRORES`); al añadir frases, validar que ninguna trampa coincida con una respuesta válida.
 
 ## Pendiente
 - Que Adil pruebe «Ordena la pregunta» en el iPhone (instalación, arrastre táctil, sin conexión).

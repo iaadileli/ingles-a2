@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4ece0">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<title>Verbos modales · Inglés A2</title>
+<style>
+  :root{
+    --crema:#f6efe3;
+    --crema2:#efe5d4;
+    --tinta:#2c2a26;
+    --tinta-suave:#6b655b;
+    --acento:#c25b3a;
+    --acento-soft:#e7d9c6;
+    --verde:#3f8f5f;
+    --verde-bg:#e4f0e6;
+    --rojo:#b8463a;
+    --rojo-bg:#f6e3e0;
+    --azul:#4a6b8a;
+    --azul-bg:#dde7ef;
+    --borde:#ddd0bc;
+    --sombra:0 10px 30px rgba(70,55,35,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:linear-gradient(160deg,var(--crema),var(--crema2));
+    color:var(--tinta);
+    min-height:100%;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+  }
+  header{width:100%;max-width:560px;text-align:center;margin:8px 0 14px;position:relative}
+  .volver{display:block;text-align:left;font-family:system-ui,sans-serif;font-size:.85rem;
+          color:var(--tinta-suave);text-decoration:none;margin-bottom:6px}
+  .volver:hover{color:var(--acento)}
+  h1{font-size:1.5rem;margin:0;letter-spacing:.3px}
+  .sub{color:var(--tinta-suave);font-size:.9rem;margin-top:4px}
+
+  /* pestañas */
+  .tabs{max-width:560px;width:100%;display:flex;gap:6px;background:rgba(255,255,255,.5);
+        border:1px solid var(--borde);border-radius:999px;padding:4px;margin-bottom:14px;
+        font-family:system-ui,sans-serif}
+  .tab{flex:1;border:none;background:transparent;color:var(--tinta-suave);font:inherit;font-size:.95rem;
+       font-weight:600;padding:9px 0;border-radius:999px;cursor:pointer}
+  .tab.on{background:var(--acento);color:#fff}
+  .pane{width:100%;max-width:560px}
+  .hidden{display:none!important}
+
+  /* chuleta */
+  .card{
+    width:100%;max-width:560px;background:#fffdf8;border:1px solid var(--borde);
+    border-radius:22px;box-shadow:var(--sombra);padding:22px 20px 20px;margin-bottom:14px
+  }
+  .card h2{font-size:1.1rem;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .card h2 .tag{margin:0}
+  .tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;
+       color:var(--acento);background:var(--acento-soft);padding:4px 10px;border-radius:999px;
+       font-family:system-ui,sans-serif;font-weight:600}
+  .tag.azul{color:var(--azul);background:var(--azul-bg)}
+  .tag.rojo{color:var(--rojo);background:var(--rojo-bg)}
+  .regla{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--borde)}
+  .regla:first-of-type{border-top:none;padding-top:0}
+  .regla .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--acento-soft);color:var(--acento);
+            display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;font-weight:700}
+  .regla p{margin:0;line-height:1.45}
+  .regla .ej{font-family:system-ui,sans-serif;font-size:.9rem;margin-top:3px;color:var(--tinta-suave)}
+  .no{color:var(--rojo);text-decoration:line-through}
+  .si{color:var(--verde);font-weight:600}
+
+  .modal{padding:12px 0;border-top:1px dashed var(--borde)}
+  .modal:first-of-type{border-top:none;padding-top:0}
+  .modal .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .modal .w{font-size:1.4rem;font-weight:600}
+  .modal .uso{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--tinta-suave)}
+  .modal .ejs{margin:5px 0 0;padding:0;list-style:none}
+  .modal .ejs li{display:flex;align-items:center;gap:8px;font-size:1rem;margin-top:3px;flex-wrap:wrap}
+  .modal .ejs .es{flex-basis:100%;padding-left:36px;margin-top:-2px;font-family:system-ui,sans-serif;font-size:.82rem;color:var(--tinta-suave)}
+  .spk{cursor:pointer;border:none;background:var(--acento-soft);color:var(--acento);
+       width:28px;height:28px;border-radius:50%;font-size:.85rem;line-height:1;
+       display:inline-flex;align-items:center;justify-content:center;padding:0;flex:0 0 auto}
+  .spk:active{transform:scale(.92)}
+
+  .trampa{padding:10px 0;border-top:1px dashed var(--borde);line-height:1.45}
+  .trampa:first-of-type{border-top:none;padding-top:0}
+  .trampa b{color:var(--acento)}
+  .trampa .ej{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave);margin-top:2px}
+
+  /* práctica */
+  .modebar{max-width:560px;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+           margin-bottom:12px;font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .modebar b{color:var(--tinta)}
+  .switch{position:relative;display:inline-block;width:52px;height:30px;flex:0 0 auto}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#cdbfa8;border-radius:999px;transition:.2s;cursor:pointer}
+  .slider:before{content:"";position:absolute;height:24px;width:24px;left:3px;top:3px;
+                 background:#fffdf8;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .switch input:checked + .slider{background:var(--acento)}
+  .switch input:checked + .slider:before{transform:translateX(22px)}
+
+  .stats{display:flex;gap:10px;max-width:560px;width:100%;margin-bottom:14px}
+  .stat{flex:1;background:rgba(255,255,255,.55);border:1px solid var(--borde);
+        border-radius:14px;padding:8px 6px;text-align:center}
+  .stat b{display:block;font-size:1.25rem;line-height:1}
+  .stat span{font-size:.7rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.6px}
+
+  .frase{font-size:1.45rem;line-height:1.35;margin:12px 0 4px}
+  .frase .hueco{display:inline-block;min-width:4.5ch;border-bottom:2px solid var(--acento);color:var(--acento);
+                text-align:center;font-weight:600}
+  .frase.mal{color:var(--rojo)}
+  .frase.mal::before{content:"✗ ";font-family:system-ui,sans-serif}
+  .es{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .pregunta{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--tinta-suave);text-transform:uppercase;
+            letter-spacing:.6px;margin:14px 0 6px}
+  .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:1.15rem;
+       padding:12px 16px;margin-bottom:9px;border-radius:12px;border:1.5px solid var(--borde);
+       background:#fcf8f0;color:var(--tinta);cursor:pointer;transition:transform .05s;line-height:1.3}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{border-color:var(--verde);background:var(--verde-bg);color:var(--verde);font-weight:600}
+  .opt.bad{border-color:var(--rojo);background:var(--rojo-bg);color:var(--rojo)}
+  .opt:disabled{cursor:default}
+  .sol{font-family:system-ui,sans-serif;font-size:.95rem;margin-top:8px;padding:12px 14px;border-radius:12px;line-height:1.45}
+  .sol.ok{background:var(--verde-bg);color:#2f6e48}
+  .sol.bad{background:var(--rojo-bg);color:#8f3a30}
+  .sol .tip{color:var(--tinta);margin-top:6px;display:block}
+  .sol .tip b{color:var(--acento)}
+  .actions{margin-top:14px;display:flex;gap:10px}
+  button.act{font-family:system-ui,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;
+         border:none;border-radius:12px;padding:13px 18px;flex:1;transition:transform .05s}
+  button.act:active{transform:scale(.98)}
+  .btn-soft{background:var(--acento-soft);color:var(--tinta)}
+  footer{margin-top:auto;padding-top:20px;font-size:.75rem;color:var(--tinta-suave);
+         font-family:system-ui,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a class="volver" href="../">← Inglés A2</a>
+  <h1>Verbos modales</h1>
+  <div class="sub">can · could · may · might · must · should · shall · will · would</div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab on" id="tabChuleta" data-pane="paneChuleta">Chuleta</button>
+  <button class="tab" id="tabPractica" data-pane="panePractica">Practicar</button>
+</div>
+
+<!-- ===================== CHULETA ===================== -->
+<section class="pane" id="paneChuleta">
+  <div class="card">
+    <h2>Las tres reglas de oro</h2>
+    <div class="regla"><div class="n">1</div><div>
+      <p><b>No cambian nunca.</b> Sin -s en tercera persona, sin -ing, sin pasado con -ed.</p>
+      <p class="ej"><span class="no">he cans</span> · <span class="no">she musts</span> · <span class="si">he can</span> · <span class="si">she must</span></p>
+    </div></div>
+    <div class="regla"><div class="n">2</div><div>
+      <p><b>Detrás va el verbo tal cual</b>, sin <i>to</i>, sin -s, sin -ing.</p>
+      <p class="ej"><span class="no">I must to go</span> · <span class="no">she can plays</span> · <span class="si">I must go</span> · <span class="si">she can play</span></p>
+    </div></div>
+    <div class="regla"><div class="n">3</div><div>
+      <p><b>No usan <i>do</i>.</b> Niegan con <i>not</i> y preguntan poniéndose delante del sujeto.</p>
+      <p class="ej"><span class="no">Do you can swim?</span> · <span class="no">I don't can</span> · <span class="si">Can you swim?</span> · <span class="si">I can't</span></p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <h2>Los modales <span class="tag">uno a uno</span></h2>
+    <div id="listaModales"></div>
+  </div>
+
+  <div class="card">
+    <h2>Los «casi modales» <span class="tag azul">se conjugan</span></h2>
+    <p class="es" style="margin:0 0 8px">Se parecen, pero llevan el <i>to</i> dentro y sí cambian de forma (<i>has to, had to, don't have to</i>).</p>
+    <div id="listaSemi"></div>
+  </div>
+
+  <div class="card">
+    <h2>Trampas típicas <span class="tag rojo">ojo</span></h2>
+    <div id="listaTrampas"></div>
+  </div>
+</section>
+
+<!-- ===================== PRÁCTICA ===================== -->
+<section class="pane hidden" id="panePractica">
+  <div class="modebar">
+    <span id="lblElige"><b>Elige el modal</b></span>
+    <label class="switch"><input type="checkbox" id="optError"><span class="slider"></span></label>
+    <span id="lblError">Encuentra el error</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="sAciertos">0</b><span>aciertos</span></div>
+    <div class="stat"><b id="sRacha">0</b><span>racha</span></div>
+    <div class="stat"><b id="sRecord">0</b><span>récord</span></div>
+    <div class="stat"><b id="sTotal">0</b><span>intentos</span></div>
+  </div>
+
+  <div class="card">
+    <span id="tipo" class="tag">elige el modal</span>
+    <div class="frase" id="frase"></div>
+    <div class="es" id="es"></div>
+    <div class="pregunta" id="pregunta"></div>
+    <div id="opciones"></div>
+    <div id="solucion"></div>
+    <div class="actions">
+      <button class="act btn-soft hidden" id="btnNext">Siguiente →</button>
+    </div>
+  </div>
+</section>
+
+<footer>Hecho para Adil · pincha la opción correcta · <span id="nItems"></span> frases</footer>
+
+<script>
+/* ============ CHULETA: datos ============ */
+const MODALES = [
+  {w:"can", uso:"habilidad · permiso · petición", ejs:[["I can swim.","Sé nadar."],["Can I open the window?","¿Puedo abrir la ventana?"],["Can you help me?","¿Me ayudas?"]]},
+  {w:"could", uso:"habilidad en pasado · petición educada · posibilidad", ejs:[["I could read when I was five.","Sabía leer con cinco años."],["Could you repeat that, please?","¿Podría repetirlo, por favor?"],["It could be true.","Podría ser verdad."]]},
+  {w:"may", uso:"permiso formal · posibilidad", ejs:[["May I come in?","¿Puedo pasar?"],["It may rain later.","Puede que llueva luego."]]},
+  {w:"might", uso:"posibilidad (menos segura)", ejs:[["I might be late.","Puede que llegue tarde."],["She might not come.","Puede que no venga."]]},
+  {w:"must", uso:"obligación (lo decide el que habla) · deducción segura", ejs:[["I must go now.","Tengo que irme ya."],["He must be tired.","Debe de estar cansado."]]},
+  {w:"mustn't", uso:"prohibición", ejs:[["You mustn't smoke here.","No puedes fumar aquí (está prohibido)."]]},
+  {w:"should", uso:"consejo · lo correcto", ejs:[["You should rest.","Deberías descansar."],["You shouldn't eat so much sugar.","No deberías comer tanto azúcar."]]},
+  {w:"shall", uso:"sugerencias y ofrecimientos con I / we", ejs:[["Shall we go?","¿Nos vamos?"],["Shall I open it?","¿Lo abro?"]]},
+  {w:"will", uso:"futuro · promesas · decisiones del momento", ejs:[["I'll call you tomorrow.","Te llamo mañana."],["It will be sunny.","Hará sol."]]},
+  {w:"would", uso:"condicional · cortesía · hábitos del pasado", ejs:[["I would buy it if I had money.","Lo compraría si tuviera dinero."],["Would you like a coffee?","¿Te apetece un café?"],["When I was a child, I would play in the street.","De niño jugaba en la calle."]]},
+];
+const SEMI = [
+  {w:"have to", uso:"obligación externa (una norma, el jefe, la ley)", ejs:[["I have to wear a uniform.","Tengo que llevar uniforme."],["She has to work on Saturdays.","Tiene que trabajar los sábados."],["We had to wait.","Tuvimos que esperar."]]},
+  {w:"don't have to / needn't", uso:"no hace falta (¡no es prohibición!)", ejs:[["You don't have to pay.","No tienes que pagar (no hace falta)."]]},
+  {w:"ought to", uso:"deberías (más formal que should)", ejs:[["You ought to apologise.","Deberías pedir perdón."]]},
+  {w:"used to", uso:"hábitos del pasado que ya no haces", ejs:[["I used to smoke.","Antes fumaba."]]},
+];
+const TRAMPAS = [
+  {t:"<b>mustn't</b> ≠ <b>don't have to</b>. Mustn't = prohibido. Don't have to = no hace falta.", ej:"You mustn't park here (prohibido) · You don't have to come (si no quieres, no vengas)"},
+  {t:"Para deducir que algo <b>no</b> es cierto se usa <b>can't</b>, no mustn't.", ej:"He must be at home (seguro que sí) · He can't be at home (seguro que no)"},
+  {t:"<b>must</b> no tiene pasado ni futuro. Se usa <b>had to</b> y <b>will have to</b>.", ej:"Yesterday I had to work · Tomorrow I'll have to work"},
+  {t:"Dos modales <b>no pueden ir juntos</b>. Will + must → <b>will have to</b>. Might + can → <b>might be able to</b>.", ej:"✗ I will can · ✓ I will be able to"},
+  {t:"<b>would like</b> sí lleva <i>to</i>, porque el <i>to</i> es de <i>like</i>, no de <i>would</i>.", ej:"I would like to go · Would you like to come?"},
+  {t:"Las respuestas cortas <b>repiten el modal</b>, nunca do.", ej:"Can you swim? — Yes, I can. · Must I go? — No, you don't have to."},
+];
+
+/* ============ PRÁCTICA: datos ============ */
+/* HUECOS: s = frase con ___ · ok = respuestas válidas (se muestra la 1ª) · no = trampas (3) · es = traducción · tip = regla */
+const HUECOS = [
+  {s:"I ___ swim very well.", ok:["can"], no:["must","should","may"], es:"Sé nadar muy bien.", tip:"<b>can</b> = habilidad, saber hacer algo."},
+  {s:"When I was five, I ___ already read.", ok:["could"], no:["can","must","should"], es:"Con cinco años ya sabía leer.", tip:"Habilidad en pasado → <b>could</b>."},
+  {s:"You ___ smoke here. It's forbidden.", ok:["mustn't","can't"], no:["don't have to","needn't","may"], es:"No puedes fumar aquí. Está prohibido.", tip:"Prohibición → <b>mustn't</b> / <b>can't</b>. <i>Don't have to</i> sería «no hace falta»."},
+  {s:"You ___ wear a tie. It's not necessary.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"No tienes que llevar corbata. No hace falta.", tip:"No hace falta → <b>don't have to</b> / <b>needn't</b>. <i>Mustn't</i> sería «prohibido»."},
+  {s:"___ I open the window? It's hot.", ok:["Can","Could","May"], no:["Must","Will","Do"], es:"¿Puedo abrir la ventana? Hace calor.", tip:"Pedir permiso → <b>Can / Could / May I…?</b>"},
+  {s:"You look tired. You ___ go to bed early.", ok:["should"], no:["can","may","would"], es:"Pareces cansado. Deberías acostarte pronto.", tip:"Consejo → <b>should</b>."},
+  {s:"It ___ rain tomorrow. Take an umbrella.", ok:["might","may","could"], no:["must","should","can"], es:"Puede que llueva mañana. Coge un paraguas.", tip:"Posibilidad → <b>might / may / could</b>."},
+  {s:"I ___ go to the doctor. I've got a terrible headache.", ok:["must","have to","should"], no:["can","might","may"], es:"Tengo que ir al médico. Me duele muchísimo la cabeza.", tip:"Obligación o necesidad → <b>must / have to</b>."},
+  {s:"___ you help me with this box, please?", ok:["Can","Could","Would","Will"], no:["Must","Should","May"], es:"¿Me ayudas con esta caja, por favor?", tip:"Petición → <b>Can / Could / Would you…?</b> <i>May you</i> no existe."},
+  {s:"She ___ speak three languages.", ok:["can"], no:["cans","musts","should"], es:"Sabe hablar tres idiomas.", tip:"<b>can</b> no cambia en tercera persona: <i>she can</i>, nunca <span class='no'>she cans</span>."},
+  {s:"He ___ be at home. The lights are on.", ok:["must"], no:["can't","mustn't","shouldn't"], es:"Debe de estar en casa. Las luces están encendidas.", tip:"Deducción segura («seguro que sí») → <b>must</b>."},
+  {s:"That ___ be John. He's in Paris this week.", ok:["can't"], no:["must","mustn't","shouldn't"], es:"No puede ser John. Está en París esta semana.", tip:"Deducción negativa («seguro que no») → <b>can't</b>, nunca mustn't."},
+  {s:"In the UK, you ___ drive on the left.", ok:["must","have to"], no:["can","might","could"], es:"En el Reino Unido tienes que conducir por la izquierda.", tip:"Obligación por ley → <b>must / have to</b>."},
+  {s:"___ we go to the cinema tonight?", ok:["Shall"], no:["Must","Would","Do"], es:"¿Vamos al cine esta noche?", tip:"Sugerencia → <b>Shall we…?</b>"},
+  {s:"I ___ like a coffee, please.", ok:["would","'d"], no:["will","should","can"], es:"Quisiera un café, por favor.", tip:"<b>would like</b> = quisiera, me gustaría."},
+  {s:"Students ___ use their phones in the exam.", ok:["mustn't","can't","may not"], no:["don't have to","needn't","wouldn't"], es:"Los alumnos no pueden usar el móvil en el examen.", tip:"Prohibición → <b>mustn't / can't</b>."},
+  {s:"You ___ eat so much sugar. It's bad for you.", ok:["shouldn't"], no:["don't have to","needn't","couldn't"], es:"No deberías comer tanto azúcar. Es malo para ti.", tip:"Consejo negativo → <b>shouldn't</b>."},
+  {s:"I ___ come to the party tomorrow. I'm not sure yet.", ok:["might","may"], no:["must","will","can't"], es:"Puede que vaya a la fiesta mañana. Aún no lo sé.", tip:"No estás seguro → <b>might / may</b>."},
+  {s:"When I was a child, I ___ play in the street every day.", ok:["would","could"], no:["can","must","may"], es:"De niño jugaba en la calle todos los días.", tip:"Hábito del pasado → <b>would</b> (o <i>used to</i>)."},
+  {s:"___ I have your name, please?", ok:["Can","Could","May"], no:["Must","Should","Will"], es:"¿Me dice su nombre, por favor?", tip:"Petición educada → <b>Could / May I…?</b>"},
+  {s:"We ___ hurry. The train leaves in five minutes.", ok:["must","have to","should"], no:["can","may","might"], es:"Tenemos que darnos prisa. El tren sale en cinco minutos.", tip:"Necesidad → <b>must / have to</b>."},
+  {s:"You ___ be quiet in the library.", ok:["must","have to","should"], no:["can","might","would"], es:"Hay que estar en silencio en la biblioteca.", tip:"Norma → <b>must / have to</b>."},
+  {s:"I ___ find my keys. Have you seen them?", ok:["can't"], no:["mustn't","shouldn't","don't have to"], es:"No encuentro las llaves. ¿Las has visto?", tip:"No ser capaz → <b>can't</b>."},
+  {s:"He ___ come tomorrow, but he isn't sure.", ok:["might","may"], no:["must","should","can't"], es:"Puede que venga mañana, pero no está seguro.", tip:"Posibilidad → <b>might / may</b>."},
+  {s:"___ you like some tea?", ok:["Would"], no:["Must","Should","Will"], es:"¿Te apetece un té?", tip:"Ofrecer → <b>Would you like…?</b>"},
+  {s:"I ___ help you with your homework if you want.", ok:["can","could","will"], no:["must","have to","mustn't"], es:"Te puedo ayudar con los deberes si quieres.", tip:"Ofrecimiento → <b>can / could / will</b>."},
+  {s:"Dogs ___ enter the restaurant.", ok:["can't","mustn't","may not"], no:["don't have to","needn't","couldn't"], es:"Los perros no pueden entrar en el restaurante.", tip:"Prohibición → <b>can't / mustn't</b>."},
+  {s:"It's late. I ___ go now.", ok:["must","have to","should"], no:["can","might","would"], es:"Es tarde. Tengo que irme ya.", tip:"Obligación → <b>must / have to</b>."},
+  {s:"Tomorrow is Sunday. We ___ get up early.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"Mañana es domingo. No tenemos que madrugar.", tip:"No hace falta → <b>don't have to</b>."},
+  {s:"She ___ be Italian. Her name is Giulia.", ok:["must","might","may","could"], no:["can","has to","should"], es:"Debe de ser italiana. Se llama Giulia.", tip:"Deducción → <b>must</b> (seguro) o <b>might</b> (quizá). <i>Can</i> no vale para deducir en afirmativa."},
+  {s:"You ___ see a doctor about that cough.", ok:["should","must"], no:["can","might","would"], es:"Deberías ir al médico por esa tos.", tip:"Consejo → <b>should</b>."},
+  {s:"___ you speak English when you were ten?", ok:["Could"], no:["Can","Must","Should"], es:"¿Sabías hablar inglés con diez años?", tip:"Habilidad en pasado → <b>could</b>."},
+  {s:"I'm sorry, I ___ come to the meeting. I'm busy.", ok:["can't"], no:["mustn't","don't have to","shouldn't"], es:"Lo siento, no puedo ir a la reunión. Estoy ocupado.", tip:"No poder → <b>can't</b>."},
+  {s:"You ___ take your passport. They won't let you in without it.", ok:["must","have to"], no:["can","might","could"], es:"Tienes que llevar el pasaporte. Sin él no te dejan entrar.", tip:"Obligación → <b>must / have to</b>."},
+  {s:"___ I use your phone for a minute?", ok:["Can","Could","May"], no:["Must","Should","Would"], es:"¿Puedo usar tu teléfono un momento?", tip:"Permiso → <b>Can / Could / May I…?</b>"},
+  {s:"I ___ believe it! We won!", ok:["can't"], no:["mustn't","don't have to","shouldn't"], es:"¡No me lo puedo creer! ¡Hemos ganado!", tip:"<b>can't believe</b> = no puedo creerlo."},
+  {s:"He's got a huge house and three cars. He ___ be rich.", ok:["must"], no:["can't","mustn't","should"], es:"Tiene una casa enorme y tres coches. Debe de ser rico.", tip:"Deducción segura → <b>must</b>."},
+  {s:"It's a secret. You ___ tell anyone.", ok:["mustn't","can't"], no:["don't have to","needn't","could"], es:"Es un secreto. No se lo puedes contar a nadie.", tip:"Prohibición → <b>mustn't</b>."},
+  {s:"I ___ play the piano when I was young, but now I can't.", ok:["could"], no:["can","must","should"], es:"Sabía tocar el piano de joven, pero ahora no.", tip:"Habilidad en pasado → <b>could</b>."},
+  {s:"___ you pass me the salt, please?", ok:["Can","Could","Would","Will"], no:["Must","Should","May"], es:"¿Me pasas la sal, por favor?", tip:"Petición → <b>Can / Could / Would you…?</b>"},
+  {s:"In Spain you ___ vote at 18. It's allowed.", ok:["can"], no:["must","should","have to"], es:"En España puedes votar a los 18. Está permitido.", tip:"Permiso / está permitido → <b>can</b>."},
+  {s:"I ___ be late tonight. Don't wait for me.", ok:["might","may"], no:["must","can't","have to"], es:"Puede que llegue tarde esta noche. No me esperes.", tip:"Posibilidad → <b>might</b>."},
+  {s:"The museum is free. You ___ pay.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"El museo es gratis. No tienes que pagar.", tip:"No hace falta → <b>don't have to</b>."},
+  {s:"You ___ be careful with that knife.", ok:["must","should","have to"], no:["can","might","may"], es:"Ten cuidado con ese cuchillo.", tip:"Advertencia → <b>must / should</b>."},
+  {s:"___ I help you with those bags?", ok:["Can","Shall","May","Could"], no:["Must","Would","Do"], es:"¿Te ayudo con esas bolsas?", tip:"Ofrecerse → <b>Can / Shall I…?</b>"},
+  {s:"If I had time, I ___ learn Chinese.", ok:["would","'d"], no:["will","can","must"], es:"Si tuviera tiempo, aprendería chino.", tip:"Condicional (-ría) → <b>would</b>."},
+  {s:"I ___ call you tomorrow, I promise.", ok:["will","'ll"], no:["would","must","might"], es:"Te llamaré mañana, lo prometo.", tip:"Promesa → <b>will</b>."},
+  {s:"He ___ be 40. He looks much younger!", ok:["can't"], no:["mustn't","doesn't have to","shouldn't"], es:"No puede tener 40 años. ¡Parece mucho más joven!", tip:"Deducción negativa → <b>can't</b>."},
+  {s:"You ___ study more if you want to pass.", ok:["should","must","have to"], no:["can","might","may"], es:"Deberías estudiar más si quieres aprobar.", tip:"Consejo → <b>should</b>."},
+  {s:"Excuse me, ___ you tell me the time?", ok:["could","can"], no:["must","should","may"], es:"Perdone, ¿me dice la hora?", tip:"Petición educada → <b>could you…?</b>"},
+  {s:"We ___ book a table. The restaurant is always full.", ok:["should","must","have to"], no:["can","might","may"], es:"Deberíamos reservar mesa. El restaurante siempre está lleno.", tip:"Consejo / necesidad → <b>should / must</b>."},
+  {s:"I ___ remember her name.", ok:["can't"], no:["mustn't","shouldn't","don't have to"], es:"No me acuerdo de su nombre.", tip:"No ser capaz → <b>can't</b>."},
+  {s:"Children ___ be accompanied by an adult.", ok:["must","have to"], no:["can","might","may"], es:"Los niños tienen que ir acompañados de un adulto.", tip:"Norma → <b>must / have to</b>."},
+  {s:"It's a nice day. We ___ go for a walk.", ok:["could","can","should"], no:["must","have to","mustn't"], es:"Hace buen día. Podríamos dar un paseo.", tip:"Sugerencia → <b>could / can</b>."},
+  {s:"Can you swim? — Yes, I ___.", ok:["can"], no:["do","am","could"], es:"¿Sabes nadar? — Sí.", tip:"La respuesta corta <b>repite el modal</b>, nunca <i>do</i>."},
+  {s:"Must I finish it today? — No, you ___.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"¿Tengo que terminarlo hoy? — No, no hace falta.", tip:"Respuesta negativa a <i>must</i> → <b>don't have to</b> (no hace falta), no mustn't."},
+  {s:"I ___ go to the gym yesterday. I had no time.", ok:["couldn't"], no:["can't","mustn't","shouldn't"], es:"Ayer no pude ir al gimnasio. No tuve tiempo.", tip:"Pasado → <b>couldn't</b>."},
+  {s:"You ___ park here. It's a bus stop.", ok:["can't","mustn't"], no:["don't have to","needn't","wouldn't"], es:"No puedes aparcar aquí. Es una parada de autobús.", tip:"Prohibición → <b>can't / mustn't</b>."},
+  {s:"___ you like to come with us?", ok:["Would"], no:["Will","Do","Should"], es:"¿Te gustaría venir con nosotros?", tip:"Invitar → <b>Would you like to…?</b>"},
+  {s:"Yesterday I ___ work until 9 p.m.", ok:["had to"], no:["must","musted","have to"], es:"Ayer tuve que trabajar hasta las 9.", tip:"<b>must</b> no tiene pasado → <b>had to</b>."},
+  {s:"Next year I ___ change jobs. Who knows?", ok:["might","may"], no:["must","have to","can't"], es:"El año que viene puede que cambie de trabajo. ¿Quién sabe?", tip:"Posibilidad → <b>might</b>."},
+];
+
+/* ERRORES: mal = frase con error · ok = versión correcta · no = otras dos mal · tip = qué fallaba */
+const ERRORES = [
+  {mal:"She cans speak French.", ok:"She can speak French.", no:["She can speaks French.","She can to speak French."], es:"Sabe hablar francés.", tip:"Los modales <b>no llevan -s</b> en tercera persona, y el verbo que va detrás tampoco."},
+  {mal:"I must to go now.", ok:"I must go now.", no:["I must going now.","I must goes now."], es:"Tengo que irme ya.", tip:"Detrás de un modal, el verbo va <b>sin to</b>."},
+  {mal:"Do you can swim?", ok:"Can you swim?", no:["Do you swim can?","You can swim?"], es:"¿Sabes nadar?", tip:"Los modales <b>no usan do</b>: preguntan poniéndose delante del sujeto."},
+  {mal:"He don't can come.", ok:"He can't come.", no:["He doesn't can come.","He can't to come."], es:"No puede venir.", tip:"Los modales niegan con <b>not</b>, nunca con don't / doesn't."},
+  {mal:"You should to see a doctor.", ok:"You should see a doctor.", no:["You should seeing a doctor.","You should sees a doctor."], es:"Deberías ir al médico.", tip:"<b>should + verbo</b>, sin to."},
+  {mal:"We musted work yesterday.", ok:"We had to work yesterday.", no:["We must work yesterday.","We musted to work yesterday."], es:"Ayer tuvimos que trabajar.", tip:"<b>must</b> no tiene pasado. Para el pasado se usa <b>had to</b>."},
+  {mal:"I can't to find my keys.", ok:"I can't find my keys.", no:["I don't can find my keys.","I can't finding my keys."], es:"No encuentro las llaves.", tip:"<b>can't + verbo</b>, sin to."},
+  {mal:"She must works on Saturdays.", ok:"She must work on Saturdays.", no:["She musts work on Saturdays.","She must to work on Saturdays."], es:"Tiene que trabajar los sábados.", tip:"El verbo detrás del modal va en forma base: <b>must work</b>."},
+  {mal:"Does he must go?", ok:"Does he have to go?", no:["Does he must to go?","Musts he go?"], es:"¿Tiene que ir?", tip:"<i>must</i> no acepta <i>do</i>. O <b>Must he go?</b> o, más natural, <b>Does he have to go?</b>"},
+  {mal:"I would like drink water.", ok:"I would like to drink water.", no:["I would like drinking water.","I would to like drink water."], es:"Quisiera beber agua.", tip:"<b>would like</b> sí lleva <b>to</b>: el <i>to</i> es de <i>like</i>, no de <i>would</i>."},
+  {mal:"You don't must smoke here.", ok:"You mustn't smoke here.", no:["You don't must to smoke here.","You mustn't to smoke here."], es:"No puedes fumar aquí.", tip:"Negación del modal con <b>not</b>: <b>mustn't</b>."},
+  {mal:"Yesterday I couldn't to finish the report.", ok:"Yesterday I couldn't finish the report.", no:["Yesterday I didn't can finish the report.","Yesterday I can't finish the report."], es:"Ayer no pude terminar el informe.", tip:"<b>couldn't + verbo</b> sin to; y en pasado, <i>couldn't</i>, no <i>can't</i>."},
+  {mal:"I will to call you.", ok:"I will call you.", no:["I will calling you.","I will calls you."], es:"Te llamaré.", tip:"<b>will</b> es un modal: detrás va el verbo tal cual."},
+  {mal:"He shoulds study more.", ok:"He should study more.", no:["He should studies more.","He should to study more."], es:"Debería estudiar más.", tip:"Ni el modal ni el verbo llevan <b>-s</b>."},
+  {mal:"Can I to help you?", ok:"Can I help you?", no:["Can I helping you?","Do I can help you?"], es:"¿Puedo ayudarte?", tip:"<b>Can I + verbo</b>, sin to."},
+  {mal:"She has to goes to work.", ok:"She has to go to work.", no:["She have to go to work.","She has to going to work."], es:"Tiene que ir a trabajar.", tip:"<b>have to</b> sí se conjuga (<i>has to</i>), pero el verbo de después va en forma base."},
+  {mal:"You mustn't to be late.", ok:"You mustn't be late.", no:["You mustn't being late.","You don't must be late."], es:"No llegues tarde.", tip:"<b>mustn't + verbo</b>, sin to."},
+  {mal:"I can swimming.", ok:"I can swim.", no:["I can to swim.","I can swims."], es:"Sé nadar.", tip:"Detrás del modal, nunca <b>-ing</b>."},
+  {mal:"They should not to worry.", ok:"They shouldn't worry.", no:["They don't should worry.","They shouldn't worrying."], es:"No deberían preocuparse.", tip:"<b>shouldn't + verbo</b>, sin to."},
+  {mal:"It might to rain tomorrow.", ok:"It might rain tomorrow.", no:["It might rains tomorrow.","It mights rain tomorrow."], es:"Puede que llueva mañana.", tip:"<b>might + verbo</b>, sin to y sin -s."},
+  {mal:"We can went to the beach.", ok:"We can go to the beach.", no:["We can to go to the beach.","We can going to the beach."], es:"Podemos ir a la playa.", tip:"Detrás del modal va el verbo en forma base, <b>nunca en pasado</b>."},
+  {mal:"I didn't could sleep last night.", ok:"I couldn't sleep last night.", no:["I didn't can sleep last night.","I couldn't to sleep last night."], es:"Anoche no pude dormir.", tip:"El pasado negativo de can es <b>couldn't</b>, sin didn't."},
+  {mal:"Would you like come?", ok:"Would you like to come?", no:["Would you like coming?","Would you to like come?"], es:"¿Te gustaría venir?", tip:"<b>would like to</b> + verbo."},
+  {mal:"He can plays football very well.", ok:"He can play football very well.", no:["He cans play football very well.","He can to play football very well."], es:"Juega muy bien al fútbol.", tip:"Sin <b>-s</b> detrás del modal."},
+  {mal:"You have to not go.", ok:"You don't have to go.", no:["You haven't to go.","You don't have go."], es:"No tienes que ir (no hace falta).", tip:"<b>have to</b> no es modal puro: niega con <b>don't / doesn't</b>."},
+  {mal:"Must you to work tomorrow?", ok:"Must you work tomorrow?", no:["Do you must work tomorrow?","Must you working tomorrow?"], es:"¿Tienes que trabajar mañana?", tip:"<b>Must + sujeto + verbo</b>, sin to y sin do."},
+  {mal:"She doesn't can drive.", ok:"She can't drive.", no:["She can't drives.","She doesn't can to drive."], es:"No sabe conducir.", tip:"Negación con <b>not</b>: <b>can't</b>."},
+  {mal:"We will must leave early.", ok:"We will have to leave early.", no:["We will must to leave early.","We will musting leave early."], es:"Tendremos que salir pronto.", tip:"<b>Dos modales no van juntos</b>: will + must → <b>will have to</b>."},
+  {mal:"May I to sit here?", ok:"May I sit here?", no:["May I sitting here?","Do I may sit here?"], es:"¿Puedo sentarme aquí?", tip:"<b>May I + verbo</b>, sin to."},
+  {mal:"You could to help me.", ok:"You could help me.", no:["You could helping me.","You could helps me."], es:"Podrías ayudarme.", tip:"<b>could + verbo</b>, sin to."},
+];
+
+/* ============ utilidades ============ */
+const $ = id => document.getElementById(id);
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+const shuffle = arr => arr.slice().sort(()=>Math.random()-0.5);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function speak(str){
+  if(!("speechSynthesis" in window)) return;
+  const u = new SpeechSynthesisUtterance(str);
+  u.lang = "en-GB"; u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+function spkBtn(text){
+  const b=document.createElement("button");
+  b.className="spk"; b.title="Escuchar"; b.textContent="🔊";
+  b.addEventListener("click",e=>{e.stopPropagation(); speak(text);});
+  return b;
+}
+
+/* ============ chuleta: render ============ */
+function renderModales(lista, cont){
+  lista.forEach(m=>{
+    const d=document.createElement("div"); d.className="modal";
+    d.innerHTML=`<div class="top"><span class="w">${esc(m.w)}</span><span class="uso">${esc(m.uso)}</span></div><ul class="ejs"></ul>`;
+    const ul=d.querySelector("ul");
+    m.ejs.forEach(([en,es])=>{
+      const li=document.createElement("li");
+      li.append(spkBtn(en));
+      const t=document.createElement("span"); t.textContent=en; li.append(t);
+      const e=document.createElement("span"); e.className="es"; e.textContent=es; li.append(e);
+      ul.append(li);
+    });
+    cont.append(d);
+  });
+}
+renderModales(MODALES, $("listaModales"));
+renderModales(SEMI, $("listaSemi"));
+TRAMPAS.forEach(t=>{
+  const d=document.createElement("div"); d.className="trampa";
+  d.innerHTML=`<div>${t.t}</div><div class="ej">${esc(t.ej)}</div>`;
+  $("listaTrampas").append(d);
+});
+
+/* ============ pestañas ============ */
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("hidden",p.id!==b.dataset.pane));
+  localStorage.setItem("modales_tab", b.id);
+  window.scrollTo(0,0);
+}));
+
+/* ============ práctica ============ */
+let modoError = localStorage.getItem("modales_error")==="1";
+let score = JSON.parse(localStorage.getItem("modales_score")||"null") || {aciertos:0,racha:0,record:0,total:0};
+let mazo = {huecos:[], errores:[]};
+let current=null, answered=false;
+
+function siguiente(){
+  const key = modoError ? "errores" : "huecos";
+  if(!mazo[key].length) mazo[key] = shuffle(modoError ? ERRORES : HUECOS);
+  return mazo[key].pop();
+}
+
+function newRound(){
+  answered=false;
+  current=siguiente();
+  $("opciones").innerHTML=""; $("solucion").innerHTML="";
+  $("btnNext").classList.add("hidden");
+  $("es").textContent = current.es;
+  const f=$("frase");
+  if(modoError){
+    $("tipo").textContent="encuentra el error"; $("tipo").className="tag rojo";
+    f.className="frase mal"; f.textContent=current.mal;
+    $("pregunta").textContent="¿Cuál es la frase correcta?";
+    const ops = shuffle([current.ok, ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(op===current.ok) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }else{
+    $("tipo").textContent="elige el modal"; $("tipo").className="tag";
+    f.className="frase";
+    f.innerHTML = esc(current.s).replace("___",'<span class="hueco">&nbsp;</span>');
+    $("pregunta").textContent="¿Qué va en el hueco?";
+    const correcta = current.ok[0];
+    const ops = shuffle([correcta, ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(current.ok.includes(op)) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }
+}
+
+function fraseCompleta(){
+  if(modoError) return current.ok;
+  return current.s.replace("___", current.ok[0]);
+}
+
+function evaluate(btn){
+  if(answered) return;
+  answered=true;
+  const ok = btn.dataset.correct==="1";
+  document.querySelectorAll(".opt").forEach(b=>{ b.disabled=true; if(b.dataset.correct==="1") b.classList.add("ok"); });
+  if(!ok) btn.classList.add("bad");
+  if(!modoError) $("frase").querySelector(".hueco").textContent = btn.textContent;
+  const s=document.createElement("div"); s.className="sol "+(ok?"ok":"bad");
+  const otras = (!modoError && current.ok.length>1) ? ` <span class="es">(también: ${esc(current.ok.slice(1).join(", "))})</span>` : "";
+  s.innerHTML = `<div>${ok?"✓ Correcto":"✗ Era: <b>"+esc(fraseCompleta())+"</b>"}${otras}</div><span class="tip">${current.tip}</span>`;
+  const b=spkBtn(fraseCompleta()); b.style.marginTop="6px"; s.append(b);
+  $("solucion").append(s);
+  score.total++;
+  if(ok){score.aciertos++; score.racha++; if(score.racha>score.record) score.record=score.racha;}
+  else score.racha=0;
+  localStorage.setItem("modales_score",JSON.stringify(score));
+  paint();
+  $("btnNext").classList.remove("hidden");
+  $("btnNext").focus();
+}
+
+function paint(){
+  $("sAciertos").textContent=score.aciertos; $("sRacha").textContent=score.racha;
+  $("sRecord").textContent=score.record; $("sTotal").textContent=score.total;
+}
+function syncModeUI(){
+  $("optError").checked=modoError;
+  $("lblElige").innerHTML = modoError ? "Elige el modal" : "<b>Elige el modal</b>";
+  $("lblError").innerHTML = modoError ? "<b>Encuentra el error</b>" : "Encuentra el error";
+}
+$("optError").addEventListener("change",e=>{
+  modoError=e.target.checked; localStorage.setItem("modales_error", modoError?"1":"0");
+  syncModeUI(); newRound();
+});
+$("btnNext").addEventListener("click",newRound);
+document.addEventListener("keydown",e=>{ if(e.key==="Enter" && answered && !$("panePractica").classList.contains("hidden")){ e.preventDefault(); newRound(); } });
+
+$("nItems").textContent = HUECOS.length + ERRORES.length;
+syncModeUI(); paint(); newRound();
+const tabGuardada = localStorage.getItem("modales_tab");
+if(tabGuardada && $(tabGuardada)) $(tabGuardada).click();
+</script>
+<script type="module" src="../pwa.js"></script>
+</body>
+</html>
