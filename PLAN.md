@@ -73,6 +73,17 @@ listas de la chuleta en `LISTAS`). En los huecos la pista del verbo va entre par
 `(work)`, y se quita al leer la frase completa. Marcador en localStorage `psimple_score` / `pcont_score`.
 El continuo incluye frases de contraste con el simple (rutina vs ahora, verbos de estado).
 
+## Revisión general — 26-oct-2026
+Repaso de toda la web (gramática, opciones, traducciones, lógica). Corregido:
+- **verbos/**: el 🔊 de *read* en pasado/participio suena «red»; al escribir se acepta «to be» y «was / were»;
+  formas reales (*hanged, shined, betted, lied, quitted*) ya no salen como trampa; trampa «liing» → «lying».
+- **preguntas/**: 10 ordenaciones válidas añadidas a `alt` (oración con *when* delante, etc.); n5-34 pasa a
+  *How much did you pay for this?*; tips de n6-22, n2-39 y n5-23 afinados. Fichas en minúscula: se dejan (decisión de Adil).
+- **modales/**: 3 trampas que en realidad eran válidas (*should rain*, *has to be*, *should like*); *could* ya no
+  vale como hábito; textos de la chuleta precisados (respuesta corta a *Must I…?*, casi modales, *must* + futuro).
+- **presente-simple/ y presente-continuo/**: trampa válida «is open» y «fly» sustituidas; regla de doblar
+  consonante con su excepción (w, x, y).
+
 ## Pendiente
 - Que Adil pruebe «Ordena la pregunta» en el iPhone (instalación, arrastre táctil, sin conexión).
 - Nuevos ejercicios según vayan llegando de clase.

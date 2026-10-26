@@ -229,7 +229,7 @@ const VERBS = [
   {inf:"lose", past:"lost", part:"lost", es:"perder", irr:true},
   {inf:"make", past:"made", part:"made", es:"hacer / fabricar", irr:true},
   {inf:"mean", past:"meant", part:"meant", es:"significar", irr:true},
-  {inf:"meet", past:"met", part:"met", es:"conocer / quedar", irr:true},
+  {inf:"meet", past:"met", part:"met", es:"conocer / quedar (con alguien)", irr:true},
   {inf:"pay", past:"paid", part:"paid", es:"pagar", irr:true},
   {inf:"put", past:"put", part:"put", es:"poner", irr:true},
   {inf:"quit", past:"quit", part:"quit", es:"dejar / abandonar", irr:true},
@@ -332,12 +332,15 @@ const norm = s => s.toLowerCase().trim().replace(/\s+/g," ").replace(/[.,;]+$/,"
 
 let current=null, shownForm=null, targetForm=null, answered=false;
 let testMode = localStorage.getItem("verbos_test")==="1";
-let score = JSON.parse(localStorage.getItem("verbos_score")||"null") || {aciertos:0,racha:0,record:0,total:0};
+let score = null; try { score = JSON.parse(localStorage.getItem("verbos_score")||"null"); } catch(e) {}
+score = score || {aciertos:0,racha:0,record:0,total:0};
 
 /* ---- pronunciación ---- */
-function speak(str){
+function speak(str, form){
   if(!("speechSynthesis" in window)) return;
-  const word = str.split("|")[0];
+  let word = str.split("|")[0];
+  // read / read / read: el pasado y el participio suenan «red»
+  if(word==="read" && form && form!=="inf") word="red";
   const u = new SpeechSynthesisUtterance(word);
   u.lang = "en-GB";
   u.rate = 0.85;
@@ -371,6 +374,7 @@ function addED(w){
   return w+"ed";
 }
 function addING(w){
+  if(w.endsWith("ie")) return w.slice(0,-2)+"ying";
   if(w.length>2 && w.endsWith("e") && !w.endsWith("ee")) return w.slice(0,-1)+"ing";
   if(isCVC(w)) return w+w[w.length-1]+"ing";
   return w+"ing";
@@ -390,12 +394,15 @@ function distractorsOther(form, n){
   return out;
 }
 
+/* formas que existen de verdad (con otro sentido o como variante): nunca como trampa */
+const REALES = new Set(["hanged","shined","betted","lied","quitted"]);
+
 /* trampas plausibles a partir del MISMO verbo */
 function getDistractors(form){
   const exclude = new Set([...variants(current[form]), ...variants(current[shownForm])]);
   const inf = current.inf.split("|")[0];
   const cands=[];
-  const add=x=>{ const k=norm(x); if(!k||exclude.has(k)||cands.some(c=>norm(c)===k)) return; cands.push(x); };
+  const add=x=>{ const k=norm(x); if(!k||exclude.has(k)||REALES.has(k)||cands.some(c=>norm(c)===k)) return; cands.push(x); };
   // otras formas reales del verbo (confusión pasado ↔ participio ↔ infinitivo)
   add(current.past.split("|")[0]);
   add(current.part.split("|")[0]);
@@ -453,7 +460,7 @@ function newRound(auto){
     $("btnCheck").classList.remove("hidden");
   }
   $("btnNext").classList.add("hidden");
-  if(auto) speak(current[shownForm]);
+  if(auto) speak(current[shownForm], shownForm);
 }
 
 function record(ok){
@@ -480,7 +487,7 @@ function evaluate(btn){
   s.className="sol "+(ok?"ok":"bad");
   s.innerHTML=(ok?"✓ correcto":"✗ era “"+display(current[targetForm])+"”")+
     ` <button class="spk sm" title="Escuchar">🔊</button>`;
-  s.querySelector("button").addEventListener("click",()=>speak(current[targetForm]));
+  s.querySelector("button").addEventListener("click",()=>speak(current[targetForm], targetForm));
   group.appendChild(s);
   record(ok);
 }
@@ -492,15 +499,18 @@ function check(){
   document.querySelectorAll(".field").forEach(wrap=>{
     const f=wrap.dataset.form;
     const input=wrap.querySelector("input");
-    const val=norm(input.value);
-    const ok=variants(current[f]).includes(val) && val!=="";
+    let val=norm(input.value);
+    if(f==="inf") val=val.replace(/^to /,"");
+    const vs=variants(current[f]);
+    // vale una forma válida o varias separadas por «/» (was / were, learnt / learned)
+    const ok=val!=="" && val.split("/").map(norm).every(x=>vs.includes(x));
     wrap.classList.add(ok?"ok":"bad");
     input.disabled=true;
     const s=document.createElement("div");
     s.className="sol "+(ok?"ok":"bad");
     s.innerHTML = (ok?"✓ ":"✗ ") + display(current[f]) +
       ` <button class="spk sm" title="Escuchar">🔊</button>`;
-    s.querySelector("button").addEventListener("click",()=>speak(current[f]));
+    s.querySelector("button").addEventListener("click",()=>speak(current[f], f));
     wrap.appendChild(s);
     if(!ok) allOk=false;
   });
@@ -521,7 +531,7 @@ function syncModeUI(){
   $("lblPinchar").innerHTML  = testMode ? "<b>Pinchar opciones</b>" : "Pinchar opciones";
 }
 
-$("shownSpk").addEventListener("click",()=>speak(current[shownForm]));
+$("shownSpk").addEventListener("click",()=>speak(current[shownForm], shownForm));
 $("btnCheck").addEventListener("click",check);
 $("btnNext").addEventListener("click",()=>newRound(true));
 $("optReg").addEventListener("change",()=>newRound(false));

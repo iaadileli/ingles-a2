@@ -85,7 +85,10 @@
    "id": "n1-10",
    "nivel": 1,
    "s": "A:did|S:you|V:come|R:to school by bus",
-   "tip": "<b>Did</b> + sujeto + infinitivo (<i>come</i>). <i>To school</i> y <i>by bus</i>, detrás."
+   "tip": "<b>Did</b> + sujeto + infinitivo (<i>come</i>). <i>To school</i> y <i>by bus</i>, detrás.",
+   "alt": [
+    "did you come by bus to school"
+   ]
   },
   {
    "id": "n1-11",
@@ -565,7 +568,7 @@
    "id": "n2-39",
    "nivel": 2,
    "s": "Q:which bus|A:do|S:you|V:take",
-   "tip": "<b>Which bus</b> va junto: <i>which</i> siempre pegado a su nombre."
+   "tip": "<b>Which bus</b> va junto: aquí <i>which</i> va pegado a su nombre."
   },
   {
    "id": "n2-40",
@@ -784,7 +787,10 @@
    "id": "n3-24",
    "nivel": 3,
    "s": "Q:how far|B:is|S:the station|R:from here",
-   "tip": "<b>How far</b> = a qué distancia. Va junto y con <i>is</i>."
+   "tip": "<b>How far</b> = a qué distancia. Va junto y con <i>is</i>.",
+   "alt": [
+    "how far from here is the station"
+   ]
   },
   {
    "id": "n3-25",
@@ -1382,7 +1388,10 @@
    "id": "n5-23",
    "nivel": 5,
    "s": "Q:who|A:did|S:you|V:go|R:to the concert|P:with",
-   "tip": "<i>Go with</i> = ir con. El <b>with</b> cierra la pregunta, nunca <i>with who</i>."
+   "tip": "<i>Go with</i> = ir con. El <b>with</b> va detrás (normalmente al final), nunca <i>with who</i>.",
+   "alt": [
+    "who did you go with to the concert"
+   ]
   },
   {
    "id": "n5-24",
@@ -1449,8 +1458,8 @@
   {
    "id": "n5-34",
    "nivel": 5,
-   "s": "Q:how much|A:have|S:you|V:paid|R:for this",
-   "tip": "<b>How much have you paid</b>…? Present perfect con <i>how much</i>."
+   "s": "Q:how much|A:did|S:you|V:pay|R:for this",
+   "tip": "<b>How much did you pay</b>…? Pasado: <i>did</i> + sujeto + infinitivo (<i>pay</i>)."
   },
   {
    "id": "n5-35",
@@ -1570,7 +1579,10 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "Q:what|B:were|S:you|V:doing|R:when I called you",
-   "tip": "Pasado continuo: <b>were you doing</b>. La segunda parte (<i>when I called you</i>) va en orden normal."
+   "tip": "Pasado continuo: <b>were you doing</b>. La segunda parte (<i>when I called you</i>) va en orden normal.",
+   "alt": [
+    "when I called you what were you doing"
+   ]
   },
   {
    "id": "n6-04",
@@ -1703,7 +1715,7 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "B:aren't|S:you|R:cold",
-   "tip": "<b>Aren't you</b> + adjetivo? = ¿no tienes…? Negativa con <i>be</i>."
+   "tip": "<b>Aren't you cold?</b> = ¿no tienes frío? Negativa con <i>be</i>: <i>aren't</i> delante del sujeto."
   },
   {
    "id": "n6-23",
@@ -1724,14 +1736,20 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "Q:where|B:were|S:you|V:going|R:when I saw you",
-   "tip": "<b>Were you going</b> + la segunda parte (<i>when I saw you</i>) en orden normal."
+   "tip": "<b>Were you going</b> + la segunda parte (<i>when I saw you</i>) en orden normal.",
+   "alt": [
+    "when I saw you where were you going"
+   ]
   },
   {
    "id": "n6-26",
    "nivel": 6,
    "cefr": "B1",
    "s": "B:was|S:it|V:raining|R:when you left",
-   "tip": "<b>Was it raining</b>…? Pasado continuo de sí/no."
+   "tip": "<b>Was it raining</b>…? Pasado continuo de sí/no.",
+   "alt": [
+    "when you left was it raining"
+   ]
   },
   {
    "id": "n6-27",
@@ -1768,7 +1786,10 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "Q:how long|A:had|S:you|V:been waiting|R:when the bus came",
-   "tip": "Pasado perfecto continuo: <b>had</b> + sujeto + <i>been</i> + <i>-ing</i>."
+   "tip": "Pasado perfecto continuo: <b>had</b> + sujeto + <i>been</i> + <i>-ing</i>.",
+   "alt": [
+    "when the bus came how long had you been waiting"
+   ]
   },
   {
    "id": "n6-31",
@@ -1781,7 +1802,10 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "Q:what|A:did|S:the teacher|V:tell|R:you to do",
-   "tip": "<b>What did</b> + sujeto largo + <i>tell you to do</i>."
+   "tip": "<b>What did</b> + sujeto largo + <i>tell you to do</i>.",
+   "alt": [
+    "what did you tell the teacher to do"
+   ]
   },
   {
    "id": "n6-33",
@@ -1830,7 +1854,8 @@
    "nivel": 6,
    "s": "Q:how long|A:does|S:it|V:take|R:to get to the airport by taxi",
    "alt": [
-    "how long does it take to get by taxi to the airport"
+    "how long does it take to get by taxi to the airport",
+    "how long does it take by taxi to get to the airport"
    ],
    "tip": "<b>How long does it take to</b> + infinitivo. Primero adónde, luego cómo."
   },
@@ -1908,7 +1933,10 @@
    "nivel": 6,
    "cefr": "B1",
    "s": "Q:what|A:did|S:you|V:want|R:to be when you were a child",
-   "tip": "<b>What did you want to be</b>…? = ¿qué querías ser…? + <i>when you were a child</i>."
+   "tip": "<b>What did you want to be</b>…? = ¿qué querías ser…? + <i>when you were a child</i>.",
+   "alt": [
+    "when you were a child what did you want to be"
+   ]
   }
  ]
 }

@@ -163,8 +163,8 @@
       <p class="ej"><span class="no">Do you working?</span> · <span class="no">she doesn't working</span> · <span class="si">Are you working?</span> · <span class="si">she isn't working</span></p>
     </div></div>
     <div class="regla"><div class="n">3</div><div>
-      <p><b>Es para ahora o estos días</b>, no para rutinas.</p>
-      <p class="ej"><span class="no">I'm getting up at 7 every day</span> · <span class="si">I get up at 7 every day</span> · <span class="si">Today I'm getting up late</span></p>
+      <p><b>Es para ahora, estos días o planes ya organizados</b>, no para rutinas.</p>
+      <p class="ej"><span class="no">I'm getting up at 7 every day</span> · <span class="si">I get up at 7 every day</span> · <span class="si">Today I'm working from home</span></p>
     </div></div>
   </div>
 
@@ -250,7 +250,7 @@ const USOS = [
 const ORTO = [
   {w:"+ ing", uso:"lo normal", ejs:[["work → working","trabajar"],["play → playing","jugar"],["see → seeing","ver (la doble e se queda)"]]},
   {w:"quita la e", uso:"si acaba en -e muda", ejs:[["make → making","hacer"],["write → writing","escribir"],["come → coming","venir"]]},
-  {w:"dobla la consonante", uso:"palabra corta: consonante + vocal + consonante", ejs:[["run → running","correr"],["swim → swimming","nadar"],["sit → sitting","sentarse"],["get → getting","conseguir, llegar"]]},
+  {w:"dobla la consonante", uso:"palabra corta acabada en consonante + vocal + consonante (nunca w, x, y)", ejs:[["run → running","correr"],["swim → swimming","nadar"],["sit → sitting","sentarse"],["get → getting","conseguir, llegar"]]},
   {w:"ie → y", uso:"pocos verbos", ejs:[["lie → lying","mentir, tumbarse"],["die → dying","morir"]]},
 ];
 const ESTADO = [
@@ -310,7 +310,7 @@ const HUECOS = [
   {s:"What are you doing? — I ___ dinner. (cook)", ok:["am cooking"], no:["cook","cooking","cooks"], es:"¿Qué haces? — Estoy haciendo la cena.", tip:"Pregunta en continuo → respuesta en continuo: <b>am cooking</b>."},
   {s:"The children ___ in the garden. Can you hear them? (play)", ok:["are playing"], no:["is playing","play","playing"], es:"Los niños están jugando en el jardín. ¿Los oyes?", tip:"<b>the children</b> = they → <b>are playing</b>."},
   {s:"I ___ a new phone. (need)", ok:["need"], no:["am needing","needing","needs"], es:"Necesito un móvil nuevo.", tip:"<b>need</b> es de estado → simple."},
-  {s:"They ___ to Rome next weekend. They've got the tickets. (fly)", ok:["are flying"], no:["fly","flying","flies"], es:"El fin de semana que viene vuelan a Roma. Ya tienen los billetes.", tip:"Plan ya organizado → <b>are flying</b>."},
+  {s:"They ___ to Rome next weekend. They've got the tickets. (fly)", ok:["are flying"], no:["are fly","flying","flies"], es:"El fin de semana que viene vuelan a Roma. Ya tienen los billetes.", tip:"Plan ya organizado → <b>are flying</b>."},
   {s:"Sorry, I can't talk now. I ___. (drive)", ok:["am driving"], no:["drive","am driveing","driving"], es:"Perdona, ahora no puedo hablar. Estoy conduciendo.", tip:"drive → <b>driving</b> (se va la e)."},
   {s:"Ben ___ next to the window right now. (sit)", ok:["is sitting"], no:["is siting","sits","sitting"], es:"Ben está sentado junto a la ventana.", tip:"sit → <b>sitting</b> (doble t)."},
   {s:"These days I ___ hard for my exam. (study)", ok:["am studying"], no:["study","am studing","studying"], es:"Estos días estoy estudiando mucho para el examen.", tip:"Temporal (<b>these days</b>) → <b>am studying</b> (la y se queda)."},
