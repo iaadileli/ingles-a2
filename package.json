@@ -5,6 +5,9 @@
   "scripts": {
     "test": "node --test preguntas/test/*.test.mjs",
     "validar": "node preguntas/validar.mjs",
-    "servir": "python3 -m http.server 8765"
+    "servir": "python3 -m http.server 8765",
+    "validar:paginas": "node validar-paginas.mjs",
+    "comprobar": "node validar-paginas.mjs && node preguntas/validar.mjs && node --test preguntas/test/*.test.mjs",
+    "revisado": "git diff --quiet && git diff --cached --quiet && git rev-parse HEAD^{tree} > \"$(git rev-parse --git-dir)/revisado\" && echo '✓ Sellado: ya se puede hacer push'"
   }
 }

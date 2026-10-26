@@ -18,6 +18,8 @@ PLAN.md           este fichero
 ```
 
 ## Normas
+- **NADA se publica sin seguir `REVISION.md`** (validadores + dos revisiones independientes del contenido +
+  prueba en navegador + sello). El hook `hooks/pre-push` bloquea el push sin sello. Desde 26-oct-2026.
 - Cada ejercicio es una página autocontenida (HTML + CSS + JS en un fichero),
   mismo estilo crema y tipografía que `verbos/`, enlace «← Inglés A2» arriba.
 - Al añadir un ejercicio: crear su carpeta, añadir tarjeta en `index.html`,

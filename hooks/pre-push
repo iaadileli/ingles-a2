@@ -1,0 +1,9 @@
+#!/bin/sh
+# Bloquea el push si el contenido no ha pasado la revisión de REVISION.md (sello con `npm run revisado`).
+sello=$(cat "$(git rev-parse --git-dir)/revisado" 2>/dev/null)
+actual=$(git rev-parse HEAD^{tree})
+if [ "$sello" != "$actual" ]; then
+  echo "✗ PUSH BLOQUEADO: este contenido no está revisado."
+  echo "  Sigue REVISION.md (validadores + dos revisiones + prueba) y luego: npm run revisado"
+  exit 1
+fi
