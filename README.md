@@ -10,6 +10,8 @@ Es una PWA: en Safari de iPhone, «Compartir → Añadir a pantalla de inicio»,
 index.html                 portada: una tarjeta por ejercicio
 verbos/                    juego de verbos irregulares y regulares
 modales/                   verbos modales: chuleta + dos juegos (datos dentro del HTML)
+presente-simple/           presente simple: chuleta + dos juegos (misma plantilla que modales)
+presente-continuo/         presente continuo: chuleta + dos juegos (misma plantilla que modales)
 preguntas/                 «Ordena la pregunta» (orden de las palabras en las preguntas)
   index.html               la app (inicio + juego + resumen), sin dependencias
   diagnostico.js           motor: parseo de roles, temas y diagnóstico del error (sin DOM)

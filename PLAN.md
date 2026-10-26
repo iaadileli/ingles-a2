@@ -31,6 +31,8 @@ PLAN.md           este fichero
 | 1 | `verbos/` | Verbos irregulares y regulares    | ✅     | jun-2026    |
 | 2 | `preguntas/` | Ordena la pregunta (orden de palabras) | ✅ fases 1 y 2, 300 preguntas | 22-sep-2026 |
 | 3 | `modales/` | Verbos modales: chuleta + «elige el modal» (61) + «encuentra el error» (30) | ✅ | 28-sep-2026 |
+| 4 | `presente-simple/` | Presente simple: chuleta + «elige la forma» (40) + «encuentra el error» (25) | ✅ | 26-oct-2026 |
+| 5 | `presente-continuo/` | Presente continuo: chuleta (incl. verbos de estado y simple vs continuo) + «elige la forma» (40) + «encuentra el error» (25) | ✅ | 26-oct-2026 |
 
 ## PWA (22-sep-2026)
 Todo el portal es instalable y funciona sin conexión: `manifest.webmanifest` + `sw.js`
@@ -64,6 +66,12 @@ y pestaña **Practicar** con dos juegos por interruptor: *elige el modal* (frase
 *encuentra el error* (frase mal escrita → elegir la correcta entre 3). Mazo barajado sin
 repetir hasta agotar; marcador en localStorage (`modales_score`). Datos dentro del HTML
 (`HUECOS`, `ERRORES`); al añadir frases, validar que ninguna trampa coincida con una respuesta válida.
+
+## Presente simple y presente continuo (`presente-simple/`, `presente-continuo/`) — 26-oct-2026
+Misma plantilla que `modales/` (mismo CSS y lógica de juego; datos `HUECOS`/`ERRORES` dentro del HTML,
+listas de la chuleta en `LISTAS`). En los huecos la pista del verbo va entre paréntesis al final, p. ej.
+`(work)`, y se quita al leer la frase completa. Marcador en localStorage `psimple_score` / `pcont_score`.
+El continuo incluye frases de contraste con el simple (rutina vs ahora, verbos de estado).
 
 ## Pendiente
 - Que Adil pruebe «Ordena la pregunta» en el iPhone (instalación, arrastre táctil, sin conexión).

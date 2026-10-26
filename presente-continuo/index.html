@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4ece0">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<title>Presente continuo · Inglés A2</title>
+<style>
+  :root{
+    --crema:#f6efe3;
+    --crema2:#efe5d4;
+    --tinta:#2c2a26;
+    --tinta-suave:#6b655b;
+    --acento:#c25b3a;
+    --acento-soft:#e7d9c6;
+    --verde:#3f8f5f;
+    --verde-bg:#e4f0e6;
+    --rojo:#b8463a;
+    --rojo-bg:#f6e3e0;
+    --azul:#4a6b8a;
+    --azul-bg:#dde7ef;
+    --borde:#ddd0bc;
+    --sombra:0 10px 30px rgba(70,55,35,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:linear-gradient(160deg,var(--crema),var(--crema2));
+    color:var(--tinta);
+    min-height:100%;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+  }
+  header{width:100%;max-width:560px;text-align:center;margin:8px 0 14px;position:relative}
+  .volver{display:block;text-align:left;font-family:system-ui,sans-serif;font-size:.85rem;
+          color:var(--tinta-suave);text-decoration:none;margin-bottom:6px}
+  .volver:hover{color:var(--acento)}
+  h1{font-size:1.5rem;margin:0;letter-spacing:.3px}
+  .sub{color:var(--tinta-suave);font-size:.9rem;margin-top:4px}
+
+  /* pestañas */
+  .tabs{max-width:560px;width:100%;display:flex;gap:6px;background:rgba(255,255,255,.5);
+        border:1px solid var(--borde);border-radius:999px;padding:4px;margin-bottom:14px;
+        font-family:system-ui,sans-serif}
+  .tab{flex:1;border:none;background:transparent;color:var(--tinta-suave);font:inherit;font-size:.95rem;
+       font-weight:600;padding:9px 0;border-radius:999px;cursor:pointer}
+  .tab.on{background:var(--acento);color:#fff}
+  .pane{width:100%;max-width:560px}
+  .hidden{display:none!important}
+
+  /* chuleta */
+  .card{
+    width:100%;max-width:560px;background:#fffdf8;border:1px solid var(--borde);
+    border-radius:22px;box-shadow:var(--sombra);padding:22px 20px 20px;margin-bottom:14px
+  }
+  .card h2{font-size:1.1rem;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .card h2 .tag{margin:0}
+  .tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;
+       color:var(--acento);background:var(--acento-soft);padding:4px 10px;border-radius:999px;
+       font-family:system-ui,sans-serif;font-weight:600}
+  .tag.azul{color:var(--azul);background:var(--azul-bg)}
+  .tag.rojo{color:var(--rojo);background:var(--rojo-bg)}
+  .regla{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--borde)}
+  .regla:first-of-type{border-top:none;padding-top:0}
+  .regla .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--acento-soft);color:var(--acento);
+            display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;font-weight:700}
+  .regla p{margin:0;line-height:1.45}
+  .regla .ej{font-family:system-ui,sans-serif;font-size:.9rem;margin-top:3px;color:var(--tinta-suave)}
+  .no{color:var(--rojo);text-decoration:line-through}
+  .si{color:var(--verde);font-weight:600}
+
+  .modal{padding:12px 0;border-top:1px dashed var(--borde)}
+  .modal:first-of-type{border-top:none;padding-top:0}
+  .modal .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .modal .w{font-size:1.4rem;font-weight:600}
+  .modal .uso{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--tinta-suave)}
+  .modal .ejs{margin:5px 0 0;padding:0;list-style:none}
+  .modal .ejs li{display:flex;align-items:center;gap:8px;font-size:1rem;margin-top:3px;flex-wrap:wrap}
+  .modal .ejs .es{flex-basis:100%;padding-left:36px;margin-top:-2px;font-family:system-ui,sans-serif;font-size:.82rem;color:var(--tinta-suave)}
+  .spk{cursor:pointer;border:none;background:var(--acento-soft);color:var(--acento);
+       width:28px;height:28px;border-radius:50%;font-size:.85rem;line-height:1;
+       display:inline-flex;align-items:center;justify-content:center;padding:0;flex:0 0 auto}
+  .spk:active{transform:scale(.92)}
+
+  .trampa{padding:10px 0;border-top:1px dashed var(--borde);line-height:1.45}
+  .trampa:first-of-type{border-top:none;padding-top:0}
+  .trampa b{color:var(--acento)}
+  .trampa .ej{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave);margin-top:2px}
+
+  /* práctica */
+  .modebar{max-width:560px;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+           margin-bottom:12px;font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .modebar b{color:var(--tinta)}
+  .switch{position:relative;display:inline-block;width:52px;height:30px;flex:0 0 auto}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#cdbfa8;border-radius:999px;transition:.2s;cursor:pointer}
+  .slider:before{content:"";position:absolute;height:24px;width:24px;left:3px;top:3px;
+                 background:#fffdf8;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .switch input:checked + .slider{background:var(--acento)}
+  .switch input:checked + .slider:before{transform:translateX(22px)}
+
+  .stats{display:flex;gap:10px;max-width:560px;width:100%;margin-bottom:14px}
+  .stat{flex:1;background:rgba(255,255,255,.55);border:1px solid var(--borde);
+        border-radius:14px;padding:8px 6px;text-align:center}
+  .stat b{display:block;font-size:1.25rem;line-height:1}
+  .stat span{font-size:.7rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.6px}
+
+  .frase{font-size:1.45rem;line-height:1.35;margin:12px 0 4px}
+  .frase .hueco{display:inline-block;min-width:4.5ch;border-bottom:2px solid var(--acento);color:var(--acento);
+                text-align:center;font-weight:600}
+  .frase.mal{color:var(--rojo)}
+  .frase.mal::before{content:"✗ ";font-family:system-ui,sans-serif}
+  .es{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .pregunta{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--tinta-suave);text-transform:uppercase;
+            letter-spacing:.6px;margin:14px 0 6px}
+  .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:1.15rem;
+       padding:12px 16px;margin-bottom:9px;border-radius:12px;border:1.5px solid var(--borde);
+       background:#fcf8f0;color:var(--tinta);cursor:pointer;transition:transform .05s;line-height:1.3}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{border-color:var(--verde);background:var(--verde-bg);color:var(--verde);font-weight:600}
+  .opt.bad{border-color:var(--rojo);background:var(--rojo-bg);color:var(--rojo)}
+  .opt:disabled{cursor:default}
+  .sol{font-family:system-ui,sans-serif;font-size:.95rem;margin-top:8px;padding:12px 14px;border-radius:12px;line-height:1.45}
+  .sol.ok{background:var(--verde-bg);color:#2f6e48}
+  .sol.bad{background:var(--rojo-bg);color:#8f3a30}
+  .sol .tip{color:var(--tinta);margin-top:6px;display:block}
+  .sol .tip b{color:var(--acento)}
+  .actions{margin-top:14px;display:flex;gap:10px}
+  button.act{font-family:system-ui,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;
+         border:none;border-radius:12px;padding:13px 18px;flex:1;transition:transform .05s}
+  button.act:active{transform:scale(.98)}
+  .btn-soft{background:var(--acento-soft);color:var(--tinta)}
+  footer{margin-top:auto;padding-top:20px;font-size:.75rem;color:var(--tinta-suave);
+         font-family:system-ui,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a class="volver" href="../">← Inglés A2</a>
+  <h1>Presente continuo</h1>
+  <div class="sub">I'm working · she isn't working · are you working?</div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab on" id="tabChuleta" data-pane="paneChuleta">Chuleta</button>
+  <button class="tab" id="tabPractica" data-pane="panePractica">Practicar</button>
+</div>
+
+<!-- ===================== CHULETA ===================== -->
+<section class="pane" id="paneChuleta">
+  <div class="card">
+    <h2>Las tres reglas de oro</h2>
+    <div class="regla"><div class="n">1</div><div>
+      <p><b>Siempre dos piezas:</b> <i>am / is / are</i> + verbo con <i>-ing</i>.</p>
+      <p class="ej"><span class="no">I working</span> · <span class="no">she is work</span> · <span class="si">I'm working</span> · <span class="si">she is working</span></p>
+    </div></div>
+    <div class="regla"><div class="n">2</div><div>
+      <p><b>No usa <i>do</i>.</b> Niega con <i>not</i> y pregunta poniendo <i>am / is / are</i> delante.</p>
+      <p class="ej"><span class="no">Do you working?</span> · <span class="no">she doesn't working</span> · <span class="si">Are you working?</span> · <span class="si">she isn't working</span></p>
+    </div></div>
+    <div class="regla"><div class="n">3</div><div>
+      <p><b>Es para ahora o estos días</b>, no para rutinas.</p>
+      <p class="ej"><span class="no">I'm getting up at 7 every day</span> · <span class="si">I get up at 7 every day</span> · <span class="si">Today I'm getting up late</span></p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <h2>La forma <span class="tag">tabla</span></h2>
+    <div id="listaForma"></div>
+  </div>
+
+  <div class="card">
+    <h2>¿Cuándo se usa?</h2>
+    <div id="listaUsos"></div>
+  </div>
+
+  <div class="card">
+    <h2>Cómo se pone la -ing <span class="tag azul">ortografía</span></h2>
+    <div id="listaOrto"></div>
+  </div>
+
+  <div class="card">
+    <h2>Verbos que no van en -ing <span class="tag rojo">estado</span></h2>
+    <p class="es" style="margin:0 0 8px">No son acciones, son estados: <b>like, love, hate, want, need, know, understand, believe, remember, mean</b> y <b>have</b> cuando es «tener». Van en presente simple aunque hables de ahora.</p>
+    <div id="listaEstado"></div>
+  </div>
+
+  <div class="card">
+    <h2>¿Simple o continuo? <span class="tag azul">contraste</span></h2>
+    <div id="listaContraste"></div>
+  </div>
+
+  <div class="card">
+    <h2>Trampas típicas <span class="tag rojo">ojo</span></h2>
+    <div id="listaTrampas"></div>
+  </div>
+</section>
+
+<!-- ===================== PRÁCTICA ===================== -->
+<section class="pane hidden" id="panePractica">
+  <div class="modebar">
+    <span id="lblElige"><b>Elige la forma</b></span>
+    <label class="switch"><input type="checkbox" id="optError"><span class="slider"></span></label>
+    <span id="lblError">Encuentra el error</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="sAciertos">0</b><span>aciertos</span></div>
+    <div class="stat"><b id="sRacha">0</b><span>racha</span></div>
+    <div class="stat"><b id="sRecord">0</b><span>récord</span></div>
+    <div class="stat"><b id="sTotal">0</b><span>intentos</span></div>
+  </div>
+
+  <div class="card">
+    <span id="tipo" class="tag">elige la forma</span>
+    <div class="frase" id="frase"></div>
+    <div class="es" id="es"></div>
+    <div class="pregunta" id="pregunta"></div>
+    <div id="opciones"></div>
+    <div id="solucion"></div>
+    <div class="actions">
+      <button class="act btn-soft hidden" id="btnNext">Siguiente →</button>
+    </div>
+  </div>
+</section>
+
+<footer>Pincha la opción correcta · <span id="nItems"></span> frases</footer>
+
+<script>
+const PREFIJO = "pcont";
+const TXT_ELIGE = "elige la forma";
+
+/* ============ CHULETA: datos ============ */
+/* w = título · uso = explicación corta · ejs = [inglés, español] */
+const FORMA = [
+  {w:"afirmativa", uso:"am / is / are + -ing", ejs:[["I'm working.","Estoy trabajando."],["She's working.","Está trabajando."],["They're working.","Están trabajando."]]},
+  {w:"negativa", uso:"'m not / isn't / aren't + -ing", ejs:[["I'm not working.","No estoy trabajando."],["He isn't working.","No está trabajando."],["We aren't working.","No estamos trabajando."]]},
+  {w:"pregunta", uso:"am / is / are delante del sujeto", ejs:[["Are you working?","¿Estás trabajando?"],["Is she working?","¿Está trabajando?"],["What are you doing?","¿Qué estás haciendo?"]]},
+  {w:"respuesta corta", uso:"repite am / is / are (sin contraer en el sí)", ejs:[["Yes, I am. / No, I'm not.","Sí. / No."],["Yes, she is. / No, she isn't.","Sí. / No."]]},
+];
+const USOS = [
+  {w:"ahora mismo", uso:"now, at the moment, right now, Look!, Listen!", ejs:[["Look! It's snowing.","¡Mira! Está nevando."],["I'm cooking dinner right now.","Ahora mismo estoy haciendo la cena."]]},
+  {w:"estos días", uso:"algo temporal · today, this week, these days", ejs:[["I'm reading a great book.","Estoy leyendo un libro buenísimo."],["She's working in Paris this month.","Este mes está trabajando en París."]]},
+  {w:"planes ya organizados", uso:"futuro con fecha y plan · tomorrow, next week", ejs:[["I'm meeting Ana tomorrow.","Mañana he quedado con Ana."],["We're flying to Rome on Friday.","El viernes volamos a Roma."]]},
+];
+const ORTO = [
+  {w:"+ ing", uso:"lo normal", ejs:[["work → working","trabajar"],["play → playing","jugar"],["see → seeing","ver (la doble e se queda)"]]},
+  {w:"quita la e", uso:"si acaba en -e muda", ejs:[["make → making","hacer"],["write → writing","escribir"],["come → coming","venir"]]},
+  {w:"dobla la consonante", uso:"palabra corta: consonante + vocal + consonante", ejs:[["run → running","correr"],["swim → swimming","nadar"],["sit → sitting","sentarse"],["get → getting","conseguir, llegar"]]},
+  {w:"ie → y", uso:"pocos verbos", ejs:[["lie → lying","mentir, tumbarse"],["die → dying","morir"]]},
+];
+const ESTADO = [
+  {w:"know, want, understand…", uso:"siempre en simple", ejs:[["I know the answer.","Sé la respuesta. (✗ I'm knowing)"],["She wants a coffee.","Quiere un café. (✗ she's wanting)"],["Do you understand?","¿Lo entiendes? (✗ Are you understanding?)"]]},
+  {w:"have", uso:"«tener» va en simple; «comer, tomar, pasarlo» sí va en -ing", ejs:[["He has two brothers.","Tiene dos hermanos."],["He's having lunch.","Está comiendo."],["We're having a great time.","Lo estamos pasando genial."]]},
+];
+const CONTRASTE = [
+  {w:"simple", uso:"siempre, rutina, hechos · always, usually, every day", ejs:[["I usually drive to work.","Normalmente voy al trabajo en coche."],["She works in a bank.","Trabaja en un banco."]]},
+  {w:"continuo", uso:"ahora, temporal · now, today, this week", ejs:[["But today I'm walking.","Pero hoy voy andando."],["This month she's working from home.","Este mes está trabajando desde casa."]]},
+  {w:"las dos", uso:"una pregunta de cada", ejs:[["What do you do? — I'm a teacher.","¿A qué te dedicas? — Soy profesor."],["What are you doing? — I'm cooking.","¿Qué estás haciendo? — Cocinando."]]},
+];
+const TRAMPAS = [
+  {t:"No te comas el <b>be</b>: sin él no hay continuo.", ej:"✗ She working · ✓ She is working"},
+  {t:"Detrás de am / is / are va el verbo con <b>-ing</b>, no tal cual.", ej:"✗ I'm go to the shop · ✓ I'm going to the shop"},
+  {t:"En la respuesta corta afirmativa <b>no se contrae</b>.", ej:"Are you coming? — Yes, I am. (✗ Yes, I'm.)"},
+  {t:"La respuesta corta repite <b>be</b>, nunca do.", ej:"Is it raining? — No, it isn't. (✗ No, it doesn't.)"},
+  {t:"Los verbos de estado (<b>know, like, want…</b>) no van en -ing.", ej:"✗ I'm liking this song · ✓ I like this song"},
+  {t:"Ortografía: <b>making, running, swimming, sitting</b>.", ej:"✗ makeing · ✗ runing · ✗ swiming · ✗ siting"},
+];
+
+/* ============ PRÁCTICA: datos ============ */
+/* HUECOS: s = frase con ___ · ok = respuestas válidas (se muestra la 1ª) · no = trampas (3) · es = traducción · tip = regla */
+const HUECOS = [
+  {s:"I ___ a book at the moment. (read)", ok:["am reading"], no:["read","reading","am read"], es:"Ahora mismo estoy leyendo un libro.", tip:"<b>at the moment</b> → <b>am</b> + <b>reading</b>."},
+  {s:"Look! It ___. (snow)", ok:["is snowing"], no:["snows","snowing","does snow"], es:"¡Mira! Está nevando.", tip:"<b>Look!</b> = está pasando ahora → <b>is snowing</b>."},
+  {s:"She ___ right now. (sleep)", ok:["is sleeping"], no:["sleeps","sleeping","is sleep"], es:"Ahora mismo está durmiendo.", tip:"<b>right now</b> → <b>is sleeping</b>."},
+  {s:"They ___ TV at the moment. (watch)", ok:["are watching"], no:["watch","is watching","are watch"], es:"Ahora mismo están viendo la tele.", tip:"<b>they</b> → <b>are</b> + -ing."},
+  {s:"___ you listening to me?", ok:["Are"], no:["Do","Is","Does"], es:"¿Me estás escuchando?", tip:"Pregunta en continuo → <b>Are</b> you + -ing."},
+  {s:"___ he working today?", ok:["Is"], no:["Does","Are","Do"], es:"¿Trabaja hoy?", tip:"<b>he</b> → <b>Is</b> he + -ing."},
+  {s:"I ___ working today. It's Sunday.", ok:["am not"], no:["don't","isn't","not"], es:"Hoy no trabajo. Es domingo.", tip:"Negativa con <b>I</b> → <b>am not</b> (I'm not)."},
+  {s:"We ___ TV now. We're reading. (watch)", ok:["aren't watching"], no:["don't watch","not watching","aren't watch"], es:"Ahora no estamos viendo la tele. Estamos leyendo.", tip:"Negativa → <b>aren't</b> + <b>watching</b>."},
+  {s:"Listen! Someone ___ the piano. (play)", ok:["is playing"], no:["plays","playing","are playing"], es:"¡Escucha! Alguien está tocando el piano.", tip:"<b>Listen!</b> → ahora. <b>someone</b> = he/she → <b>is</b>."},
+  {s:"My parents ___ in Paris this week. (stay)", ok:["are staying"], no:["stay","is staying","staying"], es:"Mis padres están en París esta semana.", tip:"Algo temporal (<b>this week</b>) → <b>are staying</b>."},
+  {s:"What ___ you doing?", ok:["are"], no:["do","is","does"], es:"¿Qué estás haciendo?", tip:"What + <b>are</b> + you + -ing."},
+  {s:"Why ___ she crying?", ok:["is"], no:["does","are","do"], es:"¿Por qué está llorando?", tip:"Why + <b>is</b> + she + -ing."},
+  {s:"He ___ in the pool now. (swim)", ok:["is swimming"], no:["is swiming","swims","swimming"], es:"Ahora está nadando en la piscina.", tip:"swim → <b>swimming</b> (doble m)."},
+  {s:"I ___ a letter to my grandmother. (write)", ok:["am writing"], no:["am writeing","write","writing"], es:"Estoy escribiendo una carta a mi abuela.", tip:"write → <b>writing</b> (se va la e)."},
+  {s:"Be quiet! The baby ___. (sleep)", ok:["is sleeping"], no:["sleeps","sleep","is sleep"], es:"¡Silencio! El bebé está durmiendo.", tip:"Está pasando ahora → <b>is sleeping</b>."},
+  {s:"Are you coming to the party? — Yes, I ___.", ok:["am"], no:["do","'m","coming"], es:"¿Vienes a la fiesta? — Sí.", tip:"Respuesta corta con <b>am</b>, sin contraer."},
+  {s:"Is it raining? — No, it ___.", ok:["isn't"], no:["doesn't","not","don't"], es:"¿Está lloviendo? — No.", tip:"La pregunta va con <b>is</b> → la respuesta también: <b>isn't</b>."},
+  {s:"I ___ Ana tomorrow at 6. We've got a plan. (meet)", ok:["am meeting"], no:["meet","meeting","meets"], es:"Mañana a las 6 he quedado con Ana.", tip:"Plan ya organizado → <b>am meeting</b>."},
+  {s:"She ___ dinner at the moment. (have)", ok:["is having"], no:["has","haves","is have"], es:"Ahora mismo está cenando.", tip:"<b>have dinner</b> = cenar, es una acción → sí va en -ing."},
+  {s:"I ___ the answer. (know)", ok:["know"], no:["am knowing","knowing","knows"], es:"Sé la respuesta.", tip:"<b>know</b> es de estado: nunca en -ing."},
+  {s:"She ___ chocolate. (love)", ok:["loves"], no:["is loving","love","loving"], es:"Le encanta el chocolate.", tip:"<b>love</b> es de estado → presente simple."},
+  {s:"He usually ___ to work, but today he's walking. (drive)", ok:["drives"], no:["is driving","driving","drive"], es:"Normalmente va al trabajo en coche, pero hoy va andando.", tip:"<b>usually</b> = rutina → simple: <b>drives</b>."},
+  {s:"He usually drives to work, but today he ___. (walk)", ok:["is walking"], no:["walks","walk","walking"], es:"Normalmente va en coche, pero hoy va andando.", tip:"<b>today</b> = algo distinto, temporal → <b>is walking</b>."},
+  {s:"I ___ coffee every morning. (drink)", ok:["drink"], no:["am drinking","drinking","drinks"], es:"Tomo café todas las mañanas.", tip:"<b>every morning</b> = rutina → simple."},
+  {s:"Look! The bus ___. (come)", ok:["is coming"], no:["comes","is comeing","coming"], es:"¡Mira! Viene el autobús.", tip:"come → <b>coming</b> (se va la e)."},
+  {s:"We ___ a new house this year. (build)", ok:["are building"], no:["build","are build","building"], es:"Este año estamos construyendo una casa.", tip:"Temporal (<b>this year</b>) → <b>are building</b>."},
+  {s:"Do you understand? — Yes, I ___.", ok:["do"], no:["am","understanding","does"], es:"¿Lo entiendes? — Sí.", tip:"La pregunta va con <b>do</b> (understand es de estado) → <b>Yes, I do</b>."},
+  {s:"Why ___ you laughing?", ok:["are"], no:["do","is","does"], es:"¿Por qué te ríes?", tip:"Why + <b>are</b> + you + -ing."},
+  {s:"It ___ much in Seville in summer. (not / rain)", ok:["doesn't rain"], no:["isn't raining","don't rain","not rains"], es:"En Sevilla no llueve mucho en verano.", tip:"Es un hecho general, no algo de ahora → simple: <b>doesn't rain</b>."},
+  {s:"Hurry up! Everyone ___ for you. (wait)", ok:["is waiting"], no:["are waiting","waits","waiting"], es:"¡Date prisa! Todo el mundo te está esperando.", tip:"<b>everyone</b> es singular en inglés → <b>is waiting</b>."},
+  {s:"Shh! I ___ to the radio. (listen)", ok:["am listening"], no:["listen","am listen","listening"], es:"¡Chis! Estoy escuchando la radio.", tip:"Ahora → <b>am listening</b>."},
+  {s:"She ___ on the phone at the moment. (talk)", ok:["is talking"], no:["talks","talking","is talk"], es:"Ahora mismo está hablando por teléfono.", tip:"<b>at the moment</b> → <b>is talking</b>."},
+  {s:"What ___ you do? — I'm a teacher.", ok:["do"], no:["are","is","does"], es:"¿A qué te dedicas? — Soy profesor.", tip:"Trabajo = siempre → simple: <b>What do you do?</b>"},
+  {s:"What are you doing? — I ___ dinner. (cook)", ok:["am cooking"], no:["cook","cooking","cooks"], es:"¿Qué haces? — Estoy haciendo la cena.", tip:"Pregunta en continuo → respuesta en continuo: <b>am cooking</b>."},
+  {s:"The children ___ in the garden. Can you hear them? (play)", ok:["are playing"], no:["is playing","play","playing"], es:"Los niños están jugando en el jardín. ¿Los oyes?", tip:"<b>the children</b> = they → <b>are playing</b>."},
+  {s:"I ___ a new phone. (need)", ok:["need"], no:["am needing","needing","needs"], es:"Necesito un móvil nuevo.", tip:"<b>need</b> es de estado → simple."},
+  {s:"They ___ to Rome next weekend. They've got the tickets. (fly)", ok:["are flying"], no:["fly","flying","flies"], es:"El fin de semana que viene vuelan a Roma. Ya tienen los billetes.", tip:"Plan ya organizado → <b>are flying</b>."},
+  {s:"Sorry, I can't talk now. I ___. (drive)", ok:["am driving"], no:["drive","am driveing","driving"], es:"Perdona, ahora no puedo hablar. Estoy conduciendo.", tip:"drive → <b>driving</b> (se va la e)."},
+  {s:"Ben ___ next to the window right now. (sit)", ok:["is sitting"], no:["is siting","sits","sitting"], es:"Ben está sentado junto a la ventana.", tip:"sit → <b>sitting</b> (doble t)."},
+  {s:"These days I ___ hard for my exam. (study)", ok:["am studying"], no:["study","am studing","studying"], es:"Estos días estoy estudiando mucho para el examen.", tip:"Temporal (<b>these days</b>) → <b>am studying</b> (la y se queda)."},
+];
+
+/* ERRORES: mal = frase con error · ok = versión correcta · no = otras dos mal · tip = qué fallaba */
+const ERRORES = [
+  {mal:"She working now.", ok:"She is working now.", no:["She are working now.","She is work now."], es:"Ahora está trabajando.", tip:"Falta el <b>be</b>: <b>is</b> working."},
+  {mal:"I am go to the shop.", ok:"I am going to the shop.", no:["I going to the shop.","I am goes to the shop."], es:"Voy a la tienda.", tip:"Detrás de am, el verbo con <b>-ing</b>."},
+  {mal:"Does she sleeping?", ok:"Is she sleeping?", no:["Is she sleep?","Are she sleeping?"], es:"¿Está durmiendo?", tip:"El continuo no usa do: <b>Is she…?</b>"},
+  {mal:"They doesn't watching TV.", ok:"They aren't watching TV.", no:["They don't watching TV.","They isn't watching TV."], es:"No están viendo la tele.", tip:"Negativa con be: <b>aren't</b>."},
+  {mal:"He is runing in the park.", ok:"He is running in the park.", no:["He is runnig in the park.","He running in the park."], es:"Está corriendo en el parque.", tip:"run → <b>running</b> (doble n)."},
+  {mal:"I am makeing a cake.", ok:"I am making a cake.", no:["I am make a cake.","I making a cake."], es:"Estoy haciendo una tarta.", tip:"make → <b>making</b> (se va la e)."},
+  {mal:"Look! It rains.", ok:"Look! It's raining.", no:["Look! It raining.","Look! It's rain."], es:"¡Mira! Está lloviendo.", tip:"<b>Look!</b> = ahora → continuo."},
+  {mal:"I am knowing the answer.", ok:"I know the answer.", no:["I knowing the answer.","I am know the answer."], es:"Sé la respuesta.", tip:"<b>know</b> es de estado → simple."},
+  {mal:"Are you coming? — Yes, I'm.", ok:"Are you coming? — Yes, I am.", no:["Are you coming? — Yes, I do.","Are you coming? — Yes, I coming."], es:"¿Vienes? — Sí.", tip:"En la respuesta corta afirmativa <b>no se contrae</b>."},
+  {mal:"What you are doing?", ok:"What are you doing?", no:["What do you doing?","What are you do?"], es:"¿Qué estás haciendo?", tip:"Pregunta: <b>are</b> va delante de you."},
+  {mal:"She is swiming.", ok:"She is swimming.", no:["She swiming.","She are swimming."], es:"Está nadando.", tip:"swim → <b>swimming</b> (doble m)."},
+  {mal:"I am liking this song.", ok:"I like this song.", no:["I liking this song.","I am like this song."], es:"Me gusta esta canción.", tip:"<b>like</b> es de estado → simple."},
+  {mal:"We are wait for the bus.", ok:"We are waiting for the bus.", no:["We waiting for the bus.","We is waiting for the bus."], es:"Estamos esperando el autobús.", tip:"are + <b>-ing</b>."},
+  {mal:"He is siting next to me.", ok:"He is sitting next to me.", no:["He is sit next to me.","He sitting next to me."], es:"Está sentado a mi lado.", tip:"sit → <b>sitting</b> (doble t)."},
+  {mal:"Listen! The baby cries.", ok:"Listen! The baby is crying.", no:["Listen! The baby crying.","Listen! The baby is cry."], es:"¡Escucha! El bebé está llorando.", tip:"<b>Listen!</b> = ahora → <b>is crying</b>."},
+  {mal:"I am getting up at 7 every day.", ok:"I get up at 7 every day.", no:["I getting up at 7 every day.","I am get up at 7 every day."], es:"Me levanto a las 7 todos los días.", tip:"<b>every day</b> = rutina → simple."},
+  {mal:"Is raining.", ok:"It is raining.", no:["It raining.","It is rain."], es:"Está lloviendo.", tip:"En inglés siempre hace falta sujeto: <b>It</b> is raining."},
+  {mal:"She is study for her exam.", ok:"She is studying for her exam.", no:["She studying for her exam.","She is studing for her exam."], es:"Está estudiando para el examen.", tip:"study → <b>studying</b> (la y se queda)."},
+  {mal:"Why is he cry?", ok:"Why is he crying?", no:["Why does he crying?","Why he is crying?"], es:"¿Por qué está llorando?", tip:"is + <b>-ing</b>."},
+  {mal:"I'm not understanding.", ok:"I don't understand.", no:["I not understanding.","I'm not understand."], es:"No lo entiendo.", tip:"<b>understand</b> es de estado → simple."},
+  {mal:"They is playing football.", ok:"They are playing football.", no:["They playing football.","They are play football."], es:"Están jugando al fútbol.", tip:"<b>they</b> → <b>are</b>."},
+  {mal:"Do you working today?", ok:"Are you working today?", no:["Are you work today?","Is you working today?"], es:"¿Trabajas hoy?", tip:"Sin do: <b>Are you</b> + -ing."},
+  {mal:"He is wanting a new bike.", ok:"He wants a new bike.", no:["He want a new bike.","He is want a new bike."], es:"Quiere una bici nueva.", tip:"<b>want</b> es de estado → simple."},
+  {mal:"I am writting an email.", ok:"I am writing an email.", no:["I am writeing an email.","I writing an email."], es:"Estoy escribiendo un correo.", tip:"write → <b>writing</b>: se va la e y la t <b>no</b> se dobla."},
+  {mal:"Is she lying? — No, she doesn't.", ok:"Is she lying? — No, she isn't.", no:["Is she lying? — No, she not.","Is she lying? — No, she don't."], es:"¿Está mintiendo? — No.", tip:"La respuesta corta repite <b>is</b>: <b>isn't</b>."},
+];
+
+/* ============ montaje de la chuleta ============ */
+const LISTAS = [[FORMA,"listaForma"],[USOS,"listaUsos"],[ORTO,"listaOrto"],[ESTADO,"listaEstado"],[CONTRASTE,"listaContraste"]];
+</script>
+<script>
+/* ============ utilidades ============ */
+const $ = id => document.getElementById(id);
+const shuffle = arr => arr.slice().sort(()=>Math.random()-0.5);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function speak(str){
+  if(!("speechSynthesis" in window)) return;
+  const u = new SpeechSynthesisUtterance(str.replace(/→/g,", ").replace(/[✗✓]/g,""));
+  u.lang = "en-GB"; u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+function spkBtn(text){
+  const b=document.createElement("button");
+  b.className="spk"; b.title="Escuchar"; b.textContent="🔊";
+  b.addEventListener("click",e=>{e.stopPropagation(); speak(text);});
+  return b;
+}
+
+/* ============ chuleta: render ============ */
+function renderLista(lista, cont){
+  lista.forEach(m=>{
+    const d=document.createElement("div"); d.className="modal";
+    d.innerHTML=`<div class="top"><span class="w">${esc(m.w)}</span><span class="uso">${esc(m.uso)}</span></div><ul class="ejs"></ul>`;
+    const ul=d.querySelector("ul");
+    m.ejs.forEach(([en,es])=>{
+      const li=document.createElement("li");
+      li.append(spkBtn(en));
+      const t=document.createElement("span"); t.textContent=en; li.append(t);
+      const e=document.createElement("span"); e.className="es"; e.textContent=es; li.append(e);
+      ul.append(li);
+    });
+    cont.append(d);
+  });
+}
+LISTAS.forEach(([lista,id])=>renderLista(lista,$(id)));
+TRAMPAS.forEach(t=>{
+  const d=document.createElement("div"); d.className="trampa";
+  d.innerHTML=`<div>${t.t}</div><div class="ej">${esc(t.ej)}</div>`;
+  $("listaTrampas").append(d);
+});
+
+/* ============ pestañas ============ */
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("hidden",p.id!==b.dataset.pane));
+  localStorage.setItem(PREFIJO+"_tab", b.id);
+  window.scrollTo(0,0);
+}));
+
+/* ============ práctica ============ */
+let modoError = localStorage.getItem(PREFIJO+"_error")==="1";
+let score = JSON.parse(localStorage.getItem(PREFIJO+"_score")||"null") || {aciertos:0,racha:0,record:0,total:0};
+let mazo = {huecos:[], errores:[]};
+let current=null, answered=false;
+
+function siguiente(){
+  const key = modoError ? "errores" : "huecos";
+  if(!mazo[key].length) mazo[key] = shuffle(modoError ? ERRORES : HUECOS);
+  return mazo[key].pop();
+}
+
+function newRound(){
+  answered=false;
+  current=siguiente();
+  $("opciones").innerHTML=""; $("solucion").innerHTML="";
+  $("btnNext").classList.add("hidden");
+  $("es").textContent = current.es;
+  const f=$("frase");
+  if(modoError){
+    $("tipo").textContent="encuentra el error"; $("tipo").className="tag rojo";
+    f.className="frase mal"; f.textContent=current.mal;
+    $("pregunta").textContent="¿Cuál es la frase correcta?";
+    const ops = shuffle([current.ok, ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(op===current.ok) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }else{
+    $("tipo").textContent=TXT_ELIGE; $("tipo").className="tag";
+    f.className="frase";
+    f.innerHTML = esc(current.s).replace("___",'<span class="hueco">&nbsp;</span>');
+    $("pregunta").textContent="¿Qué va en el hueco?";
+    const ops = shuffle([current.ok[0], ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(current.ok.includes(op)) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }
+}
+
+/* la frase completa, sin la pista del verbo entre paréntesis */
+function fraseCompleta(){
+  if(modoError) return current.ok;
+  return current.s.replace("___", current.ok[0]).replace(/\s*\([^)]*\)\s*$/,"");
+}
+
+function evaluate(btn){
+  if(answered) return;
+  answered=true;
+  const ok = btn.dataset.correct==="1";
+  document.querySelectorAll(".opt").forEach(b=>{ b.disabled=true; if(b.dataset.correct==="1") b.classList.add("ok"); });
+  if(!ok) btn.classList.add("bad");
+  if(!modoError) $("frase").querySelector(".hueco").textContent = btn.textContent;
+  const s=document.createElement("div"); s.className="sol "+(ok?"ok":"bad");
+  s.innerHTML = `<div>${ok?"✓ Correcto":"✗ Era: <b>"+esc(fraseCompleta())+"</b>"}</div><span class="tip">${current.tip}</span>`;
+  const b=spkBtn(fraseCompleta()); b.style.marginTop="6px"; s.append(b);
+  $("solucion").append(s);
+  score.total++;
+  if(ok){score.aciertos++; score.racha++; if(score.racha>score.record) score.record=score.racha;}
+  else score.racha=0;
+  localStorage.setItem(PREFIJO+"_score",JSON.stringify(score));
+  paint();
+  $("btnNext").classList.remove("hidden");
+  $("btnNext").focus();
+}
+
+function paint(){
+  $("sAciertos").textContent=score.aciertos; $("sRacha").textContent=score.racha;
+  $("sRecord").textContent=score.record; $("sTotal").textContent=score.total;
+}
+function syncModeUI(){
+  $("optError").checked=modoError;
+  $("lblElige").innerHTML = modoError ? "Elige la forma" : "<b>Elige la forma</b>";
+  $("lblError").innerHTML = modoError ? "<b>Encuentra el error</b>" : "Encuentra el error";
+}
+$("optError").addEventListener("change",e=>{
+  modoError=e.target.checked; localStorage.setItem(PREFIJO+"_error", modoError?"1":"0");
+  syncModeUI(); newRound();
+});
+$("btnNext").addEventListener("click",newRound);
+document.addEventListener("keydown",e=>{ if(e.key==="Enter" && answered && !$("panePractica").classList.contains("hidden")){ e.preventDefault(); newRound(); } });
+
+$("nItems").textContent = HUECOS.length + ERRORES.length;
+syncModeUI(); paint(); newRound();
+const tabGuardada = localStorage.getItem(PREFIJO+"_tab");
+if(tabGuardada && $(tabGuardada)) $(tabGuardada).click();
+</script>
+<script type="module" src="../pwa.js"></script>
+</body>
+</html>

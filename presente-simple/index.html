@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#f4ece0">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<title>Presente simple · Inglés A2</title>
+<style>
+  :root{
+    --crema:#f6efe3;
+    --crema2:#efe5d4;
+    --tinta:#2c2a26;
+    --tinta-suave:#6b655b;
+    --acento:#c25b3a;
+    --acento-soft:#e7d9c6;
+    --verde:#3f8f5f;
+    --verde-bg:#e4f0e6;
+    --rojo:#b8463a;
+    --rojo-bg:#f6e3e0;
+    --azul:#4a6b8a;
+    --azul-bg:#dde7ef;
+    --borde:#ddd0bc;
+    --sombra:0 10px 30px rgba(70,55,35,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    background:linear-gradient(160deg,var(--crema),var(--crema2));
+    color:var(--tinta);
+    min-height:100%;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(16px,env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+  }
+  header{width:100%;max-width:560px;text-align:center;margin:8px 0 14px;position:relative}
+  .volver{display:block;text-align:left;font-family:system-ui,sans-serif;font-size:.85rem;
+          color:var(--tinta-suave);text-decoration:none;margin-bottom:6px}
+  .volver:hover{color:var(--acento)}
+  h1{font-size:1.5rem;margin:0;letter-spacing:.3px}
+  .sub{color:var(--tinta-suave);font-size:.9rem;margin-top:4px}
+
+  /* pestañas */
+  .tabs{max-width:560px;width:100%;display:flex;gap:6px;background:rgba(255,255,255,.5);
+        border:1px solid var(--borde);border-radius:999px;padding:4px;margin-bottom:14px;
+        font-family:system-ui,sans-serif}
+  .tab{flex:1;border:none;background:transparent;color:var(--tinta-suave);font:inherit;font-size:.95rem;
+       font-weight:600;padding:9px 0;border-radius:999px;cursor:pointer}
+  .tab.on{background:var(--acento);color:#fff}
+  .pane{width:100%;max-width:560px}
+  .hidden{display:none!important}
+
+  /* chuleta */
+  .card{
+    width:100%;max-width:560px;background:#fffdf8;border:1px solid var(--borde);
+    border-radius:22px;box-shadow:var(--sombra);padding:22px 20px 20px;margin-bottom:14px
+  }
+  .card h2{font-size:1.1rem;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .card h2 .tag{margin:0}
+  .tag{display:inline-block;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;
+       color:var(--acento);background:var(--acento-soft);padding:4px 10px;border-radius:999px;
+       font-family:system-ui,sans-serif;font-weight:600}
+  .tag.azul{color:var(--azul);background:var(--azul-bg)}
+  .tag.rojo{color:var(--rojo);background:var(--rojo-bg)}
+  .regla{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--borde)}
+  .regla:first-of-type{border-top:none;padding-top:0}
+  .regla .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--acento-soft);color:var(--acento);
+            display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;font-weight:700}
+  .regla p{margin:0;line-height:1.45}
+  .regla .ej{font-family:system-ui,sans-serif;font-size:.9rem;margin-top:3px;color:var(--tinta-suave)}
+  .no{color:var(--rojo);text-decoration:line-through}
+  .si{color:var(--verde);font-weight:600}
+
+  .modal{padding:12px 0;border-top:1px dashed var(--borde)}
+  .modal:first-of-type{border-top:none;padding-top:0}
+  .modal .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .modal .w{font-size:1.4rem;font-weight:600}
+  .modal .uso{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--tinta-suave)}
+  .modal .ejs{margin:5px 0 0;padding:0;list-style:none}
+  .modal .ejs li{display:flex;align-items:center;gap:8px;font-size:1rem;margin-top:3px;flex-wrap:wrap}
+  .modal .ejs .es{flex-basis:100%;padding-left:36px;margin-top:-2px;font-family:system-ui,sans-serif;font-size:.82rem;color:var(--tinta-suave)}
+  .spk{cursor:pointer;border:none;background:var(--acento-soft);color:var(--acento);
+       width:28px;height:28px;border-radius:50%;font-size:.85rem;line-height:1;
+       display:inline-flex;align-items:center;justify-content:center;padding:0;flex:0 0 auto}
+  .spk:active{transform:scale(.92)}
+
+  .trampa{padding:10px 0;border-top:1px dashed var(--borde);line-height:1.45}
+  .trampa:first-of-type{border-top:none;padding-top:0}
+  .trampa b{color:var(--acento)}
+  .trampa .ej{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave);margin-top:2px}
+
+  /* práctica */
+  .modebar{max-width:560px;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+           margin-bottom:12px;font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .modebar b{color:var(--tinta)}
+  .switch{position:relative;display:inline-block;width:52px;height:30px;flex:0 0 auto}
+  .switch input{opacity:0;width:0;height:0}
+  .slider{position:absolute;inset:0;background:#cdbfa8;border-radius:999px;transition:.2s;cursor:pointer}
+  .slider:before{content:"";position:absolute;height:24px;width:24px;left:3px;top:3px;
+                 background:#fffdf8;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+  .switch input:checked + .slider{background:var(--acento)}
+  .switch input:checked + .slider:before{transform:translateX(22px)}
+
+  .stats{display:flex;gap:10px;max-width:560px;width:100%;margin-bottom:14px}
+  .stat{flex:1;background:rgba(255,255,255,.55);border:1px solid var(--borde);
+        border-radius:14px;padding:8px 6px;text-align:center}
+  .stat b{display:block;font-size:1.25rem;line-height:1}
+  .stat span{font-size:.7rem;color:var(--tinta-suave);text-transform:uppercase;letter-spacing:.6px}
+
+  .frase{font-size:1.45rem;line-height:1.35;margin:12px 0 4px}
+  .frase .hueco{display:inline-block;min-width:4.5ch;border-bottom:2px solid var(--acento);color:var(--acento);
+                text-align:center;font-weight:600}
+  .frase.mal{color:var(--rojo)}
+  .frase.mal::before{content:"✗ ";font-family:system-ui,sans-serif}
+  .es{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--tinta-suave)}
+  .pregunta{font-family:system-ui,sans-serif;font-size:.8rem;color:var(--tinta-suave);text-transform:uppercase;
+            letter-spacing:.6px;margin:14px 0 6px}
+  .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:1.15rem;
+       padding:12px 16px;margin-bottom:9px;border-radius:12px;border:1.5px solid var(--borde);
+       background:#fcf8f0;color:var(--tinta);cursor:pointer;transition:transform .05s;line-height:1.3}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{border-color:var(--verde);background:var(--verde-bg);color:var(--verde);font-weight:600}
+  .opt.bad{border-color:var(--rojo);background:var(--rojo-bg);color:var(--rojo)}
+  .opt:disabled{cursor:default}
+  .sol{font-family:system-ui,sans-serif;font-size:.95rem;margin-top:8px;padding:12px 14px;border-radius:12px;line-height:1.45}
+  .sol.ok{background:var(--verde-bg);color:#2f6e48}
+  .sol.bad{background:var(--rojo-bg);color:#8f3a30}
+  .sol .tip{color:var(--tinta);margin-top:6px;display:block}
+  .sol .tip b{color:var(--acento)}
+  .actions{margin-top:14px;display:flex;gap:10px}
+  button.act{font-family:system-ui,sans-serif;font-size:1rem;font-weight:600;cursor:pointer;
+         border:none;border-radius:12px;padding:13px 18px;flex:1;transition:transform .05s}
+  button.act:active{transform:scale(.98)}
+  .btn-soft{background:var(--acento-soft);color:var(--tinta)}
+  footer{margin-top:auto;padding-top:20px;font-size:.75rem;color:var(--tinta-suave);
+         font-family:system-ui,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <a class="volver" href="../">← Inglés A2</a>
+  <h1>Presente simple</h1>
+  <div class="sub">I work · she works · do / does · don't / doesn't</div>
+</header>
+
+<div class="tabs" role="tablist">
+  <button class="tab on" id="tabChuleta" data-pane="paneChuleta">Chuleta</button>
+  <button class="tab" id="tabPractica" data-pane="panePractica">Practicar</button>
+</div>
+
+<!-- ===================== CHULETA ===================== -->
+<section class="pane" id="paneChuleta">
+  <div class="card">
+    <h2>Las tres reglas de oro</h2>
+    <div class="regla"><div class="n">1</div><div>
+      <p><b>He / she / it → el verbo lleva -s.</b> Con los demás, el verbo tal cual.</p>
+      <p class="ej"><span class="no">she work</span> · <span class="no">my brother live</span> · <span class="si">she works</span> · <span class="si">my brother lives</span></p>
+    </div></div>
+    <div class="regla"><div class="n">2</div><div>
+      <p><b>Negativa y pregunta con <i>do / does</i>.</b> Si usas <i>does</i>, la -s se la queda él y el verbo va sin -s.</p>
+      <p class="ej"><span class="no">she doesn't works</span> · <span class="no">Does he likes it?</span> · <span class="si">she doesn't work</span> · <span class="si">Does he like it?</span></p>
+    </div></div>
+    <div class="regla"><div class="n">3</div><div>
+      <p><b><i>To be</i> va por libre:</b> nunca lleva <i>do</i>. Niega con <i>not</i> y pregunta dándose la vuelta.</p>
+      <p class="ej"><span class="no">Do you are tired?</span> · <span class="no">I don't am</span> · <span class="si">Are you tired?</span> · <span class="si">I'm not</span></p>
+    </div></div>
+  </div>
+
+  <div class="card">
+    <h2>La forma <span class="tag">tabla</span></h2>
+    <div id="listaForma"></div>
+  </div>
+
+  <div class="card">
+    <h2>¿Cuándo se usa?</h2>
+    <div id="listaUsos"></div>
+  </div>
+
+  <div class="card">
+    <h2>Cómo se pone la -s <span class="tag azul">ortografía</span></h2>
+    <div id="listaOrto"></div>
+  </div>
+
+  <div class="card">
+    <h2>Adverbios de frecuencia <span class="tag azul">dónde van</span></h2>
+    <p class="es" style="margin:0 0 8px"><b>always</b> (siempre) · <b>usually</b> (normalmente) · <b>often</b> (a menudo) · <b>sometimes</b> (a veces) · <b>never</b> (nunca)</p>
+    <div id="listaAdv"></div>
+  </div>
+
+  <div class="card">
+    <h2>Trampas típicas <span class="tag rojo">ojo</span></h2>
+    <div id="listaTrampas"></div>
+  </div>
+</section>
+
+<!-- ===================== PRÁCTICA ===================== -->
+<section class="pane hidden" id="panePractica">
+  <div class="modebar">
+    <span id="lblElige"><b>Elige la forma</b></span>
+    <label class="switch"><input type="checkbox" id="optError"><span class="slider"></span></label>
+    <span id="lblError">Encuentra el error</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="sAciertos">0</b><span>aciertos</span></div>
+    <div class="stat"><b id="sRacha">0</b><span>racha</span></div>
+    <div class="stat"><b id="sRecord">0</b><span>récord</span></div>
+    <div class="stat"><b id="sTotal">0</b><span>intentos</span></div>
+  </div>
+
+  <div class="card">
+    <span id="tipo" class="tag">elige la forma</span>
+    <div class="frase" id="frase"></div>
+    <div class="es" id="es"></div>
+    <div class="pregunta" id="pregunta"></div>
+    <div id="opciones"></div>
+    <div id="solucion"></div>
+    <div class="actions">
+      <button class="act btn-soft hidden" id="btnNext">Siguiente →</button>
+    </div>
+  </div>
+</section>
+
+<footer>Pincha la opción correcta · <span id="nItems"></span> frases</footer>
+
+<script>
+const PREFIJO = "psimple";
+const TXT_ELIGE = "elige la forma";
+
+/* ============ CHULETA: datos ============ */
+/* w = título · uso = explicación corta · ejs = [inglés, español] */
+const FORMA = [
+  {w:"I / you / we / they", uso:"verbo tal cual · don't · do", ejs:[["I work in an office.","Trabajo en una oficina."],["I don't work on Sundays.","No trabajo los domingos."],["Do you work here?","¿Trabajas aquí?"],["Yes, I do. / No, I don't.","Sí. / No."]]},
+  {w:"he / she / it", uso:"verbo + s · doesn't · does (y el verbo sin -s)", ejs:[["She works in a hospital.","Trabaja en un hospital."],["She doesn't work at night.","No trabaja de noche."],["Does she work here?","¿Trabaja aquí?"],["Yes, she does. / No, she doesn't.","Sí. / No."]]},
+];
+const USOS = [
+  {w:"rutinas y hábitos", uso:"lo que haces normalmente · every day, on Mondays, usually", ejs:[["I get up at seven every day.","Me levanto a las siete todos los días."],["We play tennis on Saturdays.","Jugamos al tenis los sábados."]]},
+  {w:"hechos y verdades", uso:"lo que es siempre así", ejs:[["Water boils at 100 degrees.","El agua hierve a 100 grados."],["My sister lives in London.","Mi hermana vive en Londres."]]},
+  {w:"gustos y estados", uso:"like, love, hate, want, need, know, understand", ejs:[["I love chocolate.","Me encanta el chocolate."],["Do you know the answer?","¿Sabes la respuesta?"]]},
+  {w:"horarios", uso:"trenes, clases, películas, tiendas", ejs:[["The train leaves at 8:30.","El tren sale a las 8:30."],["The shop opens at nine.","La tienda abre a las nueve."]]},
+];
+const ORTO = [
+  {w:"+ s", uso:"lo normal", ejs:[["work → works","trabajar"],["play → plays","jugar (vocal + y → solo -s)"]]},
+  {w:"+ es", uso:"si acaba en -o, -ch, -sh, -ss, -x", ejs:[["go → goes","ir"],["do → does","hacer"],["watch → watches","mirar"],["wash → washes","lavar"],["miss → misses","echar de menos"],["fix → fixes","arreglar"]]},
+  {w:"y → ies", uso:"consonante + y", ejs:[["study → studies","estudiar"],["cry → cries","llorar"],["fly → flies","volar"]]},
+  {w:"irregular", uso:"solo uno", ejs:[["have → has","tener"]]},
+];
+const ADV = [
+  {w:"antes del verbo", uso:"con casi todos los verbos", ejs:[["She always gets up early.","Siempre se levanta pronto."],["I never eat meat.","Nunca como carne."],["Do you often go to the cinema?","¿Vas a menudo al cine?"]]},
+  {w:"después de be", uso:"con am / is / are", ejs:[["She is always late.","Siempre llega tarde."],["We are never at home on Fridays.","Los viernes nunca estamos en casa."]]},
+];
+const TRAMPAS = [
+  {t:"Con <b>does / doesn't</b> el verbo <b>pierde la -s</b>: la -s solo sale una vez.", ej:"She works · She doesn't work · Does she work?"},
+  {t:"<b>He / she / it</b> → <b>doesn't</b>, nunca don't.", ej:"✗ He don't like it · ✓ He doesn't like it"},
+  {t:"<b>People</b> es plural: sin -s.", ej:"✗ People lives here · ✓ People live here"},
+  {t:"Las respuestas cortas repiten <b>do / does</b>, no el verbo.", ej:"Do you like tea? — Yes, I do. (✗ Yes, I like.)"},
+  {t:"<b>To be</b> nunca lleva do / does.", ej:"✗ Do you are Spanish? · ✓ Are you Spanish?"},
+  {t:"Si <b>who / what</b> es el sujeto, la pregunta va sin do / does.", ej:"Who lives here? · What happens next?"},
+];
+
+/* ============ PRÁCTICA: datos ============ */
+/* HUECOS: s = frase con ___ · ok = respuestas válidas (se muestra la 1ª) · no = trampas (3) · es = traducción · tip = regla */
+const HUECOS = [
+  {s:"She ___ in a bank. (work)", ok:["works"], no:["work","working","is work"], es:"Trabaja en un banco.", tip:"<b>she</b> → verbo + <b>-s</b>."},
+  {s:"I ___ coffee in the morning. (drink)", ok:["drink"], no:["drinks","drinking","am drink"], es:"Tomo café por la mañana.", tip:"Con <b>I</b>, el verbo tal cual."},
+  {s:"My brother ___ football on Saturdays. (play)", ok:["plays"], no:["play","plaies","playing"], es:"Mi hermano juega al fútbol los sábados.", tip:"<b>my brother</b> = he → <b>plays</b>. Vocal + y → solo -s."},
+  {s:"He ___ English every evening. (study)", ok:["studies"], no:["studys","study","studying"], es:"Estudia inglés todas las tardes.", tip:"Consonante + y → <b>-ies</b>: study → <b>studies</b>."},
+  {s:"My mum ___ the dishes after dinner. (wash)", ok:["washes"], no:["washs","wash","washing"], es:"Mi madre friega los platos después de cenar.", tip:"Acaba en -sh → <b>-es</b>: <b>washes</b>."},
+  {s:"The train ___ at 8:30. (leave)", ok:["leaves"], no:["leave","leaving","is leave"], es:"El tren sale a las 8:30.", tip:"Horarios → presente simple. <b>the train</b> = it → <b>leaves</b>."},
+  {s:"Water ___ at 100 degrees. (boil)", ok:["boils"], no:["boil","boiling","is boil"], es:"El agua hierve a 100 grados.", tip:"Hechos que son siempre así → presente simple, y <b>water</b> = it → <b>boils</b>."},
+  {s:"She ___ to the gym every day. (go)", ok:["goes"], no:["gos","go","going"], es:"Va al gimnasio todos los días.", tip:"Acaba en -o → <b>-es</b>: <b>goes</b>."},
+  {s:"___ you like pizza?", ok:["Do"], no:["Does","Are","Is"], es:"¿Te gusta la pizza?", tip:"Pregunta con <b>you</b> → <b>Do</b>."},
+  {s:"___ your sister live in Madrid?", ok:["Does"], no:["Do","Is","Lives"], es:"¿Tu hermana vive en Madrid?", tip:"<b>your sister</b> = she → <b>Does</b>."},
+  {s:"He ___ like vegetables.", ok:["doesn't"], no:["don't","isn't","not"], es:"No le gustan las verduras.", tip:"<b>he</b> → <b>doesn't</b>."},
+  {s:"We ___ work on Sundays.", ok:["don't"], no:["doesn't","aren't","not"], es:"No trabajamos los domingos.", tip:"<b>we</b> → <b>don't</b>."},
+  {s:"Does she speak French? — Yes, she ___.", ok:["does"], no:["do","speaks","is"], es:"¿Habla francés? — Sí.", tip:"La respuesta corta repite <b>does</b>."},
+  {s:"Do they live here? — No, they ___.", ok:["don't"], no:["doesn't","aren't","not"], es:"¿Viven aquí? — No.", tip:"La respuesta corta repite <b>do</b> en negativa: <b>don't</b>."},
+  {s:"Where ___ he work?", ok:["does"], no:["do","is","works"], es:"¿Dónde trabaja?", tip:"Palabra interrogativa + <b>does</b> + he + verbo."},
+  {s:"What time ___ you get up?", ok:["do"], no:["does","are","get"], es:"¿A qué hora te levantas?", tip:"Palabra interrogativa + <b>do</b> + you + verbo."},
+  {s:"She doesn't ___ meat.", ok:["eat"], no:["eats","eating","to eat"], es:"No come carne.", tip:"Detrás de <b>doesn't</b>, el verbo <b>sin -s</b>."},
+  {s:"Does he ___ a car?", ok:["have"], no:["has","having","haves"], es:"¿Tiene coche?", tip:"Detrás de <b>does</b>, el verbo sin -s: <b>have</b>, no has."},
+  {s:"My father ___ two cars. (have)", ok:["has"], no:["have","haves","is have"], es:"Mi padre tiene dos coches.", tip:"<b>have</b> es irregular: he / she → <b>has</b>."},
+  {s:"I ___ always late for work.", ok:["am"], no:["do","is","be"], es:"Siempre llego tarde al trabajo.", tip:"<b>late</b> va con <b>be</b>: I <b>am</b>. El adverbio va después de be."},
+  {s:"My parents ___ from Morocco.", ok:["are"], no:["is","do","does"], es:"Mis padres son de Marruecos.", tip:"<b>be</b> con they → <b>are</b>. Sin do."},
+  {s:"He ___ the bus to work. (catch)", ok:["catches"], no:["catchs","catch","catching"], es:"Coge el autobús para ir al trabajo.", tip:"Acaba en -ch → <b>-es</b>: <b>catches</b>."},
+  {s:"It ___ a lot in London. (rain)", ok:["rains"], no:["rain","raining","is rain"], es:"Llueve mucho en Londres.", tip:"<b>it</b> → <b>rains</b>."},
+  {s:"My cat ___ all day. (sleep)", ok:["sleeps"], no:["sleep","sleeping","sleepes"], es:"Mi gato duerme todo el día.", tip:"<b>my cat</b> = it → <b>sleeps</b>."},
+  {s:"She ___ her homework after school. (do)", ok:["does"], no:["dos","do","doing"], es:"Hace los deberes después del colegio.", tip:"<b>do</b> → <b>does</b> (acaba en -o)."},
+  {s:"The shop ___ at 9 a.m. (open)", ok:["opens"], no:["open","opening","is open"], es:"La tienda abre a las 9.", tip:"Horario → <b>opens</b>."},
+  {s:"I ___ know the answer.", ok:["don't"], no:["doesn't","am not","not"], es:"No sé la respuesta.", tip:"<b>I</b> → <b>don't</b>. <i>Know</i> no va con be."},
+  {s:"People in Spain ___ dinner late. (have)", ok:["have"], no:["has","haves","having"], es:"En España se cena tarde.", tip:"<b>people</b> es plural (= they) → <b>have</b>."},
+  {s:"My parents ___ in a small village. (live)", ok:["live"], no:["lives","living","is live"], es:"Mis padres viven en un pueblo pequeño.", tip:"<b>my parents</b> = they → sin -s."},
+  {s:"How often ___ you go to the cinema?", ok:["do"], no:["does","are","is"], es:"¿Cada cuánto vas al cine?", tip:"<b>How often</b> + <b>do</b> + you + verbo."},
+  {s:"Who ___ in that house? (live)", ok:["lives"], no:["live","living","is live"], es:"¿Quién vive en esa casa?", tip:"<b>Who</b> es el sujeto: sin do, y el verbo con <b>-s</b>."},
+  {s:"He ___ TV in the evening. (watch)", ok:["watches"], no:["watchs","watch","watching"], es:"Ve la tele por la tarde.", tip:"Acaba en -ch → <b>-es</b>: <b>watches</b>."},
+  {s:"My baby ___ a lot at night. (cry)", ok:["cries"], no:["crys","cry","crying"], es:"Mi bebé llora mucho por la noche.", tip:"Consonante + y → <b>-ies</b>: <b>cries</b>."},
+  {s:"I usually ___ to work by bus. (go)", ok:["go"], no:["goes","going","am go"], es:"Normalmente voy al trabajo en autobús.", tip:"<b>I</b> → verbo tal cual; el adverbio va delante."},
+  {s:"___ it snow in your city in winter?", ok:["Does"], no:["Do","Is","Snows"], es:"¿Nieva en tu ciudad en invierno?", tip:"<b>it</b> → <b>Does</b>."},
+  {s:"They never ___ breakfast. (have)", ok:["have"], no:["has","having","haves"], es:"Nunca desayunan.", tip:"<b>they</b> → <b>have</b>."},
+  {s:"This bag ___ 20 euros. (cost)", ok:["costs"], no:["cost","costing","is cost"], es:"Este bolso cuesta 20 euros.", tip:"<b>this bag</b> = it → <b>costs</b>."},
+  {s:"Tom ___ smoke.", ok:["doesn't"], no:["don't","isn't","not"], es:"Tom no fuma.", tip:"<b>Tom</b> = he → <b>doesn't</b>."},
+  {s:"Is she a doctor? — No, she ___.", ok:["isn't"], no:["doesn't","don't","not"], es:"¿Es médica? — No.", tip:"La pregunta va con <b>is</b> → la respuesta también: <b>isn't</b>."},
+  {s:"She ___ the piano very well. (play)", ok:["plays"], no:["plaies","play","playing"], es:"Toca muy bien el piano.", tip:"Vocal + y → solo <b>-s</b>: <b>plays</b>."},
+];
+
+/* ERRORES: mal = frase con error · ok = versión correcta · no = otras dos mal · tip = qué fallaba */
+const ERRORES = [
+  {mal:"She work in a hospital.", ok:"She works in a hospital.", no:["She working in a hospital.","She is work in a hospital."], es:"Trabaja en un hospital.", tip:"<b>she</b> → verbo + <b>-s</b>."},
+  {mal:"He doesn't likes coffee.", ok:"He doesn't like coffee.", no:["He don't like coffee.","He not likes coffee."], es:"No le gusta el café.", tip:"Con <b>doesn't</b>, el verbo va <b>sin -s</b>."},
+  {mal:"Does she works here?", ok:"Does she work here?", no:["Do she work here?","Works she here?"], es:"¿Trabaja aquí?", tip:"Con <b>does</b>, el verbo va <b>sin -s</b>."},
+  {mal:"My brother don't eat fish.", ok:"My brother doesn't eat fish.", no:["My brother doesn't eats fish.","My brother not eat fish."], es:"Mi hermano no come pescado.", tip:"<b>my brother</b> = he → <b>doesn't</b>."},
+  {mal:"Do you are tired?", ok:"Are you tired?", no:["Do you tired?","Is you tired?"], es:"¿Estás cansado?", tip:"<b>To be</b> no lleva do: <b>Are you…?</b>"},
+  {mal:"She gos to school by bus.", ok:"She goes to school by bus.", no:["She go to school by bus.","She goings to school by bus."], es:"Va al colegio en autobús.", tip:"go → <b>goes</b>."},
+  {mal:"He studys every night.", ok:"He studies every night.", no:["He study every night.","He studyes every night."], es:"Estudia todas las noches.", tip:"Consonante + y → <b>-ies</b>."},
+  {mal:"I always am late.", ok:"I am always late.", no:["I always be late.","Always I am late."], es:"Siempre llego tarde.", tip:"El adverbio va <b>después de be</b>."},
+  {mal:"She has always breakfast at 7.", ok:"She always has breakfast at 7.", no:["She always have breakfast at 7.","Always she have breakfast at 7."], es:"Siempre desayuna a las 7.", tip:"El adverbio va <b>antes del verbo</b> (que no sea be)."},
+  {mal:"Where does he lives?", ok:"Where does he live?", no:["Where do he live?","Where he lives?"], es:"¿Dónde vive?", tip:"Con <b>does</b>, el verbo sin -s."},
+  {mal:"What you do on Sundays?", ok:"What do you do on Sundays?", no:["What does you do on Sundays?","What you does on Sundays?"], es:"¿Qué haces los domingos?", tip:"Falta el auxiliar: <b>What do you…?</b>"},
+  {mal:"My father haves a big car.", ok:"My father has a big car.", no:["My father have a big car.","My father is have a big car."], es:"Mi padre tiene un coche grande.", tip:"have → <b>has</b>."},
+  {mal:"People lives in small flats here.", ok:"People live in small flats here.", no:["People is live in small flats here.","People living in small flats here."], es:"Aquí la gente vive en pisos pequeños.", tip:"<b>people</b> es plural: sin -s."},
+  {mal:"Do you like tea? — Yes, I like.", ok:"Do you like tea? — Yes, I do.", no:["Do you like tea? — Yes, I am.","Do you like tea? — Yes, I likes."], es:"¿Te gusta el té? — Sí.", tip:"La respuesta corta repite <b>do</b>."},
+  {mal:"She watchs TV every night.", ok:"She watches TV every night.", no:["She watch TV every night.","She watchies TV every night."], es:"Ve la tele todas las noches.", tip:"Acaba en -ch → <b>-es</b>."},
+  {mal:"I not understand.", ok:"I don't understand.", no:["I doesn't understand.","I amn't understand."], es:"No lo entiendo.", tip:"La negativa necesita <b>don't</b>."},
+  {mal:"Does your parents live here?", ok:"Do your parents live here?", no:["Does your parents lives here?","Are your parents live here?"], es:"¿Tus padres viven aquí?", tip:"<b>your parents</b> = they → <b>Do</b>."},
+  {mal:"The film start at 9.", ok:"The film starts at 9.", no:["The film starting at 9.","The film is start at 9."], es:"La película empieza a las 9.", tip:"<b>the film</b> = it → <b>starts</b>."},
+  {mal:"He don't have a car.", ok:"He doesn't have a car.", no:["He doesn't has a car.","He not have a car."], es:"No tiene coche.", tip:"<b>he</b> → <b>doesn't</b> + verbo sin -s."},
+  {mal:"Is she work at night?", ok:"Does she work at night?", no:["Does she works at night?","Do she work at night?"], es:"¿Trabaja de noche?", tip:"Con un verbo normal, la pregunta va con <b>does</b>, no con is."},
+  {mal:"My sister plaies tennis.", ok:"My sister plays tennis.", no:["My sister play tennis.","My sister playes tennis."], es:"Mi hermana juega al tenis.", tip:"Vocal + y → solo <b>-s</b>."},
+  {mal:"We doesn't live here.", ok:"We don't live here.", no:["We not live here.","We aren't live here."], es:"No vivimos aquí.", tip:"<b>we</b> → <b>don't</b>."},
+  {mal:"How often you go swimming?", ok:"How often do you go swimming?", no:["How often does you go swimming?","How often you goes swimming?"], es:"¿Cada cuánto vas a nadar?", tip:"Falta el auxiliar: <b>How often do you…?</b>"},
+  {mal:"It rain a lot in winter.", ok:"It rains a lot in winter.", no:["It raining a lot in winter.","It is rain a lot in winter."], es:"Llueve mucho en invierno.", tip:"<b>it</b> → <b>rains</b>."},
+  {mal:"She is never eat meat.", ok:"She never eats meat.", no:["She never eat meat.","She doesn't never eat meat."], es:"Nunca come carne.", tip:"Sin be: adverbio + verbo con <b>-s</b>."},
+];
+
+/* ============ montaje de la chuleta ============ */
+const LISTAS = [[FORMA,"listaForma"],[USOS,"listaUsos"],[ORTO,"listaOrto"],[ADV,"listaAdv"]];
+</script>
+<script>
+/* ============ utilidades ============ */
+const $ = id => document.getElementById(id);
+const shuffle = arr => arr.slice().sort(()=>Math.random()-0.5);
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function speak(str){
+  if(!("speechSynthesis" in window)) return;
+  const u = new SpeechSynthesisUtterance(str.replace(/→/g,", ").replace(/[✗✓]/g,""));
+  u.lang = "en-GB"; u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+function spkBtn(text){
+  const b=document.createElement("button");
+  b.className="spk"; b.title="Escuchar"; b.textContent="🔊";
+  b.addEventListener("click",e=>{e.stopPropagation(); speak(text);});
+  return b;
+}
+
+/* ============ chuleta: render ============ */
+function renderLista(lista, cont){
+  lista.forEach(m=>{
+    const d=document.createElement("div"); d.className="modal";
+    d.innerHTML=`<div class="top"><span class="w">${esc(m.w)}</span><span class="uso">${esc(m.uso)}</span></div><ul class="ejs"></ul>`;
+    const ul=d.querySelector("ul");
+    m.ejs.forEach(([en,es])=>{
+      const li=document.createElement("li");
+      li.append(spkBtn(en));
+      const t=document.createElement("span"); t.textContent=en; li.append(t);
+      const e=document.createElement("span"); e.className="es"; e.textContent=es; li.append(e);
+      ul.append(li);
+    });
+    cont.append(d);
+  });
+}
+LISTAS.forEach(([lista,id])=>renderLista(lista,$(id)));
+TRAMPAS.forEach(t=>{
+  const d=document.createElement("div"); d.className="trampa";
+  d.innerHTML=`<div>${t.t}</div><div class="ej">${esc(t.ej)}</div>`;
+  $("listaTrampas").append(d);
+});
+
+/* ============ pestañas ============ */
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("hidden",p.id!==b.dataset.pane));
+  localStorage.setItem(PREFIJO+"_tab", b.id);
+  window.scrollTo(0,0);
+}));
+
+/* ============ práctica ============ */
+let modoError = localStorage.getItem(PREFIJO+"_error")==="1";
+let score = JSON.parse(localStorage.getItem(PREFIJO+"_score")||"null") || {aciertos:0,racha:0,record:0,total:0};
+let mazo = {huecos:[], errores:[]};
+let current=null, answered=false;
+
+function siguiente(){
+  const key = modoError ? "errores" : "huecos";
+  if(!mazo[key].length) mazo[key] = shuffle(modoError ? ERRORES : HUECOS);
+  return mazo[key].pop();
+}
+
+function newRound(){
+  answered=false;
+  current=siguiente();
+  $("opciones").innerHTML=""; $("solucion").innerHTML="";
+  $("btnNext").classList.add("hidden");
+  $("es").textContent = current.es;
+  const f=$("frase");
+  if(modoError){
+    $("tipo").textContent="encuentra el error"; $("tipo").className="tag rojo";
+    f.className="frase mal"; f.textContent=current.mal;
+    $("pregunta").textContent="¿Cuál es la frase correcta?";
+    const ops = shuffle([current.ok, ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(op===current.ok) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }else{
+    $("tipo").textContent=TXT_ELIGE; $("tipo").className="tag";
+    f.className="frase";
+    f.innerHTML = esc(current.s).replace("___",'<span class="hueco">&nbsp;</span>');
+    $("pregunta").textContent="¿Qué va en el hueco?";
+    const ops = shuffle([current.ok[0], ...current.no]);
+    ops.forEach(op=>{
+      const b=document.createElement("button"); b.className="opt"; b.textContent=op;
+      if(current.ok.includes(op)) b.dataset.correct="1";
+      b.addEventListener("click",()=>evaluate(b));
+      $("opciones").append(b);
+    });
+  }
+}
+
+/* la frase completa, sin la pista del verbo entre paréntesis */
+function fraseCompleta(){
+  if(modoError) return current.ok;
+  return current.s.replace("___", current.ok[0]).replace(/\s*\([^)]*\)\s*$/,"");
+}
+
+function evaluate(btn){
+  if(answered) return;
+  answered=true;
+  const ok = btn.dataset.correct==="1";
+  document.querySelectorAll(".opt").forEach(b=>{ b.disabled=true; if(b.dataset.correct==="1") b.classList.add("ok"); });
+  if(!ok) btn.classList.add("bad");
+  if(!modoError) $("frase").querySelector(".hueco").textContent = btn.textContent;
+  const s=document.createElement("div"); s.className="sol "+(ok?"ok":"bad");
+  s.innerHTML = `<div>${ok?"✓ Correcto":"✗ Era: <b>"+esc(fraseCompleta())+"</b>"}</div><span class="tip">${current.tip}</span>`;
+  const b=spkBtn(fraseCompleta()); b.style.marginTop="6px"; s.append(b);
+  $("solucion").append(s);
+  score.total++;
+  if(ok){score.aciertos++; score.racha++; if(score.racha>score.record) score.record=score.racha;}
+  else score.racha=0;
+  localStorage.setItem(PREFIJO+"_score",JSON.stringify(score));
+  paint();
+  $("btnNext").classList.remove("hidden");
+  $("btnNext").focus();
+}
+
+function paint(){
+  $("sAciertos").textContent=score.aciertos; $("sRacha").textContent=score.racha;
+  $("sRecord").textContent=score.record; $("sTotal").textContent=score.total;
+}
+function syncModeUI(){
+  $("optError").checked=modoError;
+  $("lblElige").innerHTML = modoError ? "Elige la forma" : "<b>Elige la forma</b>";
+  $("lblError").innerHTML = modoError ? "<b>Encuentra el error</b>" : "Encuentra el error";
+}
+$("optError").addEventListener("change",e=>{
+  modoError=e.target.checked; localStorage.setItem(PREFIJO+"_error", modoError?"1":"0");
+  syncModeUI(); newRound();
+});
+$("btnNext").addEventListener("click",newRound);
+document.addEventListener("keydown",e=>{ if(e.key==="Enter" && answered && !$("panePractica").classList.contains("hidden")){ e.preventDefault(); newRound(); } });
+
+$("nItems").textContent = HUECOS.length + ERRORES.length;
+syncModeUI(); paint(); newRound();
+const tabGuardada = localStorage.getItem(PREFIJO+"_tab");
+if(tabGuardada && $(tabGuardada)) $(tabGuardada).click();
+</script>
+<script type="module" src="../pwa.js"></script>
+</body>
+</html>
