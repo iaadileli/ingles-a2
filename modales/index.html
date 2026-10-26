@@ -174,7 +174,7 @@
   </div>
 
   <div class="card">
-    <h2>Los «casi modales» <span class="tag azul">se conjugan</span></h2>
+    <h2>Los «casi modales» <span class="tag azul">llevan to</span></h2>
     <p class="es" style="margin:0 0 8px">Se parecen a los modales, pero casi todos llevan <i>to</i>, y <i>have to</i> sí se conjuga (<i>has to, had to, don't have to</i>). <i>Needn't</i> es un modal normal.</p>
     <div id="listaSemi"></div>
   </div>
@@ -227,7 +227,7 @@ const MODALES = [
   {w:"should", uso:"consejo · lo correcto", ejs:[["You should rest.","Deberías descansar."],["You shouldn't eat so much sugar.","No deberías comer tanto azúcar."]]},
   {w:"shall", uso:"sugerencias y ofrecimientos con I / we", ejs:[["Shall we go?","¿Nos vamos?"],["Shall I open it?","¿Lo abro?"]]},
   {w:"will", uso:"futuro · promesas · decisiones del momento", ejs:[["I'll call you tomorrow.","Te llamo mañana."],["It will be sunny.","Hará sol."]]},
-  {w:"would", uso:"condicional · cortesía · hábitos del pasado", ejs:[["I would buy it if I had money.","Lo compraría si tuviera dinero."],["Would you like a coffee?","¿Te apetece un café?"],["When I was a child, I would play in the street.","De niño jugaba en la calle."]]},
+  {w:"would", uso:"condicional · cortesía · hábitos del pasado (solo acciones; con estados como have, live, be → used to)", ejs:[["I would buy it if I had money.","Lo compraría si tuviera dinero."],["Would you like a coffee?","¿Te apetece un café?"],["When I was a child, I would play in the street.","De niño jugaba en la calle."]]},
 ];
 const SEMI = [
   {w:"have to", uso:"obligación externa (una norma, el jefe, la ley)", ejs:[["I have to wear a uniform.","Tengo que llevar uniforme."],["She has to work on Saturdays.","Tiene que trabajar los sábados."],["We had to wait.","Tuvimos que esperar."]]},
@@ -240,8 +240,8 @@ const TRAMPAS = [
   {t:"Para deducir que algo <b>no</b> es cierto se usa <b>can't</b>, no mustn't.", ej:"He must be at home (seguro que sí) · He can't be at home (seguro que no)"},
   {t:"<b>must</b> no tiene pasado ni va con will. Se usa <b>had to</b> y <b>will have to</b>.", ej:"Yesterday I had to work · Tomorrow I'll have to work"},
   {t:"Dos modales <b>no pueden ir juntos</b>. Will + must → <b>will have to</b>. Might + can → <b>might be able to</b>.", ej:"✗ I will can · ✓ I will be able to"},
-  {t:"<b>would like</b> sí lleva <i>to</i>, porque el <i>to</i> es de <i>like</i>, no de <i>would</i>.", ej:"I would like to go · Would you like to come?"},
-  {t:"Las respuestas cortas <b>repiten el modal</b>, nunca do. Excepción: a <i>Must I…?</i> se contesta en negativa <b>No, you don't have to</b> (no hace falta).", ej:"Can you swim? — Yes, I can. · Must I go? — Yes, you must. / No, you don't have to."},
+  {t:"<b>would like + to + verbo</b>: el <i>to</i> es de <i>like</i>, no de <i>would</i>. Con una cosa, sin to: <i>I'd like a coffee</i>.", ej:"I would like to go · Would you like to come?"},
+  {t:"Las respuestas cortas <b>repiten el modal</b>, nunca do. Excepción: a <i>Must I…?</i> se contesta en negativa <b>No, you don't have to</b> o <b>No, you needn't</b> (no hace falta).", ej:"Can you swim? — Yes, I can. · Must I go? — Yes, you must. / No, you don't have to."},
 ];
 
 /* ============ PRÁCTICA: datos ============ */
@@ -254,30 +254,30 @@ const HUECOS = [
   {s:"___ I open the window? It's hot.", ok:["Can","Could","May"], no:["Must","Will","Do"], es:"¿Puedo abrir la ventana? Hace calor.", tip:"Pedir permiso → <b>Can / Could / May I…?</b>"},
   {s:"You look tired. You ___ go to bed early.", ok:["should"], no:["can","may","would"], es:"Pareces cansado. Deberías acostarte pronto.", tip:"Consejo → <b>should</b>."},
   {s:"It ___ rain tomorrow. Take an umbrella.", ok:["might","may","could"], no:["must","mustn't","can"], es:"Puede que llueva mañana. Coge un paraguas.", tip:"Posibilidad → <b>might / may / could</b>."},
-  {s:"I ___ go to the doctor. I've got a terrible headache.", ok:["must","have to","should"], no:["can","might","may"], es:"Tengo que ir al médico. Me duele muchísimo la cabeza.", tip:"Obligación o necesidad → <b>must / have to</b>."},
+  {s:"I ___ go to the doctor. I've got a terrible headache.", ok:["must","have to","should"], no:["mustn't","can't","needn't"], es:"Tengo que ir al médico. Me duele muchísimo la cabeza.", tip:"Obligación o necesidad → <b>must / have to</b>."},
   {s:"___ you help me with this box, please?", ok:["Can","Could","Would","Will"], no:["Must","Should","May"], es:"¿Me ayudas con esta caja, por favor?", tip:"Petición → <b>Can / Could / Would you…?</b> <i>May you</i> no existe."},
   {s:"She ___ speak three languages.", ok:["can"], no:["cans","musts","should"], es:"Sabe hablar tres idiomas.", tip:"<b>can</b> no cambia en tercera persona: <i>she can</i>, nunca <span class='no'>she cans</span>."},
   {s:"He ___ be at home. The lights are on.", ok:["must"], no:["can't","mustn't","shouldn't"], es:"Debe de estar en casa. Las luces están encendidas.", tip:"Deducción segura («seguro que sí») → <b>must</b>."},
-  {s:"That ___ be John. He's in Paris this week.", ok:["can't"], no:["must","mustn't","shouldn't"], es:"No puede ser John. Está en París esta semana.", tip:"Deducción negativa («seguro que no») → <b>can't</b>, nunca mustn't."},
+  {s:"That ___ be John. He's in Paris this week.", ok:["can't"], no:["must","mustn't","has to"], es:"No puede ser John. Está en París esta semana.", tip:"Deducción negativa («seguro que no») → <b>can't</b>, no mustn't."},
   {s:"In the UK, you ___ drive on the left.", ok:["must","have to"], no:["can","might","could"], es:"En el Reino Unido tienes que conducir por la izquierda.", tip:"Obligación por ley → <b>must / have to</b>."},
   {s:"___ we go to the cinema tonight?", ok:["Shall"], no:["Must","Would","Do"], es:"¿Vamos al cine esta noche?", tip:"Sugerencia → <b>Shall we…?</b>"},
   {s:"I ___ like a coffee, please.", ok:["would","'d"], no:["will","must","can"], es:"Quisiera un café, por favor.", tip:"<b>would like</b> = quisiera, me gustaría."},
   {s:"Students ___ use their phones in the exam.", ok:["mustn't","can't","may not"], no:["don't have to","needn't","wouldn't"], es:"Los alumnos no pueden usar el móvil en el examen.", tip:"Prohibición → <b>mustn't / can't</b>."},
-  {s:"You ___ eat so much sugar. It's bad for you.", ok:["shouldn't"], no:["don't have to","needn't","couldn't"], es:"No deberías comer tanto azúcar. Es malo para ti.", tip:"Consejo negativo → <b>shouldn't</b>."},
+  {s:"You ___ eat so much sugar. It's bad for you.", ok:["shouldn't"], no:["can","will","may"], es:"No deberías comer tanto azúcar. Es malo para ti.", tip:"Consejo negativo → <b>shouldn't</b>."},
   {s:"I ___ come to the party tomorrow. I'm not sure yet.", ok:["might","may"], no:["must","will","can't"], es:"Puede que vaya a la fiesta mañana. Aún no lo sé.", tip:"No estás seguro → <b>might / may</b>."},
-  {s:"When I was a child, I ___ play in the street every day.", ok:["would"], no:["can","must","may"], es:"De niño jugaba en la calle todos los días.", tip:"Hábito del pasado → <b>would</b> (o <i>used to</i>)."},
+  {s:"When I was a child, I ___ play in the street every day.", ok:["would"], no:["can","must","may"], es:"De niño jugaba en la calle todos los días.", tip:"Hábito del pasado → <b>would</b> (o <i>used to</i>). Ojo: <i>would</i> solo con acciones; con estados (<i>have, live, be</i>) → <i>used to</i>."},
   {s:"___ I have your name, please?", ok:["Can","Could","May"], no:["Must","Should","Will"], es:"¿Me dice su nombre, por favor?", tip:"Petición educada → <b>Could / May I…?</b>"},
   {s:"We ___ hurry. The train leaves in five minutes.", ok:["must","have to","should"], no:["can","may","might"], es:"Tenemos que darnos prisa. El tren sale en cinco minutos.", tip:"Necesidad → <b>must / have to</b>."},
   {s:"You ___ be quiet in the library.", ok:["must","have to","should"], no:["can","might","would"], es:"Hay que estar en silencio en la biblioteca.", tip:"Norma → <b>must / have to</b>."},
   {s:"I ___ find my keys. Have you seen them?", ok:["can't"], no:["mustn't","shouldn't","don't have to"], es:"No encuentro las llaves. ¿Las has visto?", tip:"No ser capaz → <b>can't</b>."},
-  {s:"He ___ come tomorrow, but he isn't sure.", ok:["might","may"], no:["must","should","can't"], es:"Puede que venga mañana, pero no está seguro.", tip:"Posibilidad → <b>might / may</b>."},
+  {s:"He ___ come tomorrow, but he isn't sure.", ok:["might","may"], no:["must","has to","can't"], es:"Puede que venga mañana, pero no está seguro.", tip:"Posibilidad → <b>might / may</b>."},
   {s:"___ you like some tea?", ok:["Would"], no:["Must","Should","Will"], es:"¿Te apetece un té?", tip:"Ofrecer → <b>Would you like…?</b>"},
   {s:"I ___ help you with your homework if you want.", ok:["can","could","will"], no:["must","have to","mustn't"], es:"Te puedo ayudar con los deberes si quieres.", tip:"Ofrecimiento → <b>can / could / will</b>."},
   {s:"Dogs ___ enter the restaurant.", ok:["can't","mustn't","may not"], no:["don't have to","needn't","couldn't"], es:"Los perros no pueden entrar en el restaurante.", tip:"Prohibición → <b>can't / mustn't</b>."},
-  {s:"It's late. I ___ go now.", ok:["must","have to","should"], no:["can","might","would"], es:"Es tarde. Tengo que irme ya.", tip:"Obligación → <b>must / have to</b>."},
+  {s:"It's late. I ___ go now.", ok:["must","have to","should"], no:["mustn't","needn't","would"], es:"Es tarde. Tengo que irme ya.", tip:"Obligación → <b>must / have to</b>."},
   {s:"Tomorrow is Sunday. We ___ get up early.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"Mañana es domingo. No tenemos que madrugar.", tip:"No hace falta → <b>don't have to</b>."},
   {s:"She ___ be Italian. Her name is Giulia.", ok:["must","might","may","could"], no:["can","mustn't","should"], es:"Debe de ser italiana. Se llama Giulia.", tip:"Deducción → <b>must</b> (seguro) o <b>might</b> (quizá). <i>Can</i> no vale para deducir en afirmativa."},
-  {s:"You ___ see a doctor about that cough.", ok:["should","must"], no:["can","might","would"], es:"Deberías ir al médico por esa tos.", tip:"Consejo → <b>should</b>."},
+  {s:"You ___ see a doctor about that cough.", ok:["should","must"], no:["mustn't","can't","would"], es:"Deberías ir al médico por esa tos.", tip:"Consejo → <b>should</b>."},
   {s:"___ you speak English when you were ten?", ok:["Could"], no:["Can","Must","Should"], es:"¿Sabías hablar inglés con diez años?", tip:"Habilidad en pasado → <b>could</b>."},
   {s:"I'm sorry, I ___ come to the meeting. I'm busy.", ok:["can't"], no:["mustn't","don't have to","shouldn't"], es:"Lo siento, no puedo ir a la reunión. Estoy ocupado.", tip:"No poder → <b>can't</b>."},
   {s:"You ___ take your passport. They won't let you in without it.", ok:["must","have to"], no:["can","might","could"], es:"Tienes que llevar el pasaporte. Sin él no te dejan entrar.", tip:"Obligación → <b>must / have to</b>."},
@@ -300,7 +300,7 @@ const HUECOS = [
   {s:"We ___ book a table. The restaurant is always full.", ok:["should","must","have to"], no:["can","might","may"], es:"Deberíamos reservar mesa. El restaurante siempre está lleno.", tip:"Consejo / necesidad → <b>should / must</b>."},
   {s:"I ___ remember her name.", ok:["can't"], no:["mustn't","shouldn't","don't have to"], es:"No me acuerdo de su nombre.", tip:"No ser capaz → <b>can't</b>."},
   {s:"Children ___ be accompanied by an adult.", ok:["must","have to"], no:["can","might","may"], es:"Los niños tienen que ir acompañados de un adulto.", tip:"Norma → <b>must / have to</b>."},
-  {s:"It's a nice day. We ___ go for a walk.", ok:["could","can","should"], no:["must","have to","mustn't"], es:"Hace buen día. Podríamos dar un paseo.", tip:"Sugerencia → <b>could / can</b>."},
+  {s:"It's a nice day. We ___ go for a walk.", ok:["could","can","should"], no:["mustn't","needn't","shouldn't"], es:"Hace buen día. Podríamos dar un paseo.", tip:"Sugerencia → <b>could / can</b>."},
   {s:"Can you swim? — Yes, I ___.", ok:["can"], no:["do","am","could"], es:"¿Sabes nadar? — Sí.", tip:"La respuesta corta <b>repite el modal</b>, nunca <i>do</i>."},
   {s:"Must I finish it today? — No, you ___.", ok:["don't have to","needn't"], no:["mustn't","can't","shouldn't"], es:"¿Tengo que terminarlo hoy? — No, no hace falta.", tip:"Respuesta negativa a <i>must</i> → <b>don't have to</b> (no hace falta), no mustn't."},
   {s:"I ___ go to the gym yesterday. I had no time.", ok:["couldn't"], no:["can't","mustn't","shouldn't"], es:"Ayer no pude ir al gimnasio. No tuve tiempo.", tip:"Pasado → <b>couldn't</b>."},
@@ -321,7 +321,7 @@ const ERRORES = [
   {mal:"I can't to find my keys.", ok:"I can't find my keys.", no:["I don't can find my keys.","I can't finding my keys."], es:"No encuentro las llaves.", tip:"<b>can't + verbo</b>, sin to."},
   {mal:"She must works on Saturdays.", ok:"She must work on Saturdays.", no:["She musts work on Saturdays.","She must to work on Saturdays."], es:"Tiene que trabajar los sábados.", tip:"El verbo detrás del modal va en forma base: <b>must work</b>."},
   {mal:"Does he must go?", ok:"Does he have to go?", no:["Does he must to go?","Musts he go?"], es:"¿Tiene que ir?", tip:"<i>must</i> no acepta <i>do</i>. O <b>Must he go?</b> o, más natural, <b>Does he have to go?</b>"},
-  {mal:"I would like drink water.", ok:"I would like to drink water.", no:["I would like drinking water.","I would to like drink water."], es:"Quisiera beber agua.", tip:"<b>would like</b> sí lleva <b>to</b>: el <i>to</i> es de <i>like</i>, no de <i>would</i>."},
+  {mal:"I would like eat something.", ok:"I would like to eat something.", no:["I would like eating something.","I would to like eat something."], es:"Quisiera comer algo.", tip:"<b>would like</b> sí lleva <b>to</b>: el <i>to</i> es de <i>like</i>, no de <i>would</i>."},
   {mal:"You don't must smoke here.", ok:"You mustn't smoke here.", no:["You don't must to smoke here.","You mustn't to smoke here."], es:"No puedes fumar aquí.", tip:"Negación del modal con <b>not</b>: <b>mustn't</b>."},
   {mal:"Yesterday I couldn't to finish the report.", ok:"Yesterday I couldn't finish the report.", no:["Yesterday I didn't can finish the report.","Yesterday I can't finish the report."], es:"Ayer no pude terminar el informe.", tip:"<b>couldn't + verbo</b> sin to; y en pasado, <i>couldn't</i>, no <i>can't</i>."},
   {mal:"I will to call you.", ok:"I will call you.", no:["I will calling you.","I will calls you."], es:"Te llamaré.", tip:"<b>will</b> es un modal: detrás va el verbo tal cual."},

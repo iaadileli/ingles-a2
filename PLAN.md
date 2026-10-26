@@ -86,6 +86,13 @@ Repaso de toda la web (gramática, opciones, traducciones, lógica). Corregido:
 - **presente-simple/ y presente-continuo/**: trampa válida «is open» y «fly» sustituidas; regla de doblar
   consonante con su excepción (w, x, y).
 
+## Primera revisión según REVISION.md — 26-oct-2026
+Dos revisiones independientes (gramática / abogado del diablo) de toda la web + revisión de los cambios
+hasta salir limpia. Corregido: 34 ordenaciones válidas más en preguntas (complemento de tiempo/lugar delante,
+*what food is your favourite*), 2 alt forzadas quitadas, 13 tips que generalizaban; ~20 trampas que podían
+ser correctas en modales/presentes (p. ej. *This bag cost*, *would like drinking water*); regla de doblar
+consonante completa (una sílaba o acento final; -l británica); *would* solo con acciones; *Don't be late!*.
+
 ## Pendiente
 - Que Adil pruebe «Ordena la pregunta» en el iPhone (instalación, arrastre táctil, sin conexión).
 - Nuevos ejercicios según vayan llegando de clase.
