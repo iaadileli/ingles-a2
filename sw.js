@@ -12,7 +12,7 @@ self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith("ingles-a2-") && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 // Red primero (para tener siempre lo último); si no hay red, caché. Lo que llega por red se guarda.
 self.addEventListener("fetch", e => {
